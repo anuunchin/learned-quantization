@@ -1,0 +1,13 @@
+myenv/
+__pycache__
+
+test/
+
+accuracy/
+loss/
+on_epoch_end/
+on_train_end/
+on_train_begin/
+
+plotting_process.log
+
