@@ -1,0 +1,44 @@
+
+--------------------------------------------------------------------------------
+MODEL STRUCTURE
+
+LAYER 0: <InputLayer name=input_layer_2, built=True>
+  - Input Shape: []
+  - Output Shape: <KerasTensor shape=(None, 32, 32, 3), dtype=float32, sparse=False, name=keras_tensor_20>
+
+LAYER 1: <Conv2D name=conv2d_6, built=True>
+  - Input Shape: <KerasTensor shape=(None, 32, 32, 3), dtype=float32, sparse=False, name=keras_tensor_20>
+  - Output Shape: <KerasTensor shape=(None, 32, 32, 32), dtype=float32, sparse=False, name=keras_tensor_21>
+
+LAYER 2: <MaxPooling2D name=max_pooling2d_6, built=True>
+  - Input Shape: <KerasTensor shape=(None, 32, 32, 32), dtype=float32, sparse=False, name=keras_tensor_21>
+  - Output Shape: <KerasTensor shape=(None, 16, 16, 32), dtype=float32, sparse=False, name=keras_tensor_22>
+
+LAYER 3: <Conv2D name=conv2d_7, built=True>
+  - Input Shape: <KerasTensor shape=(None, 16, 16, 32), dtype=float32, sparse=False, name=keras_tensor_22>
+  - Output Shape: <KerasTensor shape=(None, 16, 16, 64), dtype=float32, sparse=False, name=keras_tensor_23>
+
+LAYER 4: <MaxPooling2D name=max_pooling2d_7, built=True>
+  - Input Shape: <KerasTensor shape=(None, 16, 16, 64), dtype=float32, sparse=False, name=keras_tensor_23>
+  - Output Shape: <KerasTensor shape=(None, 8, 8, 64), dtype=float32, sparse=False, name=keras_tensor_24>
+
+LAYER 5: <Conv2D name=conv2d_8, built=True>
+  - Input Shape: <KerasTensor shape=(None, 8, 8, 64), dtype=float32, sparse=False, name=keras_tensor_24>
+  - Output Shape: <KerasTensor shape=(None, 8, 8, 128), dtype=float32, sparse=False, name=keras_tensor_25>
+
+LAYER 6: <MaxPooling2D name=max_pooling2d_8, built=True>
+  - Input Shape: <KerasTensor shape=(None, 8, 8, 128), dtype=float32, sparse=False, name=keras_tensor_25>
+  - Output Shape: <KerasTensor shape=(None, 4, 4, 128), dtype=float32, sparse=False, name=keras_tensor_26>
+
+LAYER 7: <Flatten name=flatten_2, built=True>
+  - Input Shape: <KerasTensor shape=(None, 4, 4, 128), dtype=float32, sparse=False, name=keras_tensor_26>
+  - Output Shape: <KerasTensor shape=(None, 2048), dtype=float32, sparse=False, name=keras_tensor_27>
+
+LAYER 8: <Dense name=dense_4, built=True>
+  - Input Shape: <KerasTensor shape=(None, 2048), dtype=float32, sparse=False, name=keras_tensor_27>
+  - Output Shape: <KerasTensor shape=(None, 128), dtype=float32, sparse=False, name=keras_tensor_28>
+
+LAYER 9: <Dense name=dense_5, built=True>
+  - Input Shape: <KerasTensor shape=(None, 128), dtype=float32, sparse=False, name=keras_tensor_28>
+  - Output Shape: <KerasTensor shape=(None, 10), dtype=float32, sparse=False, name=keras_tensor_29>
+--------------------------------------------------------------------------------
