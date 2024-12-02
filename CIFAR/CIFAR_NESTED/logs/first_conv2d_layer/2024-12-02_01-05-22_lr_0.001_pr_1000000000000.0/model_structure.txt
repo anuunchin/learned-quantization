@@ -1,0 +1,124 @@
+
+--------------------------------------------------------------------------------
+MODEL STRUCTURE
+
+LAYER 0: <keras.src.engine.input_layer.InputLayer object at 0x7f1e105eab00>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 3), dtype=tf.float32, name='input_24'), name='input_24', description="created by layer 'input_24'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 3), dtype=tf.float32, name='input_24'), name='input_24', description="created by layer 'input_24'")
+
+LAYER 1: <custom_components.custom_layers.CustomConv2DLayerTest object at 0x7f1e1041f580>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 3), dtype=tf.float32, name='input_24'), name='input_24', description="created by layer 'input_24'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='custom_conv2d_layer_test_23/Add:0', description="created by layer 'custom_conv2d_layer_test_23'")
+
+LAYER 2: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1dc05089a0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='custom_conv2d_layer_test_23/Add:0', description="created by layer 'custom_conv2d_layer_test_23'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='tf.nn.relu_138/Relu:0', description="created by layer 'tf.nn.relu_138'")
+
+LAYER 3: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc06bb1f0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='tf.nn.relu_138/Relu:0', description="created by layer 'tf.nn.relu_138'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='batch_normalization_161/FusedBatchNormV3:0', description="created by layer 'batch_normalization_161'")
+
+LAYER 4: <custom_components.custom_layers.CustomConv2DLayer object at 0x7f1dc06ba560>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='batch_normalization_161/FusedBatchNormV3:0', description="created by layer 'batch_normalization_161'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='custom_conv2d_layer_115/Add:0', description="created by layer 'custom_conv2d_layer_115'")
+
+LAYER 5: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1dc050a2c0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='custom_conv2d_layer_115/Add:0', description="created by layer 'custom_conv2d_layer_115'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='tf.nn.relu_139/Relu:0', description="created by layer 'tf.nn.relu_139'")
+
+LAYER 6: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc050b7c0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='tf.nn.relu_139/Relu:0', description="created by layer 'tf.nn.relu_139'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='batch_normalization_162/FusedBatchNormV3:0', description="created by layer 'batch_normalization_162'")
+
+LAYER 7: <keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7f1dc050a560>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 32, 32, 32), dtype=tf.float32, name=None), name='batch_normalization_162/FusedBatchNormV3:0', description="created by layer 'batch_normalization_162'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 32), dtype=tf.float32, name=None), name='max_pooling2d_69/MaxPool:0', description="created by layer 'max_pooling2d_69'")
+
+LAYER 8: <keras.src.layers.regularization.dropout.Dropout object at 0x7f1dc052d2a0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 32), dtype=tf.float32, name=None), name='max_pooling2d_69/MaxPool:0', description="created by layer 'max_pooling2d_69'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 32), dtype=tf.float32, name=None), name='dropout_92/Identity:0', description="created by layer 'dropout_92'")
+
+LAYER 9: <custom_components.custom_layers.CustomConv2DLayer object at 0x7f1e1041ec80>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 32), dtype=tf.float32, name=None), name='dropout_92/Identity:0', description="created by layer 'dropout_92'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='custom_conv2d_layer_116/Add:0', description="created by layer 'custom_conv2d_layer_116'")
+
+LAYER 10: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1dc052d4e0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='custom_conv2d_layer_116/Add:0', description="created by layer 'custom_conv2d_layer_116'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='tf.nn.relu_140/Relu:0', description="created by layer 'tf.nn.relu_140'")
+
+LAYER 11: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1e10494100>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='tf.nn.relu_140/Relu:0', description="created by layer 'tf.nn.relu_140'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='batch_normalization_163/FusedBatchNormV3:0', description="created by layer 'batch_normalization_163'")
+
+LAYER 12: <custom_components.custom_layers.CustomConv2DLayer object at 0x7f1dc0691f60>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='batch_normalization_163/FusedBatchNormV3:0', description="created by layer 'batch_normalization_163'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='custom_conv2d_layer_117/Add:0', description="created by layer 'custom_conv2d_layer_117'")
+
+LAYER 13: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1dc052fd60>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='custom_conv2d_layer_117/Add:0', description="created by layer 'custom_conv2d_layer_117'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='tf.nn.relu_141/Relu:0', description="created by layer 'tf.nn.relu_141'")
+
+LAYER 14: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc052cbb0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='tf.nn.relu_141/Relu:0', description="created by layer 'tf.nn.relu_141'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='batch_normalization_164/FusedBatchNormV3:0', description="created by layer 'batch_normalization_164'")
+
+LAYER 15: <keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7f1e104967a0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 16, 16, 64), dtype=tf.float32, name=None), name='batch_normalization_164/FusedBatchNormV3:0', description="created by layer 'batch_normalization_164'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 64), dtype=tf.float32, name=None), name='max_pooling2d_70/MaxPool:0', description="created by layer 'max_pooling2d_70'")
+
+LAYER 16: <keras.src.layers.regularization.dropout.Dropout object at 0x7f1dc07ccb80>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 64), dtype=tf.float32, name=None), name='max_pooling2d_70/MaxPool:0', description="created by layer 'max_pooling2d_70'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 64), dtype=tf.float32, name=None), name='dropout_93/Identity:0', description="created by layer 'dropout_93'")
+
+LAYER 17: <custom_components.custom_layers.CustomConv2DLayer object at 0x7f1e104d8970>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 64), dtype=tf.float32, name=None), name='dropout_93/Identity:0', description="created by layer 'dropout_93'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='custom_conv2d_layer_118/Add:0', description="created by layer 'custom_conv2d_layer_118'")
+
+LAYER 18: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1dc0690d90>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='custom_conv2d_layer_118/Add:0', description="created by layer 'custom_conv2d_layer_118'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='tf.nn.relu_142/Relu:0', description="created by layer 'tf.nn.relu_142'")
+
+LAYER 19: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc071d030>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='tf.nn.relu_142/Relu:0', description="created by layer 'tf.nn.relu_142'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='batch_normalization_165/FusedBatchNormV3:0', description="created by layer 'batch_normalization_165'")
+
+LAYER 20: <custom_components.custom_layers.CustomConv2DLayer object at 0x7f1e10496710>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='batch_normalization_165/FusedBatchNormV3:0', description="created by layer 'batch_normalization_165'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='custom_conv2d_layer_119/Add:0', description="created by layer 'custom_conv2d_layer_119'")
+
+LAYER 21: <keras.src.layers.core.tf_op_layer.TFOpLambda object at 0x7f1e104bf340>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='custom_conv2d_layer_119/Add:0', description="created by layer 'custom_conv2d_layer_119'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='tf.nn.relu_143/Relu:0', description="created by layer 'tf.nn.relu_143'")
+
+LAYER 22: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc052ffa0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='tf.nn.relu_143/Relu:0', description="created by layer 'tf.nn.relu_143'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='batch_normalization_166/FusedBatchNormV3:0', description="created by layer 'batch_normalization_166'")
+
+LAYER 23: <keras.src.layers.pooling.max_pooling2d.MaxPooling2D object at 0x7f1e104bf520>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 8, 8, 128), dtype=tf.float32, name=None), name='batch_normalization_166/FusedBatchNormV3:0', description="created by layer 'batch_normalization_166'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 4, 4, 128), dtype=tf.float32, name=None), name='max_pooling2d_71/MaxPool:0', description="created by layer 'max_pooling2d_71'")
+
+LAYER 24: <keras.src.layers.regularization.dropout.Dropout object at 0x7f1dc052dd20>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 4, 4, 128), dtype=tf.float32, name=None), name='max_pooling2d_71/MaxPool:0', description="created by layer 'max_pooling2d_71'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 4, 4, 128), dtype=tf.float32, name=None), name='dropout_94/Identity:0', description="created by layer 'dropout_94'")
+
+LAYER 25: <keras.src.layers.reshaping.flatten.Flatten object at 0x7f1dc06917b0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 4, 4, 128), dtype=tf.float32, name=None), name='dropout_94/Identity:0', description="created by layer 'dropout_94'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 2048), dtype=tf.float32, name=None), name='flatten_23/Reshape:0', description="created by layer 'flatten_23'")
+
+LAYER 26: <keras.src.layers.core.dense.Dense object at 0x7f1dc0672950>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 2048), dtype=tf.float32, name=None), name='flatten_23/Reshape:0', description="created by layer 'flatten_23'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='dense_46/Relu:0', description="created by layer 'dense_46'")
+
+LAYER 27: <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x7f1dc052c2b0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='dense_46/Relu:0', description="created by layer 'dense_46'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='batch_normalization_167/batchnorm/add_1:0', description="created by layer 'batch_normalization_167'")
+
+LAYER 28: <keras.src.layers.regularization.dropout.Dropout object at 0x7f1dc06bb130>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='batch_normalization_167/batchnorm/add_1:0', description="created by layer 'batch_normalization_167'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='dropout_95/Identity:0', description="created by layer 'dropout_95'")
+
+LAYER 29: <keras.src.layers.core.dense.Dense object at 0x7f1dc06716f0>
+  - Input Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 128), dtype=tf.float32, name=None), name='dropout_95/Identity:0', description="created by layer 'dropout_95'")
+  - Output Shape: KerasTensor(type_spec=TensorSpec(shape=(None, 10), dtype=tf.float32, name=None), name='dense_47/Softmax:0', description="created by layer 'dense_47'")
+--------------------------------------------------------------------------------
