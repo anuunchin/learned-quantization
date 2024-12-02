@@ -1,0 +1,20 @@
+
+--------------------------------------------------------------------------------
+MODEL STRUCTURE
+
+LAYER 0: <InputLayer name=input_layer_3, built=True>
+  - Input Shape: []
+  - Output Shape: <KerasTensor shape=(None, 28, 28, 1), dtype=float32, sparse=False, name=keras_tensor_18>
+
+LAYER 1: <Flatten name=flatten_3, built=True>
+  - Input Shape: <KerasTensor shape=(None, 28, 28, 1), dtype=float32, sparse=False, name=keras_tensor_18>
+  - Output Shape: <KerasTensor shape=(None, 784), dtype=float32, sparse=False, name=keras_tensor_19>
+
+LAYER 2: <CustomDenseLayer name=custom_dense_layer_3, built=True>
+  - Input Shape: <KerasTensor shape=(None, 784), dtype=float32, sparse=False, name=keras_tensor_19>
+  - Output Shape: <KerasTensor shape=(None, 128), dtype=float32, sparse=False, name=keras_tensor_20>
+
+LAYER 3: <Dense name=dense_3, built=True>
+  - Input Shape: <KerasTensor shape=(None, 128), dtype=float32, sparse=False, name=keras_tensor_21>
+  - Output Shape: <KerasTensor shape=(None, 10), dtype=float32, sparse=False, name=keras_tensor_22>
+--------------------------------------------------------------------------------
