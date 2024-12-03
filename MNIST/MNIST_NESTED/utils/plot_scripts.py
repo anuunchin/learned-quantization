@@ -1,8 +1,10 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import os
 import numpy as np
 import logging
 
+matplotlib.use('Agg')
 
 
 def process_file_logged_per_epoch(file_path):

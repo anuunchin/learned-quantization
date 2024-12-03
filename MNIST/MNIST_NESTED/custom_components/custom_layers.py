@@ -93,29 +93,51 @@ def my_custom_gradient(parameter, scale, penalty_rate):
     inputs_quantized_scaled_back = inputs_quantized_rounded * scale
 
     def custom_grad(dy, variables=None):
+        # avoid division by zero
+        dy_abs = tf.where(dy == 0.0, eps_float32, tf.abs(dy))
+
         if len(parameter.shape) == 1:
-            maxvalue = tf.expand_dims(tf.reduce_max(tf.abs(inputs_quantized_rounded), axis=0), axis=0)
+            maxvalue = tf.reduce_max(tf.abs(parameter), axis=0)
+            
+            dy_abs = tf.reduce_mean(dy_abs, axis=0)
+            proportion = dy_abs / maxvalue # we want to see the relation between bin size and the change rate of parameter
 
-            # for parameters that are non-sensitive or the ones that need to be increased, increase scale 
-            # otherwise decrease
-            scale_grads = tf.where(dy <= 0.0, (-1.0) * tf.abs(inputs_quantized_rounded), tf.abs(inputs_quantized_rounded))
-            scale_grads = tf.expand_dims(tf.reduce_mean(scale_grads, axis=0), axis=0)
+            # and then penalty_rate 
+            # 0.10
+
+            scale_grads = tf.where(proportion > penalty_rate,  - dy_abs, dy_abs)
+            #scale_grads = tf.where(dy <= 0.0, (-1.0) * 1.0/(1 + tf.exp(dy_abs)), 1.0/(1 + tf.exp(dy_abs)))
+            scale_grads = tf.expand_dims(scale_grads, axis=0)
 
             # if it nears binary, try decreasing scale 
-            scale_grads = tf.where(maxvalue <= 1.0, tf.abs(scale_grads), scale_grads)
+#            scale_grads = tf.where(maxvalue <= 1.0, tf.abs(scale_grads), scale_grads)
 
-            tf.print(scale_grads, output_stream=f'file://logs/test/scale_grads.log')
+            tf.print(proportion, output_stream=f'file://logs/test/scale_grads.log')
+            tf.print(maxvalue, output_stream=f'file://logs/test/maxvalue.log')
 
+            scale_grads *= penalty_rate * maxvalue
+ 
         else:
-            maxvalue = tf.expand_dims(tf.reduce_max(tf.abs(inputs_quantized_rounded), axis=1), axis=1)
+           
+           
+            maxvalue = tf.reduce_max(tf.abs(parameter), axis=1)
+            print("SHAPE OF MAXVALUE", maxvalue.shape)
 
-            scale_grads = tf.where(dy <= 0.0, (-1.0) * tf.abs(inputs_quantized_rounded), tf.abs(inputs_quantized_rounded))
-            scale_grads = tf.expand_dims(tf.reduce_mean(scale_grads, axis=1), axis=1)
+            dy_abs = tf.reduce_mean(dy_abs, axis=1)
+            proportion = dy_abs / maxvalue
 
+            scale_grads = tf.where(proportion > penalty_rate,  - dy_abs, dy_abs)
+            print("SHAPE OF GRADS", scale_grads.shape)
+
+#            scale_grads = tf.expand_dims(scale_grads, axis=1)
+
+            print("SHAPE OF GRADS", scale_grads.shape)
             # if it nears binary, try decreasing scale 
-            scale_grads = tf.where(maxvalue <= 1.0, tf.abs(scale_grads), scale_grads)
+#            scale_grads = tf.where(maxvalue <= 1.0, tf.abs(scale_grads), scale_grads)
 
-        scale_grads *= penalty_rate * maxvalue
+            scale_grads *= penalty_rate * maxvalue
+            print("SHAPE OF GRADS", scale_grads.shape)
+            scale_grads = tf.expand_dims(scale_grads, axis=1)
 
         return dy, scale_grads, None
 

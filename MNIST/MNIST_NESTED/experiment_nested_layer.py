@@ -14,6 +14,10 @@ import custom_components.custom_layers as custom_layers
 import utils.plot_scripts as plot_scripts
 import utils.logs as logs
 
+import logging
+
+import concurrent.futures
+
 
 def prepare_model_dir(scenario_dir, model, penalty_rate, learning_rate, run_timestamp):
     log_dir = f'logs/{scenario_dir}/{run_timestamp}_lr_{learning_rate}_pr_{penalty_rate}'
@@ -75,8 +79,15 @@ def evaluate_model(model, validation_data):
     return accuracy, loss
 
 
+def plot_results(log_dir_path):
+    logging.info(f"Processing {log_dir_path}...")
+    plot_scripts.plot_values_logged_on_epoch_end(log_dir_path)
+    plot_scripts.plot_accuracy_per_epoch(log_dir_path)
+    plot_scripts.plot_total_loss_per_epoch(log_dir_path)
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Train model for differen penalty rates for this scenarion.")
+    parser = argparse.ArgumentParser(description="Train model for different penalty rates for this scenarion.")
     parser.add_argument(
         "scenario_dir", 
         type=str, 
@@ -85,7 +96,15 @@ def main():
     args = parser.parse_args()
 
     scenario_dir = args.scenario_dir
+    plotting_log_file_path = "logs/" + scenario_dir + "/plotting_process.log"
 
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        handlers=[
+            logging.FileHandler(plotting_log_file_path),
+        ]
+    )
 
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
     x_train = x_train.astype('float32')
@@ -102,6 +121,7 @@ def main():
     batch_size = 32
 
     penalty_rates = [
+#        1e-60
 #        1e-12,
 #        1e-11,
 #        1e-10,
@@ -114,7 +134,7 @@ def main():
 #        1e-3,
 #        1e-2,
 #        1e-1,
-#        1.0,
+        1.0,
         1e1,
         1e2,
         1e3,
@@ -130,19 +150,28 @@ def main():
     ]
     seed = 42
 
-    for penalty_rate in penalty_rates:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = []
+        for penalty_rate in penalty_rates:
+            run_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            model = initialize_model(penalty_rate=penalty_rate, input_shape=input_data_shape, seed=seed)
+            log_dir = prepare_model_dir(
+                scenario_dir=scenario_dir,
+                model=model,
+                penalty_rate=penalty_rate,
+                learning_rate=learning_rate,
+                run_timestamp=run_timestamp,
+            )
+            compile_model(model=model, learning_rate=learning_rate)
 
-        run_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            callbacks = initialize_callbacks(model=model, log_dir=log_dir)
+            train_model(model=model, epochs=epochs, train_data=train_data, validation_data=validation_data, batch_size=batch_size, callbacks=callbacks)
 
-        model = initialize_model(penalty_rate=penalty_rate, input_shape=input_data_shape, seed=seed)
-        log_dir = prepare_model_dir(scenario_dir=scenario_dir, model=model, penalty_rate=penalty_rate, learning_rate=learning_rate, run_timestamp=run_timestamp)
-        compile_model(model=model, learning_rate=learning_rate)
+            accuracy, loss = evaluate_model(model=model, validation_data=validation_data)
+            
+            futures.append(executor.submit(plot_results, log_dir))
 
-        callbacks = initialize_callbacks(model=model, log_dir=log_dir)
-        train_model(model=model, epochs=epochs, train_data=train_data, validation_data=validation_data, batch_size=batch_size, callbacks=callbacks)
-
-        accuracy, loss = evaluate_model(model=model, validation_data=validation_data)
-
+        concurrent.futures.wait(futures)
 
 if __name__ == "__main__":
     main()

@@ -22,7 +22,6 @@ def main():
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[
             logging.FileHandler(plotting_log_file_path),
-            logging.StreamHandler()
         ]
     )
 
@@ -35,19 +34,6 @@ def main():
 
     logging.info(f"Pareto plots done.")
 
-    log_dirs = os.listdir(scenario_dir)
-    log_dirs = [dir for dir in os.listdir(scenario_dir) if os.path.isdir(os.path.join(scenario_dir, dir)) and dir not in ["pareto_plots", "artefacts"]]
-
-    for log_dir in log_dirs:
-        log_dir_path = f"{scenario_dir}/{log_dir}"
-        
-        logging.info(f"Processing {log_dir} at path {log_dir_path}...")
-        
-        plot_scripts.plot_values_logged_on_epoch_end(log_dir_path)
-        plot_scripts.plot_accuracy_per_epoch(log_dir_path)
-        plot_scripts.plot_total_loss_per_epoch(log_dir_path)
-
-    logging.info("Plot generation completed successfully.")
 
 if __name__ == "__main__":
     main()
