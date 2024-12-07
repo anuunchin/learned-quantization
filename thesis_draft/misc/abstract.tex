@@ -7,10 +7,29 @@
 
 \vspace*{0.5cm}
 
-\noindent
+Machine learning (ML) models are notoriously resource-intensive.
+Given their widespread application across every-day edge devices,
+the need to reduce their memory and computing requirements is becoming ever more pressing.
 
+Despite the said resource-intensiveness of ML models, at the same time 
+they offer the main ingredient for the remedy to the malady - redundancy - 
+which can be exploited to reduce their memory usage.
 
-This page is a placeholder for the abstract which should follow this structure:
+While the redundancy exploitation of ML models is already a common 
+technique that comes in different forms, starting from pruning and
+ending with ..., quantization presents itself as an especially promising 
+area especically in the sense of learned quantization - 
+the process of making ML models learn their optimal quantization parameters
+on their own.
+
+Hence, the current work employs two techniques that bypass the main issue of learned quantization,
+that is, the non-differentiability of rounding operations.
+While the first technique involves custom loss functions that directly take into account
+quantization goals, the second approach incorporates a custom gradient calculation that is
+easily integratable to various training scenarios.
+
+As a result of these two techniques, a memory usage reduction of up to ..x is obtained 
+on MNIST, CIFAR10, and Imagenette. 
 
 \begin{enumerate}
     \item The problem:
@@ -18,11 +37,14 @@ This page is a placeholder for the abstract which should follow this structure:
             \item High memory usage
             \item Models are redundant
         \end{enumerate}
+
     \item Why it's an interesting problem
         \begin{enumerate}
             \item \{I need something about current techniques not being enough\}
             \item \{Also something about learned quantization specifically that's not enough\}
         \end{enumerate}
+        Despite the said resource-intensiveness of ML models, they 
+
     \item What our solution achieves
         \begin{enumerate}
             \item Custom loss functions that encourage quantization
