@@ -6,23 +6,29 @@ import shutil
 from datetime import datetime
 import numpy as np
 
+import tensorflow_datasets as tfds
 import tensorflow as tf
 from tensorflow.keras.initializers import RandomNormal
 from tensorflow.keras.layers import (
+    Conv2D,
     BatchNormalization,
     Dense,
     Dropout,
     Flatten,
     Input,
     MaxPooling2D,
+    Activation,
+    Add,
+    GlobalAveragePooling2D
 )
+
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 
 import custom_components.custom_callbacks as custom_callbacks
 import custom_components.custom_layers as custom_layers
-import utils.logs as logs
-import utils.plot_scripts as plot_scripts
+from utils import logs
+from utils import plot_scripts
 
 seed = 42
 tf.random.set_seed(seed)
@@ -58,6 +64,62 @@ def initialize_callbacks(model, log_dir):
     accuracy_loss_callback = custom_callbacks.AccuracyLossTrackingCallBack(log_dir)
     callbacks.append(accuracy_loss_callback)
     return callbacks
+
+
+def residual_block(x, filters, kernel_size=(3, 3), stride=(1, 1)):
+    """A simple Residual Block"""
+    shortcut = x
+    x = Conv2D(filters, kernel_size, strides=stride, padding="same", kernel_initializer="he_normal")(x)
+    x = BatchNormalization()(x)
+    x = Activation("relu")(x)
+    x = Dropout(0.2)(x)  
+
+    x = Conv2D(filters, kernel_size, strides=(1, 1), padding="same", kernel_initializer="he_normal")(x)
+    x = BatchNormalization()(x)
+    x = Activation("relu")(x)  # Add activation here
+    x = Dropout(0.2)(x)  # Dropout after second ReLU
+
+    # Add shortcut for residual connection
+    if stride != (1, 1):
+        shortcut = Conv2D(filters, (1, 1), strides=stride, padding="same", kernel_initializer="he_normal")(shortcut)
+        shortcut = BatchNormalization()(shortcut)
+    
+    x = Add()([x, shortcut])
+    x = Dropout(0.2)(x) 
+    x = Activation("relu")(x)
+    return x
+
+def build_imagenette_model(penalty_rate, input_shape=(224, 224, 3), seed=42, num_classes=10):
+    """A ResNet-like model for Imagenette"""
+    inputs = Input(shape=input_shape)
+    
+    x = Conv2D(64, (7, 7), strides=(2, 2), padding="same", kernel_initializer="random_normal")(inputs)
+    x = BatchNormalization()(x)
+    x = Activation("relu")(x)
+    x = MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding="same")(x)
+    x = Dropout(0.2)(x) 
+
+    # Residual Blocks
+    x = residual_block(x, 64)
+    x = residual_block(x, 64)
+    
+    x = residual_block(x, 128, stride=(2, 2))
+    x = residual_block(x, 128)
+    
+    x = residual_block(x, 256, stride=(2, 2))
+    x = residual_block(x, 256)
+    
+    x = residual_block(x, 512, stride=(2, 2))
+    x = residual_block(x, 512)
+    
+    # Global Pooling and Dense Layers
+    x = Dropout(0.2)(x)
+    x = GlobalAveragePooling2D()(x)
+    x = Dropout(0.5)(x)
+    outputs = Dense(num_classes, activation="softmax")(x)
+    
+    model = Model(inputs=inputs, outputs=outputs)
+    return model
 
 
 def initialize_model(penalty_rate, input_shape=(32, 32, 3), seed=42, num_classes=10):
@@ -224,8 +286,32 @@ def save_artefacts(log_scenario_dir):
 
 
 def prepare_data():
+    def preprocess(image, label):
+        image = tf.image.resize(image, (224, 224))  # Resize images to 224x224
+        return image, label
 
-    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
+    train_data = tfds.load('imagenette', split='train', as_supervised=True)
+    validation_data = tfds.load('imagenette', split='validation', as_supervised=True)
+
+    train_data = train_data.map(preprocess)
+    validation_data = validation_data.map(preprocess)
+
+    train_data_numpy = tfds.as_numpy(train_data)
+    validation_data_numpy = tfds.as_numpy(validation_data)
+
+    x_train, y_train = [], []
+    for image, label in train_data_numpy:
+        x_train.append(image)
+        y_train.append(label)
+
+    x_test, y_test = [], []
+    for image, label in validation_data_numpy:
+        x_test.append(image)
+        y_test.append(label)
+
+    x_train, y_train = np.array(x_train), np.array(y_train)
+    x_test, y_test = np.array(x_test), np.array(y_test)
+
     x_train = x_train.astype("float32")
     x_test = x_test.astype("float32")
     input_data_shape = x_train[0].shape
@@ -263,13 +349,14 @@ def main():
     train_data, validation_data, input_data_shape = prepare_data()
 
     learning_rate = 0.001
-    epochs = 2
-    batch_size = 128
+    epochs = 100
+    batch_size = 32
 
     penalty_rates = [
+        0.0
         #        1e-12,
         #        1e-12,
-        1e-11,
+#        1e-11,
 #        1e-10,
 #        1e-9,
 #        1e-8,
@@ -299,7 +386,7 @@ def main():
         futures = []
         for penalty_rate in penalty_rates:
             run_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            model = initialize_model(
+            model = build_imagenette_model(
                 penalty_rate=penalty_rate, input_shape=input_data_shape, seed=seed
             )
             log_dir = prepare_model_dir(

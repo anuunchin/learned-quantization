@@ -1,7 +1,7 @@
+import tensorflow as tf
+import numpy as np
 import os
 
-import numpy as np
-import tensorflow as tf
 
 eps_float32 = np.finfo(np.float32).eps
 
@@ -34,6 +34,7 @@ class NestedScaleTrackingCallback(tf.keras.callbacks.Callback):
         w_scale_name = self.w_scale.name.split("/")[-1].split(":")[0]
         bias_name = layer.b.name.split("/")[-1].split(":")[0]
         bias_scale_name = self.b_scale.name.split("/")[-1].split(":")[0]
+
 
         os.makedirs(f"{log_dir}/on_epoch_end", exist_ok=True)
         self.log_file_path_weights = f"{log_dir}/on_epoch_end/{w_name}_{layer.W.shape}.log"
@@ -96,6 +97,7 @@ class NestedScaleTrackingCallback(tf.keras.callbacks.Callback):
             for value in bias_scales:
                 file.write(f"{value}\n")
 
+
         inputs_quantized_nonrounded = self.layer.W / self.w_scale  
 
         inputs_quantized_rounded = tf.floor(inputs_quantized_nonrounded)
@@ -118,6 +120,7 @@ class NestedScaleTrackingCallback(tf.keras.callbacks.Callback):
             for val in max_abs_value:
                 file.write(f"{val}\n")
 
+
         inputs_quantized_nonrounded = self.layer.b / self.b_scale  
 
         inputs_quantized_rounded = tf.floor(inputs_quantized_nonrounded)
@@ -138,6 +141,7 @@ class NestedScaleTrackingCallback(tf.keras.callbacks.Callback):
         with open(self.log_file_path_qb_epoch_max, 'a') as file:
             file.write(f"Epoch {epoch}\n")
             file.write(f"{max_abs_value[0]}\n")
+
 
     def on_train_end(self,  logs=None):
         # Track floored quantized values in weight matrix at the end of training
@@ -245,3 +249,5 @@ class AccuracyLossTrackingCallBack(tf.keras.callbacks.Callback):
         with open(self.loss_log_file_path, 'a') as file:
             file.write(f"Epoch {epoch}\n")
             file.write(f"{logs['loss']}\n")
+
+

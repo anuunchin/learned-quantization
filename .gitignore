@@ -2,6 +2,7 @@ myenv/
 __pycache__
 
 test/
+temp/
 
 accuracy/
 loss/
