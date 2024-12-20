@@ -1,32 +1,43 @@
 \chapter{Introduction\label{cha:chapter1}}
 
-Machine learning models are notoriously memory and compute intensive, 
-making the need to reduce their resource usage ever more pressing.
-\\
-\\
-Context (1 paragraph):
-    \begin{enumerate}
-        \item redundancy + memory expensive
-        \item but we need more for less
-        \item there are various techniques, including learned quantization
-        \item \{need statement on why learned quantization is of interest here\}
-    \end{enumerate}
+\hspace{1em}Such is the life of a modern human being that not a single day passes 
+without a machine learning model toiling away in the background. 
+From unlocking one's phone with Face ID in the morning 
+to receiving a curated recommendation feed on Netflix in the evening - 
+all is ML - but at what cost?
 
-    
+If we consider GPT-3 as an example, 
+its 175 billion parameters need a whopping 700 gigabytes of storage in total - 
+4 bytes for each parameter represented in single-precision floating-point format (FP32).
+This costliness of modern ML models has revitalized interest in the research area
+of \textit{quantization of Neural Networks} (NNs) 
+which aims to reduce model size by developing methods 
+that directly or indirectly decrease the amount of memory 
+needed to store parameters numbering in the millions or billions. 
+Going back to the GPT-3 example, by directly clamping its FP32 parameters 
+to an 8-bit integer (INT8) representation, we can reduce its storage requirement 
+from 700 to just 175 gigabytes. 
+
+But what costs does quantization itself entail? The natural answer to this question 
+would be a reduction in model performance, as a decrease in precision logically implies 
+a decrease in accuracy. However, there is a somewhat counterintuitive phenomenon where 
+quantization improves accuracy by introducing discretization effects, which act like a
+form of regularization, forcing the model to generalize better. No matter whether quantization
+results in better or a slightly worse performance, the conclusion is that 
+for each model there is an optimal way to quantize it within reasonable degradation ranges.
+And if the model is able to learn its optimal parameters, 
+it is most likely also able to learn its optimal quantization parameters. 
+
+The fact that, indeed, models can learn their optimal quantization parameters has been proven 
+many times in the past. But is there a way to make them do it better - is a question 
+that will always remain and to which this thesis aims to contribute. In that sense, 
+the current work will explore non-standard ways to tackle the two main problems that the process 
+of learning optimal quantization parameters poses. First, how to overcome the issue 
+of non-differentiability of rounding operations in the back-propagation. Second, how
+to encourage the model to quantize only where it's necessary and feasible. 
 
 
-Problems that are to be solved in this thesis (2 paragraphs):
-    \begin{enumerate}
-        \item optimal quantization - how to reach it
-        \item how it's impossible to compute gradients for floor operations
-    \end{enumerate}
-Existing work and introduction to the idea on how to solve the above problems (1 paragraph):
-    \begin{enumerate}
-        \item optimal quantization - how to reach it
-        \item how it's impossible to compute gradients for floor operations
-    \end{enumerate}
-Our contributions (1 paragraph):
-    \begin{enumerate}
-        \item \{Literally a list of contributions \}
-        \item Outline the thesis as a list of bullet points containing a short introduction into chapters.
-    \end{enumerate}
+This paragraph is gonna be about how previous reseacrh has tried to tackle the wbove two questions.
+
+
+Finally, factually, how this thesis implemented the actions to the goal.

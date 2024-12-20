@@ -1,27 +1,39 @@
 \chapter{Learned Quantization\label{cha:chapter3}}
-This chapter elaborates on the problem that this thesis tries to solve and explains the individual methods used for solving the problem. 
+This chapter presents the custom methods of learned quantization developed to address the challenges posed by non-differentiability, 
+while enabling the model to make informed decisions on whether to proceed with quantization or revert to preserve performance.
+The first section will discuss the \textit{custom quantization layers} written in Tensorflow that can easily be
+integrated to existing workflows and directly deal with gradient calculation. The next section provides details on the \textit{custom loss functions} as 
+an alternative approach to learned quantization.
 
+\textit{This chapter elaborates on the problem that this thesis tries to solve and explains the individual methods used for solving the problem. }
 
 \section{Custom Quantization Layers}
-\label{sec:section1}
+\label{sec:customlayer}
+In this section, we introduce custom layers built upon Tensorflow's \texttt{tf.keras.Layer} class, 
+which serves as the base for all Keras layers. Each custom layer also leverages Tensorflow's 
+\texttt{tf.custom\_gradient} decorator to define its own gradient computation.
+For clarity, the upcoming subsections start by showing how to define the corresponding standard, 
+non-quantized layer using \texttt{tf.keras.Layer} and \texttt{tf.customg\_gradient},
+then move on to the specific quantized implementations.
 
 \subsection{Data Quantization Layer}
-\label{subsec:subsection1}
+\label{subsec:dataquantization}
 
-\subsection{Parameter Quantization Layer}
-\label{subsec:subsection2}
 
 \subsection{Quantized Dense Layer}
-\label{subsec:subsection3}
+\label{subsec:quantizeddense}
+
+\subsection{Quantized Convolutional Layer}
+\label{subsec:quantizedconvolutional}
 
 \section{Custom Loss Functions}
-\label{sec:section2}
+\label{sec:customloss}
 
-\subsection{Penalty for Inverse Scale Factor Magnitude} \label{subsec
-}
+\subsection{Penalty for Inverse Scale Factor Magnitude} 
+\label{subsec:scaleinverse}
 
-\subsection{Constraint on Bin Count for Quantization} \label{subsec
-}
+\subsection{Constraint on Bin Count for Quantization}
+\label{subsec:maxbin}
 
-\subsection{Deviation between Quantized and Original Values} \label{subsec
-}
+\subsection{Deviation between Quantized and Original Values}
+\label{subsec:difference}

@@ -6,16 +6,19 @@ which are covered separately in the following paragraphs.
 
 \noindent
 \textbf{Model architecture.}\\
-RNN - \cite{ott2016rnn}
-CNN - \cite{rastegari2016xnor}
+RNN - \cite{ott2016rnn}\\
+CNN - \cite{rastegari2016xnor}\\
+CNN - \cite{courbariaux2015binaryconnect}
+DNN - \cite{yunchao2014compressing}
 
 \noindent
 \textbf{Quantization target parameters.}\\
 weights and activations - \cite{krishnamoorthi2018quantizing}\\
 weights and activations - \cite{hubara2016qnn}\\
-weights - \cite{polino2018modelcompression}
-weigths - \cite{ott2016rnn}
-weights and inputs - \cite{rastegari2016xnor}
+weights - \cite{polino2018modelcompression}\\
+weigths - \cite{ott2016rnn}\\
+binary weights and input activations - \cite{rastegari2016xnor}\\
+gradients - \cite{shuchang2016dorafenet}
 
 
 \noindent
@@ -26,14 +29,21 @@ weights and inputs - \cite{rastegari2016xnor}
 
 \noindent
 \textbf{Quantization precision.}\\
-binary weights - \cite{courbariaux2015binaryconnect}
-binary weights and activations - \cite{hubara2016qnn}
-ternary weights - \cite{ott2016rnn}
+binary weights and input activations - \cite{courbariaux2015binaryconnect}\\
+binary weights and activations - \cite{hubara2016qnn}\\
+binary weights and input activations - \cite{rastegari2016xnor}\\
+ternary weights - \cite{ott2016rnn}\\
+higher precision for more important parameters and lowe precision for less important ones - \cite{soroosh2018adaptive}
 
 \noindent
 \textbf{Integration with pruning \& other techniques.}\\
 pruning and Huffman Codign - \cite{han2016deepcompression}\\
-distillation - \cite{polino2018modelcompression}
+distillation - \cite{polino2018modelcompression}\\
+higher precision for more important parameters and lowe precision for less important ones or pruning - \cite{soroosh2018adaptive}
 
 \noindent
 \textbf{Modifications to loss functions.}
+
+\noindent
+\textbf{Other interesting approaches.}
+k-means for parameters \cite{yunchao2014compressing}

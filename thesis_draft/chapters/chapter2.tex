@@ -2,28 +2,33 @@
 This chapter addresses the theoretical and contextual background 
 necessary to understand the key concepts and methodologies 
 that form the foundation of the current research.
-The first section will discuss the basics of deep neural networks (NNs), 
+The first section will discuss the basics of deep NNs, 
 upon which the technical setup of this thesis is based.
-The next section aims to provide a broader context for the term \textit{quantization}, 
-followed by a final section that explains the common NN modification techniques 
-used in learned quantization scenarios.
+The next section aims to provide a broader context for the term quantization, 
+followed by a final section that explains common techniques of \textit{learned quantization}, 
+as well as the trade-offs and challenges they present. 
 
+
+% ------------------------------------------------------------
+% ----------------------- deeplearning ----------------------- 
+% ------------------------------------------------------------
 \section{Fundamentals of Deep Learning}
-\label{sec:section2}
+\label{sec:deeplearning}
 This section introduces the fundamental concepts of deep learning, 
-beginning with the most basic NN architecture and progressing to loss functions with regularization. 
-The concepts of the forward pass and backpropagation will be explained in the last subsection.
+beginning with the most basic NN architecture components \ref{subsec:denseconvolutional} and progressing to loss functions with regularization \ref{subsec:lossregularization}. 
+The concepts of the forward pass and backpropagation will be explained in the last subsection \ref{subsec:forwardback}.
 
-\subsection{Dense Layers in Neural Networks}
-\label{subsec:subsection1}
+% -------------------- denseconvolutional --------------------
+\subsection{Dense and Convolutional Layers}
+\label{subsec:denseconvolutional}
 NNs can be considered a mathematical abstraction of the human decision-making process. 
 Consider a scenario where, given an image, you need to say aloud what you see. 
 The two eyes can be regarded as input nodes that receive the initial data, 
-the brain can be seen as the hidden layer that processes this data, 
+the brain can be seen as a set of \textit{hidden layers} that process this data, 
 and your mouth — the output node that provides the final answer.
 \\
 \\
-The hidden layer, which typically consists of many neurons, is where the magic
+A hidden layer, which typically consists of many neurons, is where the magic
  — or the transformation of data — happens. In its simplest form, 
  within the classic \textit{Multilayer Perceptron} (MLP) model,
  each hidden layer neuron performs a weighted operation:
@@ -35,65 +40,99 @@ The hidden layer, which typically consists of many neurons, is where the magic
 \noindent where:
 
 \begin{itemize}
-  \item \textit{input} refers to the outputs from the previous layer (or the initial data from input nodes in our case) that are fed into a specific neuron in the hidden layer.
+  \item \textit{input} refers to the outputs from the previous layer (or the initial data from input nodes) that are fed into a specific neuron in the hidden layer.
   \item \textit{w} (weights) is a vector of parameters associated with that specific neuron, defining the importance of each input received by this neuron. 
   \item \textit{b} (bias) is an additional scalar parameter specific to the neuron, which shifts the result of the weighted sum, allowing for more flexibility.
   \item \textit{f} is the \textit{activation function}, a nonlinear function applied to the weighted sum of inputs and bias in that specific neuron, allowing for more complexity.
-  \item \textit{output} is the result produced by the neuron, which will then be passed on to the next hidden layer or to the final output layer \cite{han2016deepcompression}.
+  \item \textit{output} is the result produced by the neuron, which will then be passed on to the next hidden layer (or to the final output layer).
 \end{itemize}
 
 \noindent Hidden layers where each neuron is connected to every neuron in the previous layer 
 and every neuron in the next layer are called \textit{dense layers}.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{dense_layer}
+  \caption{An example of a NN with two hidden dense layers, showing the connections between neurons in adjacent layers.}
+  \label{fig:dense_layer}
+\end{figure}
+
+\noindent Mathematically, dense layers can be represented as:
+
+\[
+\textit{a} = f(W \cdot \textit{x} + b)
+\]
+\\
+\noindent where:
+\begin{itemize}
+  \item \textit{x} is the input vector, representing outputs from the previous layer (or initial input data for the first layer).
+  \item \textit{W} is the \textit{weight matrix}, with each row corresponding to the weight vector \( w \) of a specific neuron.
+  \item \textit{b} represents the bias vector, where each scalar element corresponds to the bias of a specific neuron.
+  \item \textit{f} is the \textit{activation function} that is applied element-wise.
+  \item \textit{a} refers to the output vector, representing the activations of all neurons.
+\end{itemize}
+
+\noindent This interconnectedness of dense layers introduces the inherent redundancy, 
+or the over-parameterizedness of NNs \cite{gholami2021survey}. It is particularly true in models with a large number of neurons, 
+where \( W \) results in a vast number of parameters, which do not contribute to the model accuracy equally \cite{hubara2016qnn}.
+\\
+\\
+\noindent \textit{Convolutional layers} are another type of hidden layers 
+that involve a \textit{convolution} operation on the input. Intuitively, a standard convolution is 
+a process of sliding a small grid over an input to find patterns. The figure below, for example, shows 
+the application of the Sobel kernel that detects edges on the input image.
 
 \begin{figure}[h!]
   \centering
-  \begin{tikzpicture}[scale=0.8, every node/.style={transform shape}]
-
-      % Input Layer
-      \foreach \i in {1,...,3}
-        \node[draw, circle, minimum size=0.8cm] (I-\i) at (0,-2.0*\i) {Input \i};
-      
-      % Hidden Layer 1
-      \foreach \i in {1,...,5}
-        \node[draw, circle, minimum size=0.8cm] (H1-\i) at (3,-1.5*\i+0.75) {H1 \i};
-      
-      % Hidden Layer 2
-      \foreach \i in {1,...,5}
-        \node[draw, circle, minimum size=0.8cm] (H2-\i) at (6,-1.5*\i+0.75) {H2 \i};
-      
-      % Output Layer
-      \foreach \i in {1,...,2}
-        \node[draw, circle, minimum size=0.8cm] (O-\i) at (9,-2.0*\i-0.75) {Output \i};
-      
-      % Connecting layers
-      \foreach \i in {1,...,3}
-        \foreach \j in {1,...,5}
-          \draw[->] (I-\i) -- (H1-\j);
-      
-      \foreach \i in {1,...,5}
-        \foreach \j in {1,...,5}
-          \draw[->] (H1-\i) -- (H2-\j);
-      
-      \foreach \i in {1,...,5}
-        \foreach \j in {1,...,2}
-          \draw[->] (H2-\i) -- (O-\j);
-      
-  \end{tikzpicture}
-  \caption{Multilayer Perceptron with Two Dense Hidden Layers}
-  \label{fig:mlp_diagram}
+  \includegraphics[width=14cm]{convolution}
+  \caption{A 3×3 kernel (filter) sliding over a padded input matrix to compute the output feature map, demonstrating the interaction between the kernel weights and input values at a specific position.}
+  \label{fig:convolution}
 \end{figure}
 
+\noindent For multi-channeled inputs, like RGB images, the convolution operation uses a multi-channeled kernel, as shown in Figure 2.3, 
+producing a single-channeled feature map that combines weighted contributions from all input channels. 
+A convolutional layer typically includes multiple such kernels, generating feature maps equal to the number of kernels.
+After the convolution operation generates the feature maps, a bias term is added to each map, 
+and the activation function is applied element-wise — just like in dense layers.
 
-\noindent This interconnectedness of dense layers introduces the inherent redundancy of NNs. 
-It is particularly true in models with a large number of neurons, where the \textit{weight matrix}
-\( W \) — made up of the weight vectors \( w \) for each neuron in the layer — results 
-in a vast number of parameters, many of which have little influence on the final output.
-Thus, customizing these dense layers will be one of the key focus points in the current work.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{convolution_multiple_channels.png}
+  \caption{A 3×3x3 kernel (filter) sliding over an RGB input matrix to produce a single-channeled output feature map.}
+  \label{fig:convolution_multiple_channels}
+\end{figure}
 
+\noindent Mathematically, a convolutional layer can be represented as:
 
-\subsection{Loss Functions \& Regularization}
-\label{subsec:subsection2}
+\[
+y_{i,j,k} = \phi \left( \sum_{m=1}^M \sum_{p=1}^P \sum_{q=1}^Q x_{i+p-1, j+q-1, m} \cdot w_{p,q,m,k} + b_k \right)
+\]
+\\
+\noindent where:
+\begin{itemize}
+  \item \( P, Q \) are the height and width of the filter, respectively.
+  \item \( M \) is the number of input channels.
+  \item \( y_{i,j,k} \) denotes the output at position \((i, j)\) for the \(k\)-th filter.
+  \item \( x_{i+p-1, j+q-1, m} \) is the input at position \((i+p-1, j+q-1)\) for the \(m\)-th input channel.
+  \item \( w_{p,q,m,k} \) represents the weight of the filter at position \((p, q)\) for the \(m\)-th input channel and \(k\)-th filter.
+  \item \( b_k \) is the bias for the \(k\)-th filter.
+  \item \( \phi(\cdot) \) is the activation function.
+\end{itemize}
+
+\noindent In simpler terms, a convolutional layer applies filter weights 
+as it slides over rows \((p)\), columns \((q)\), and channels \((m)\), 
+sums the results, adds bias \((b_k)\), 
+and repeats this for all positions \((i, j)\) and filters \((k)\).
+\\
+\\
+\noindent Although convolutional layers often have fewer weight parameters than dense layers in typical architectures, 
+they still contain redundancies \cite{huang2017densely}, presenting an opportunity for quantization. 
+Thus, both dense and convolutional layers will be the focus of this work.
+
+% -------------------- lossregularization --------------------
+
+\subsection{Loss Functions and Regularization}
+\label{subsec:lossregularization}
 The weights and biases are usually \textit{learnable parameters}
 that the model adjusts during \textit{training}.
 The training process of NNs is similar to how our brains learn from mistakes. 
@@ -103,18 +142,20 @@ essentially measuring the magnitude of the network's errors.
 \\
 \\
 This function is called a \textit{loss function}, and depending on the type of question the network aims to answer, it can take many different forms.
-For example, for the MLP described in Figure~\ref{fig:mlp_diagram} that generates a binary classification, we would use the \textit{log loss} function. 
+For example, for the MLP described in Figure~\ref{fig:dense_layer} that generates a binary classification, we would use the \textit{log loss} function. 
 Since the datasets used in this thesis involve multi-class classification, the \textit{sparse categorical cross-entropy} (SCCE) loss function will be used, 
 which measures the difference between the predicted class probabilities and the true labels for each class in the dataset.
 \\
 \\
-Often the loss function alone is not enough for a NN to perform well. This is why a \textit{regularization term} that penalizes unwanted behaviours
+Often the loss function alone is not enough for a NN to perform well, 
+as it may lead to overfitting or fail to capture desired generalization properties.
+This is why a \textit{regularization term} that penalizes unwanted behaviours
 is added to the loss function.
 \\
 \\
 A typical regularization term is \( L_2 \), 
-which penalizes large weights by adding the sum of the squared weights to the loss function. 
-The modified loss function is expressed as:
+which penalizes large weights by adding the sum of the squared weights to the loss. 
+The modified loss function is then expressed as:
 
 \[
 \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{data}} + \lambda \sum_{i} w_i^2
@@ -130,39 +171,20 @@ The modified loss function is expressed as:
 
 \noindent The current work employs multiple custom regularization terms 
 that encourage specific behaviors in the models while discouraging others. 
-These terms will be discussed in detail in the Experimental Setup section.
-\\
-\\
-THIS PART WILL GO TO THE NEXT SECTION:
-\\
-\\
-An example approach is to define a regularization term that directly penalizes large differences between full-precision values 
-and their quantized counterparts \cite{zhuang2018towards}. This can encourage the model to learn parameters that are easily quantizable without significant performance loss.
-If the values that are being quantized are \( W \), then this regularization term could look like:
+These terms will be discussed in detail in the Experimental Setup section \ref{sec:setup}.
 
-\[
-\mathcal{L}_{\text{quant}} = \lambda \sum_{i} \| W_i - q(W_i) \|^2
-\]
+% -------------------- forwardback --------------------
 
-\noindent Where:
-\begin{itemize}
-    \item \( \lambda \) is a scalar that controls the importance of the quantization penalty.
-    \item \( W_i \) represents the full-precision weight value before quantization at index \( i \).
-    \item \( q(W_i) \) represents the quantized version of \( W_i \).
-\end{itemize}
-
-\noindent The current work uses multiple custom regularization terms that trigger the quantization process during training. 
-These will be discussed in detail in the Experimental Setup section.
-
-\subsection{Forward-Pass \& Back-Propagation}
-\label{subsec:subsection2}
-The repetition of the operation described earlier in the Dense Layers in Neural Networks subsection during model training 
-is essentially the forward pass. It is the process where input data is passed through the network layer by layer, 
+\subsection{Forward-Pass and Back-Propagation}
+\label{subsec:forwardback}
+The repetition of the mathematical operations described earlier in the Dense and Convolutional Layers subsection \ref{subsec:denseconvolutional} 
+during model training constitutes the \textit{forward pass}. 
+It is the process where input data is passed through the network layer by layer, 
 with each layer applying its learned weights and biases to produce a final output. 
 \\
 \\
 As mentioned in the previous subsection, this output is then compared with the ground truth by the loss function that produces an error.
-This error is used to update the learnable parameters — in case of MLPs, the values in \( W \) and \( b \) — during a process called back-propagation.
+This error is used to update the learnable parameters in \textit{W} and \textit{b} during a process called \textit{back-propagation}.
 \\
 \\
 In other words, back-propagation is the method by which the network adjusts its parameters to minimize the error. 
@@ -175,6 +197,8 @@ W = W - \eta \frac{\partial L}{\partial W}, \quad b = b - \eta \frac{\partial L}
 \\
 \noindent where \( L \) is the loss function, and \( \eta \) is the learning rate.
 \\
+INSTEAD OF THIS WE NEED TO EXPLAIN HOW A CLASSICAL WEIGHT UPDATE LOOKS LIKE IN TENSORFLO
+ALSO ADD how the theory looks like in tensorflow so that it's easier to follow
 \\
 For example, consider the weight \( W_{I1,H1_1} \) represented as the line between \textit{Input 1} and the hidden layer node \( H1_1 \) in Figure~\ref{fig:mlp_diagram}. 
 The gradient of this weight with respect to the loss is calculated using the chain rule:
@@ -192,20 +216,22 @@ The gradient of this weight with respect to the loss is calculated using the cha
 
 \noindent This shows how each weight contributes to the final error during back-propagation.
 
-\section{Quantization}
-\label{sec:section1}
+% ----------------------- basics of quantization ----------------------- 
+
+\section{Basics of Quantization}
+\label{sec:section2}
 This section aims to answer the \textit{why} question with respect to quantization and further provides a broader understanding of the term regarding its types.
 
-\subsection{Purpose \& Definition}
+\subsection{Purpose and Definition}
 \label{subsec:subsection1}
-With humans becoming increasingly dependent on deep learning models disguised as everyday tools — such as facial recognition filters, 
-document scanners, self-driving cars, and more — the need for these models to function in a resource- and 
+With humans becoming increasingly dependent on deep learning models disguised as everyday tools on edge devices with 
+limited capacitites — the need for these models to function in a resource- and 
 time-efficient manner is more imperative than ever. Among the many ways to meet this need, 
 quantization has become one of the most common techniques used to reduce the computational 
-and memory costs of deep NNs, given the sheer amount of parameters they possess and the inherent redundancy this introduces.
+and memory costs of deep NNs.
 \\
 \\
-While the term \textit{quantization} has its roots in the first half of the 20th century \cite{gray1998quantization}, in the context of NNs, 
+While the term quantization has its roots in the first half of the 20th century \cite{gray1998quantization}, in the context of NNs, 
 it has gained renewed importance  — the over-parameterization of NNs introduces a certain type of flexibility 
 that allows quantization to be implemented in many different forms \cite{gholami2021survey}.
 Despite the abundance of these forms and approaches, quantization of NNs generally refers to the process of 
@@ -231,16 +257,19 @@ Although there is a multitude of ways to classify NN quantization methods, the m
 
     \end{itemize}
 
-\section{Common Approaches in QAT}
-\label{sec:section2}
+% ----------------------- third section
+
+\section{Learned Quantization}
+\label{sec:section3}
 Now that the fundamentals of deep learning have been covered, 
 this section introduces concepts commonly encountered in learned quantization, 
 including the modified forward-pass technique and the challenges it creates for back-propagation.
 
-\subsection{TODO}
+\subsection{Strategies and Applications}
 \label{subsec:subsection1}
+This
 
-\subsection{TODO}
+\subsection{Trade-offs and Challenges}
 \label{subsec:subsection2}
 
 %\subsection{Low-Precision Forward-Pass}
@@ -299,3 +328,24 @@ including the modified forward-pass technique and the challenges it creates for 
 %\\
 %\\
 %The Experimental Setup section will explain a slighly different version of the typical STE that was used in the current work.
+
+THIS PART WILL GO TO THE NEXT SECTION:
+\\
+\\
+An example approach is to define a regularization term that directly penalizes large differences between full-precision values 
+and their quantized counterparts \cite{zhuang2018towards}. This can encourage the model to learn parameters that are easily quantizable without significant performance loss.
+If the values that are being quantized are \( W \), then this regularization term could look like:
+
+\[
+\mathcal{L}_{\text{quant}} = \lambda \sum_{i} \| W_i - q(W_i) \|^2
+\]
+
+\noindent Where:
+\begin{itemize}
+    \item \( \lambda \) is a scalar that controls the importance of the quantization penalty.
+    \item \( W_i \) represents the full-precision weight value before quantization at index \( i \).
+    \item \( q(W_i) \) represents the quantized version of \( W_i \).
+\end{itemize}
+
+\noindent The current work uses multiple custom regularization terms that trigger the quantization process during training. 
+These will be discussed in detail in the Experimental Setup section.

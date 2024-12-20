@@ -139,6 +139,54 @@
       \field{title}{A Survey of Quantization Methods for Efficient Neural Network Inference}
       \field{year}{2021}
     \endentry
+    \entry{yunchao2014compressing}{article}{}
+      \name{author}{4}{}{%
+        {{hash=59205e0d2250b7d12f67789523151cb2}{%
+           family={Gong},
+           familyi={G\bibinitperiod},
+           given={Yunchao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=80991f20b05dcbc1a0bd37827454e9b8}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Liu},
+           giveni={L\bibinitperiod}}}%
+        {{hash=9845261412338f09f9fda112e8d5206d}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+        {{hash=41d1867a5948033a654e06e5a0c87f22}{%
+           family={Bourdev},
+           familyi={B\bibinitperiod},
+           given={Lubomir\bibnamedelima D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed66f0d867893e563fcbdb51638b2715}
+      \strng{fullhash}{54f0fccaf60523cba5a32cc5fee438a4}
+      \strng{bibnamehash}{ed66f0d867893e563fcbdb51638b2715}
+      \strng{authorbibnamehash}{ed66f0d867893e563fcbdb51638b2715}
+      \strng{authornamehash}{ed66f0d867893e563fcbdb51638b2715}
+      \strng{authorfullhash}{54f0fccaf60523cba5a32cc5fee438a4}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{Compressing Deep Convolutional Networks using Vector Quantization}
+      \field{volume}{abs/1412.6115}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb 1412.6115
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1412.6115
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1412.6115
+      \endverb
+    \endentry
     \entry{gray1998quantization}{article}{}
       \name{author}{2}{}{%
         {{hash=1c25ecfe5c6205a9933cfbb5b0a38de4}{%
@@ -221,6 +269,59 @@
       \endverb
       \verb{url}
       \verb http://arxiv.org/abs/1510.00149
+      \endverb
+    \endentry
+    \entry{huang2017densely}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=0d12f90a1d1945cb1b98f583c9dc9572}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Gao},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f7eda249dc15ce9f452344ec95bbcc67}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Zhuang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=47fbe2837893a84fb516e9e85ba7aa36}{%
+           family={Maaten},
+           familyi={M\bibinitperiod},
+           given={Laurens},
+           giveni={L\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=68a0238356fbd88b34be8886f25938a7}{%
+           family={Weinberger},
+           familyi={W\bibinitperiod},
+           given={Kilian\bibnamedelima Q.},
+           giveni={K\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{IEEE} Computer Society}%
+      }
+      \strng{namehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{fullhash}{bdb4a5391f81b99dc554fecb00ecee8f}
+      \strng{bibnamehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{authorbibnamehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{authornamehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{authorfullhash}{bdb4a5391f81b99dc554fecb00ecee8f}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 {IEEE} Conference on Computer Vision and Pattern Recognition, {CVPR} 2017, Honolulu, HI, USA, July 21-26, 2017}
+      \field{title}{Densely Connected Convolutional Networks}
+      \field{year}{2017}
+      \field{pages}{2261\bibrangedash 2269}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1109/CVPR.2017.243
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/CVPR.2017.243
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/CVPR.2017.243
       \endverb
     \endentry
     \entry{hubara2016qnn}{article}{}
@@ -356,6 +457,42 @@
       \field{booktitle}{Proceedings of the 2021 International Conference on Signal Processing and Machine Learning}
       \field{title}{Efficient Quantization Techniques for Deep Neural Networks}
       \field{year}{2021}
+    \endentry
+    \entry{soroosh2018adaptive}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=23ed7599b842d74ac479552db7eb1a19}{%
+           family={Khoram},
+           familyi={K\bibinitperiod},
+           given={Soroosh},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bcdd73174e26b44169c10e9083e72469}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OpenReview.net}%
+      }
+      \strng{namehash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \strng{fullhash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \strng{bibnamehash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \strng{authorbibnamehash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \strng{authornamehash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \strng{authorfullhash}{d66a03cc28ebf59ec5a81c5cf6dfe2f8}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{6th International Conference on Learning Representations, {ICLR} 2018, Vancouver, BC, Canada, April 30 - May 3, 2018, Conference Track Proceedings}
+      \field{title}{Adaptive Quantization of Neural Networks}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=SyOK1Sg0W
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=SyOK1Sg0W
+      \endverb
     \endentry
     \entry{kim2021ibert}{inproceedings}{}
       \name{author}{5}{}{%
@@ -563,6 +700,64 @@
       \endverb
       \verb{url}
       \verb http://arxiv.org/abs/1603.05279
+      \endverb
+    \endentry
+    \entry{shuchang2016dorafenet}{article}{}
+      \name{author}{6}{}{%
+        {{hash=9bc063c8ab4edfc0f7569e426c971cf9}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Shuchang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=81f75749cb619565f04dc7336d3b4761}{%
+           family={Ni},
+           familyi={N\bibinitperiod},
+           given={Zekun},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=5c1e75bf6f2b5386a54aff442f04d5cf}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Xinyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=24b3480d8153a3231b29f5fbd8ea9f6d}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={He},
+           giveni={H\bibinitperiod}}}%
+        {{hash=b626dcc418c3a5c74cfaa4c5e643a71f}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Yuxin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=8f13b3d755598ac0c3e37d8c1350ed8a}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={Yuheng},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{1ba693cdad35dfeaebbe5d76492f5823}
+      \strng{fullhash}{80a4b6c035e6584bdff2b22139dd94f0}
+      \strng{bibnamehash}{1ba693cdad35dfeaebbe5d76492f5823}
+      \strng{authorbibnamehash}{1ba693cdad35dfeaebbe5d76492f5823}
+      \strng{authornamehash}{1ba693cdad35dfeaebbe5d76492f5823}
+      \strng{authorfullhash}{80a4b6c035e6584bdff2b22139dd94f0}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{DoReFa-Net: Training Low Bitwidth Convolutional Neural Networks with Low Bitwidth Gradients}
+      \field{volume}{abs/1606.06160}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1606.06160
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1606.06160
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1606.06160
       \endverb
     \endentry
     \entry{zhuang2018towards}{inproceedings}{}
