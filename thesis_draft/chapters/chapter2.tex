@@ -1,4 +1,5 @@
 \chapter{Background\label{cha:chapter2}}
+
 This chapter addresses the theoretical and contextual background 
 necessary to understand the key concepts and methodologies 
 that form the foundation of the current research.
@@ -225,22 +226,78 @@ This section aims to answer the \textit{why} question with respect to quantizati
 \subsection{Purpose and Definition}
 \label{subsec:subsection1}
 With humans becoming increasingly dependent on deep learning models disguised as everyday tools on edge devices with 
-limited capacitites — the need for these models to function in a resource- and 
+limited capacities — the need for these models to function in a resource- and 
 time-efficient manner is more imperative than ever. Among the many ways to meet this need, 
-quantization has become one of the most common techniques used to reduce the computational 
+quantization has become one of the most popular techniques used to reduce the computational 
 and memory costs of deep NNs.
 \\
 \\
-While the term quantization has its roots in the first half of the 20th century \cite{gray1998quantization}, in the context of NNs, 
-it has gained renewed importance  — the over-parameterization of NNs introduces a certain type of flexibility 
-that allows quantization to be implemented in many different forms \cite{gholami2021survey}.
-Despite the abundance of these forms and approaches, quantization of NNs generally refers to the process of 
-reducing the bit precision of their parameters, all while maintaining accuracy within an acceptable range.
+The popularity of quantization stems from the inherent over-parameterization of NNs \cite{gholami2021survey},
+which makes them generally \textit{robust} to precision reduction without significant degradation in performance \cite{DBLP:journals/tcad/DuLCPTW15}.
+This robustness is akin to how near-sightedness does not prevent people from walking straight,
+or how someone can still understand a text message filled with typos as long as the essential words are there.
+\\
+\\
+Setting aside other possible real-life analogies, the term "quantization"— rooted in the early 20th century \cite{gray1998quantization} — 
+formally refers to the process of reducing the bit precision of parameters while ensuring accuracy remains within an acceptable range.
 
-\subsection{Quantization Types}
+\subsection{Common Quantization Approaches}
 \label{subsec:subsection2}
 
-Although there is a multitude of ways to classify NN quantization methods, the most general classification is the division between \textit{static, dynamic}, and \textit{learned quantization}.
+There is a multitude of ways to classify NN quantization methods, a broader overview of which will be covered
+in the Related Work chapter \ref{cha:chapter5}.
+For now, we will focus on a few selected approaches from the general categories of both 
+\textit{data-driven} and \textit{data-free} methods \cite{Edouard2022SPIQ} to provide a basic understanding of the NN quantization process.
+\\
+\\
+The simplest form of data-free quantization, or \textit{post-training quantization} \cite{jiang2021efficient},
+involves converting already trained parameters from FP32 to a lower bit-width format
+without using the initial training data. 
+A common approach is to apply \textit{uniform quantization} that maps real values to a set number
+of \textit{bins}. The general formula can be written as:
+
+\[
+Q(r) = round(\frac{r}{S})
+\]
+
+\noindent Where:
+\begin{itemize}
+    \item $Q(\cdot)$ denotes the quantization operation.
+    \item $r$ is the real value of a given model parameter in higher bit-width representation.
+    \item $round(\cdot)$ is some rounding operation, such as a simple $floor(\cdot)$.
+    \item $S$ is a scaling factor.
+\end{itemize}
+
+\noindent  As a result, we essentially end up with a discrete number of values in lower bit precision, 
+instead of an almost continuous range of real numbers as shown in Figure \ref{fig:quantizing_example}.
+\\
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=10cm]{quantizing_example.png}
+  \caption{An example illustrating the quantization operation on the weight matrix from Figure \ref{fig:dense_layer}, 
+  with arbitrary values for demonstration purposes.}
+  \label{fig:quantizing_example}
+\end{figure}
+
+\noindent Unlike data-free quantization  —  as the name suggests — data-driven quantization typically involves retraining the model
+using the initial data. An example of this approach is the Ristretto framework \cite{DBLP:journals/tnn/GyselPMG18}, which, similar to data-free methods, 
+first analyzes the trained model to select suitable lower bit-width number formats for its weights.
+Then, using a portion of the original dataset, the framework determines appropriate formats for layer inputs and outputs.
+As a next step, based on the validation data, Ristretto adjusts the quantization settings to achieve optimal performance 
+under the given constraints. Finally, the quantized model is fine-tuned using the training data.
+\\
+\\
+A much simpler example could be the min-max quantization on input data as shown in Figure \ref{fig:min_max_quantization}. 
+This method is used by Tensorflow Lite as part of its post-training quantization process.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=15cm]{min_max_quantization.png}
+  \caption{ An example illustrating min-max quantization of input data to 8 bits, followed by matrix multiplication with the quantized weight matrix from Figure \ref{fig:quantizing_example}.
+  Input data has arbitrary values for demonstration purposes.}
+  \label{fig:min_max_quantization}
+\end{figure}
+
     \begin{itemize}
         \item In \textbf{static quantization}, quantization parameters are fixed before model inference, based on the data observed during training or calibration.
         This corresponds to Post-Training Quantization (PTQ), which directly quantizes the trained floating-point model \cite{jiang2021efficient}, 
@@ -261,9 +318,9 @@ Although there is a multitude of ways to classify NN quantization methods, the m
 
 \section{Learned Quantization}
 \label{sec:section3}
-Now that the fundamentals of deep learning have been covered, 
-this section introduces concepts commonly encountered in learned quantization, 
-including the modified forward-pass technique and the challenges it creates for back-propagation.
+Now that the fundamentals of quantization have been covered, 
+this section introduces key concepts commonly encountered in learned quantization,
+including its challenges, trade-offs, and the popular techniques used to overcome them.
 
 \subsection{Strategies and Applications}
 \label{subsec:subsection1}

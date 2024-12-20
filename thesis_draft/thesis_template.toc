@@ -7,33 +7,33 @@
 \contentsline {subsection}{\numberline {2.1.3}Forward-Pass and Back-Propagation}{8}{subsection.2.1.3}%
 \contentsline {section}{\numberline {2.2}Basics of Quantization}{8}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Purpose and Definition}{9}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Quantization Types}{9}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Learned Quantization}{9}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Strategies and Applications}{10}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Trade-offs and Challenges}{10}{subsection.2.3.2}%
-\contentsline {chapter}{\numberline {3}Learned Quantization}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Custom Quantization Layers}{11}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Data Quantization Layer}{11}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Quantized Dense Layer}{11}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Quantized Convolutional Layer}{11}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Custom Loss Functions}{11}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Penalty for Inverse Scale Factor Magnitude}{11}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Constraint on Bin Count for Quantization}{11}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Deviation between Quantized and Original Values}{11}{subsection.3.2.3}%
-\contentsline {chapter}{\numberline {4}Experiments}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Experimental Setup}{13}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Software Setup}{13}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Hardware Setup}{13}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Hyperparamter Tuning}{13}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Learning Rate and Regularization Coefficients}{13}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Quantization Penalty Coefficient}{13}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Dataset-Specific Results}{13}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}MNIST}{13}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}CIFAR10}{13}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Imagenette}{13}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Related Work}{15}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{17}{chapter.6}%
-\contentsline {chapter}{\nonumberline List of Acronyms}{19}{chapter*.7}%
-\contentsline {chapter}{\nonumberline Bibliography}{21}{chapter*.8}%
-\contentsline {chapter}{\nonumberline Appendix}{23}{chapter*.9}%
+\contentsline {subsection}{\numberline {2.2.2}Common Quantization Approaches}{9}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Learned Quantization}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Strategies and Applications}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Trade-offs and Challenges}{11}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Learned Quantization}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Custom Quantization Layers}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Data Quantization Layer}{13}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Quantized Dense Layer}{13}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Quantized Convolutional Layer}{13}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Custom Loss Functions}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Penalty for Inverse Scale Factor Magnitude}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Constraint on Bin Count for Quantization}{13}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Deviation between Quantized and Original Values}{13}{subsection.3.2.3}%
+\contentsline {chapter}{\numberline {4}Experiments}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experimental Setup}{15}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Software Setup}{15}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Hardware Setup}{15}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Hyperparamter Tuning}{15}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Learning Rate and Regularization Coefficients}{15}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Quantization Penalty Coefficient}{15}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Dataset-Specific Results}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}MNIST}{15}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}CIFAR10}{15}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Imagenette}{15}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Related Work}{17}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{19}{chapter.6}%
+\contentsline {chapter}{\nonumberline List of Acronyms}{21}{chapter*.9}%
+\contentsline {chapter}{\nonumberline Bibliography}{23}{chapter*.10}%
+\contentsline {chapter}{\nonumberline Appendix}{25}{chapter*.11}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

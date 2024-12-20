@@ -89,6 +89,66 @@
       \verb https://proceedings.neurips.cc/paper/2015/hash/3e15cc11f979ed25912dff5b0669f2cd-Abstract.html
       \endverb
     \endentry
+    \entry{DBLP:journals/tcad/DuLCPTW15}{article}{}
+      \name{author}{6}{}{%
+        {{hash=91724d1b1a2710ade58d33266310ad3c}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Zidong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a70578c0c63efc1320e751c4dee5ab8f}{%
+           family={Lingamneni},
+           familyi={L\bibinitperiod},
+           given={Avinash},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4c292d30bee8609dcb1af7d2d37b8457}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Yunji},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=cb58d422fdc041c515aed8d61897ac0b}{%
+           family={Palem},
+           familyi={P\bibinitperiod},
+           given={Krishna\bibnamedelima V.},
+           giveni={K\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=d9ff79867ff8e573205244b2b0f8e531}{%
+           family={Temam},
+           familyi={T\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=0df17ee7ebebe50f0b711cbd26102605}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Chengyong},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{7bc1ba44f36b37b325d54af8e2ff449e}
+      \strng{fullhash}{5d16510e42fdcdd74aa024b870adf0cb}
+      \strng{bibnamehash}{7bc1ba44f36b37b325d54af8e2ff449e}
+      \strng{authorbibnamehash}{7bc1ba44f36b37b325d54af8e2ff449e}
+      \strng{authornamehash}{7bc1ba44f36b37b325d54af8e2ff449e}
+      \strng{authorfullhash}{5d16510e42fdcdd74aa024b870adf0cb}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.}
+      \field{number}{8}
+      \field{title}{Leveraging the Error Resilience of Neural Networks for Designing Highly Energy Efficient Accelerators}
+      \field{volume}{34}
+      \field{year}{2015}
+      \field{pages}{1223\bibrangedash 1235}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/TCAD.2015.2419628
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/TCAD.2015.2419628
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/TCAD.2015.2419628
+      \endverb
+    \endentry
     \entry{gholami2021survey}{article}{}
       \name{author}{6}{}{%
         {{hash=ff99b6be6f7ad0c9f311e5ddf91c01f7}{%
@@ -217,6 +277,56 @@
       \field{year}{1998}
       \field{pages}{2325\bibrangedash 2383}
       \range{pages}{59}
+    \endentry
+    \entry{DBLP:journals/tnn/GyselPMG18}{article}{}
+      \name{author}{4}{}{%
+        {{hash=13d68229ed589c4c790a0aea4bf51db3}{%
+           family={Gysel},
+           familyi={G\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3e86ec172b0f966cc06fc5c3f844fc6e}{%
+           family={Pimentel},
+           familyi={P\bibinitperiod},
+           given={Jon\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=26b1f2feaa7ee1fa41cc2e00dc89a8f3}{%
+           family={Motamedi},
+           familyi={M\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bb66937a9eddf462256995cf812bcc93}{%
+           family={Ghiasi},
+           familyi={G\bibinitperiod},
+           given={Soheil},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{58ba1b41f043373602ce43ae3f5635c9}
+      \strng{fullhash}{a7bb13548c613b0ca3452dc282b2811f}
+      \strng{bibnamehash}{58ba1b41f043373602ce43ae3f5635c9}
+      \strng{authorbibnamehash}{58ba1b41f043373602ce43ae3f5635c9}
+      \strng{authornamehash}{58ba1b41f043373602ce43ae3f5635c9}
+      \strng{authorfullhash}{a7bb13548c613b0ca3452dc282b2811f}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Trans. Neural Networks Learn. Syst.}
+      \field{number}{11}
+      \field{title}{Ristretto: {A} Framework for Empirical Study of Resource-Efficient Inference in Convolutional Neural Networks}
+      \field{volume}{29}
+      \field{year}{2018}
+      \field{pages}{5784\bibrangedash 5789}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/TNNLS.2018.2808319
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/TNNLS.2018.2808319
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/TNNLS.2018.2808319
+      \endverb
     \endentry
     \entry{han2016deepcompression}{inproceedings}{}
       \name{author}{3}{}{%
@@ -700,6 +810,57 @@
       \endverb
       \verb{url}
       \verb http://arxiv.org/abs/1603.05279
+      \endverb
+    \endentry
+    \entry{Edouard2022SPIQ}{article}{}
+      \name{author}{4}{}{%
+        {{hash=60b8172bb9c114d75dd8a3282397d340}{%
+           family={Yvinec},
+           familyi={Y\bibinitperiod},
+           given={Edouard},
+           giveni={E\bibinitperiod}}}%
+        {{hash=8a8d3c974ddcd134bcd70c823c0bf9ea}{%
+           family={Dapogny},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2cd60d757e4f4b8b7c6318fd2b1be3fe}{%
+           family={Cord},
+           familyi={C\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3c64f5e034c99d6fbf694326c211e4e8}{%
+           family={Bailly},
+           familyi={B\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{391dec71f4ac067faa73c6202643bc14}
+      \strng{fullhash}{495045e153495b6f638ae2b759ce0123}
+      \strng{bibnamehash}{391dec71f4ac067faa73c6202643bc14}
+      \strng{authorbibnamehash}{391dec71f4ac067faa73c6202643bc14}
+      \strng{authornamehash}{391dec71f4ac067faa73c6202643bc14}
+      \strng{authorfullhash}{495045e153495b6f638ae2b759ce0123}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{{SPIQ:} Data-Free Per-Channel Static Input Quantization}
+      \field{volume}{abs/2203.14642}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.48550/ARXIV.2203.14642
+      \endverb
+      \verb{eprint}
+      \verb 2203.14642
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.48550/arXiv.2203.14642
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.48550/arXiv.2203.14642
       \endverb
     \endentry
     \entry{shuchang2016dorafenet}{article}{}
