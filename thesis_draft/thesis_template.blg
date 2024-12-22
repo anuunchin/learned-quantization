@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'thesis_template.blg'
-[108] biber-MSWIN64:340> INFO - === 
-[151] Biber.pm:419> INFO - Reading 'thesis_template.bcf'
-[249] Biber.pm:979> INFO - Found 25 citekeys in bib section 0
-[262] Biber.pm:4419> INFO - Processing section 0
-[276] Biber.pm:4610> INFO - Looking for bibtex file './bib/references.bib' for section 0
-[350] bibtex.pm:1713> INFO - LaTeX decoding ...
-[399] bibtex.pm:1519> INFO - Found BibTeX data source './bib/references.bib'
-[633] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[633] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[633] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[633] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[658] bbl.pm:660> INFO - Writing 'thesis_template.bbl' with encoding 'UTF-8'
+[92] biber-MSWIN64:340> INFO - === 
+[129] Biber.pm:419> INFO - Reading 'thesis_template.bcf'
+[228] Biber.pm:979> INFO - Found 33 citekeys in bib section 0
+[245] Biber.pm:4419> INFO - Processing section 0
+[260] Biber.pm:4610> INFO - Looking for bibtex file './bib/references.bib' for section 0
+[336] bibtex.pm:1713> INFO - LaTeX decoding ...
+[393] bibtex.pm:1519> INFO - Found BibTeX data source './bib/references.bib'
+[614] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[614] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[614] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[614] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[649] bbl.pm:660> INFO - Writing 'thesis_template.bbl' with encoding 'UTF-8'
 [678] bbl.pm:763> INFO - Output to thesis_template.bbl

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  22 DEC 2024 01:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  22 DEC 2024 21:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -920,7 +920,17 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box67
 \@float@everytoks=\toks35
 \@floatcapt=\box68
-) (misc/hyphenation.tex) (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks36
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (misc/hyphenation.tex) (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip96
 
@@ -929,7 +939,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks36
+\@emptytoks=\toks37
 \ex@=\dimen279
 )) (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -967,21 +977,21 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \dotsspace@=\muskip21
 \c@parentequation=\count476
 \dspbrk@lvl=\count477
-\tag@help=\toks37
+\tag@help=\toks38
 \row@=\count478
 \column@=\count479
 \maxfields@=\count480
-\andhelp@=\toks38
+\andhelp@=\toks39
 \eqnshift@=\dimen282
 \alignsep@=\dimen283
 \tagshift@=\dimen284
 \tagwidth@=\dimen285
 \totwidth@=\dimen286
 \lineht@=\dimen287
-\@envbody=\toks39
+\@envbody=\toks40
 \multlinegap=\skip97
 \multlinetaggap=\skip98
-\mathdisplay@stack=\toks40
+\mathdisplay@stack=\toks41
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
@@ -991,47 +1001,37 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count481
 \@quotereset=\count482
-(thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux)
-
-LaTeX Warning: Label `subsec:subsection1' multiply defined.
-
-
-LaTeX Warning: Label `subsec:subsection2' multiply defined.
-
-
-LaTeX Warning: Label `subsec:softwaresetup' multiply defined.
-
-)
+(thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux))
 \openout1 = `thesis_template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-Package scrbase Info: activating english \partname on input line 37.
-Package scrbase Info: activating english \chaptername on input line 37.
-Package scrbase Info: activating english \appendixname on input line 37.
-Package scrbase Info: activating english \figurename on input line 37.
-Package scrbase Info: activating english \tablename on input line 37.
-Package scrbase Info: activating english \contentsname on input line 37.
-Package scrbase Info: activating english \listfigurename on input line 37.
-Package scrbase Info: activating english \listtablename on input line 37.
-Package scrbase Info: activating english \bibname on input line 37.
-Package scrbase Info: activating english \indexname on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+Package scrbase Info: activating english \partname on input line 39.
+Package scrbase Info: activating english \chaptername on input line 39.
+Package scrbase Info: activating english \appendixname on input line 39.
+Package scrbase Info: activating english \figurename on input line 39.
+Package scrbase Info: activating english \tablename on input line 39.
+Package scrbase Info: activating english \contentsname on input line 39.
+Package scrbase Info: activating english \listfigurename on input line 39.
+Package scrbase Info: activating english \listtablename on input line 39.
+Package scrbase Info: activating english \bibname on input line 39.
+Package scrbase Info: activating english \indexname on input line 39.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1094,8 +1094,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis_template.bbl' found.
  (thesis_template.bbl)
-Package biblatex Info: Reference section=0 on input line 37.
-Package biblatex Info: Reference segment=0 on input line 37.
+Package biblatex Info: Reference section=0 on input line 39.
+Package biblatex Info: Reference segment=0 on input line 39.
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count483
@@ -1103,12 +1103,12 @@ Package biblatex Info: Reference segment=0 on input line 37.
 \scratchbox=\box71
 \nofMPsegments=\count484
 \nofMParguments=\count485
-\everyMPshowfont=\toks41
+\everyMPshowfont=\toks42
 \MPscratchCnt=\count486
 \MPscratchDim=\dimen289
 \MPnumerator=\count487
 \makeMPintoPDFobject=\count488
-\everyMPtoPDFconversion=\toks42
+\everyMPtoPDFconversion=\toks43
 ) (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
@@ -1121,7 +1121,7 @@ Package grfext Info: Graphics extension search list:
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 39.
  (thesis_template.out) (thesis_template.out)
 \@outlinefile=\write5
 \openout5 = `thesis_template.out'.
@@ -1133,7 +1133,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 37.
+(scrbook)           before \begin{document} on input line 39.
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
@@ -1205,10 +1205,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 58.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 60.
  (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) (thesis_template.toc [9])
+) (thesis_template.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+ (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+ (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [9])
 \tf@toc=\write6
 \openout6 = `thesis_template.toc'.
 
@@ -1272,7 +1280,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--36
 [3
 
 ]
-<./figures/dense_layer.png, id=168, 1737.49126pt x 1260.71pt>
+<./figures/dense_layer.png, id=166, 1737.49126pt x 1260.71pt>
 File: ./figures/dense_layer.png Graphic file (type png)
 <use ./figures/dense_layer.png>
 Package pdftex.def Info: ./figures/dense_layer.png  used on input line 56.
@@ -1282,12 +1290,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--85
 
  []
 
-<./figures/convolution.png, id=178, 1965.3425pt x 1154.3125pt>
+<./figures/convolution.png, id=176, 1965.3425pt x 1154.3125pt>
 File: ./figures/convolution.png Graphic file (type png)
 <use ./figures/convolution.png>
 Package pdftex.def Info: ./figures/convolution.png  used on input line 88.
 (pdftex.def)             Requested size: 398.33858pt x 233.95836pt.
-<./figures/convolution_multiple_channels.png, id=179, 1965.3425pt x 1154.3125pt>
+<./figures/convolution_multiple_channels.png, id=177, 1965.3425pt x 1154.3125pt>
 File: ./figures/convolution_multiple_channels.png Graphic file (type png)
 <use ./figures/convolution_multiple_channels.png>
 Package pdftex.def Info: ./figures/convolution_multiple_channels.png  used on input line 101.
@@ -1326,107 +1334,144 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--194
  []
 
 [7]
-
-LaTeX Warning: Reference `fig:mlp_diagram' on page 8 undefined on input line 204.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 228--273
+Underfull \hbox (badness 10000) in paragraph at lines 197--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--273
+Underfull \hbox (badness 10000) in paragraph at lines 231--276
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--273
+Underfull \hbox (badness 10000) in paragraph at lines 231--276
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--273
+Underfull \hbox (badness 10000) in paragraph at lines 231--276
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--276
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 277--288
+Underfull \hbox (badness 10000) in paragraph at lines 282--293
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-<./figures/quantizing_example.png, id=236, 1601.985pt x 814.04124pt>
+[9]
+<./figures/quantizing_example.png, id=235, 1601.985pt x 814.04124pt>
 File: ./figures/quantizing_example.png Graphic file (type png)
 <use ./figures/quantizing_example.png>
-Package pdftex.def Info: ./figures/quantizing_example.png  used on input line 306.
+Package pdftex.def Info: ./figures/quantizing_example.png  used on input line 311.
 (pdftex.def)             Requested size: 284.52756pt x 144.57095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--322
+Underfull \hbox (badness 10000) in paragraph at lines 317--328
 
  []
 
 [10 <./figures/quantizing_example.png (PNG copy)>]
-<./figures/min_max_quantization.png, id=249, 2159.06625pt x 996.72375pt>
+<./figures/min_max_quantization.png, id=248, 2159.06625pt x 996.72375pt>
 File: ./figures/min_max_quantization.png Graphic file (type png)
 <use ./figures/min_max_quantization.png>
-Package pdftex.def Info: ./figures/min_max_quantization.png  used on input line 325.
+Package pdftex.def Info: ./figures/min_max_quantization.png  used on input line 331.
 (pdftex.def)             Requested size: 426.79134pt x 197.01428pt.
 
-Overfull \hbox (8.53766pt too wide) in paragraph at lines 325--327
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 331--333
  [][] 
  []
 
-[11 <./figures/min_max_quantization.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 419--425
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--353
 
  []
 
-) (chapters/chapter3.tex [12]
+<./figures/granularity-conv2d.png, id=256, 2469.225pt x 1708.3825pt>
+File: ./figures/granularity-conv2d.png Graphic file (type png)
+<use ./figures/granularity-conv2d.png>
+Package pdftex.def Info: ./figures/granularity-conv2d.png  used on input line 356.
+(pdftex.def)             Requested size: 426.79134pt x 295.26979pt.
+
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 356--357
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./figures/min_max_quantization.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 377--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--402
+
+ []
+
+[12 <./figures/granularity-conv2d.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 420--428
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 501--507
+
+ []
+
+[13]) (chapters/chapter3.tex [14]
 chapter 3.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 12.
 (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)) (chapters/chapter4.tex [13
+)) (chapters/chapter4.tex [15
 
-] [14
+] [16
 
 ]
 chapter 4.
-) (chapters/chapter5.tex [15] [16
+) (chapters/chapter5.tex [17] [18
 
 ]
 chapter 5.
-) (chapters/chapter6.tex [17] [18
+) (chapters/chapter6.tex [19] [20
 
 ]
 chapter 6.
-) [19] [20
+) [21] [22
 
 
 ] (misc/acronyms.tex
 chapter without number
-) [21
+) [23
 
-] [22
+] [24
 
 ]
 chapter without number
 
-Overfull \hbox (17.53911pt too wide) in paragraph at lines 81--81
+Overfull \hbox (17.53911pt too wide) in paragraph at lines 83--83
 \T1/cmtt/m/n/10.95 proceedings . neurips . cc / paper / 2015 / hash / 3e15cc11f979ed25912dff5b0669f2cd -[]
  []
 
-[23]
-Overfull \hbox (7.2852pt too wide) in paragraph at lines 81--81
+[25] [26]
+Overfull \hbox (7.2852pt too wide) in paragraph at lines 83--83
 \T1/cmr/m/n/10.95 quan-ti-za-tion, and early stop-ping''. In: \T1/cmr/m/it/10.95 Com-put. Stand. In-ter-faces \T1/cmr/m/n/10.95 92 (2025), p. 103906.
  []
 
-[24] (misc/annex.tex [25] [26
-
-]
+[27] (misc/annex.tex [28]
 chapter without number
 
 Class scrbook Warning: You are using `\begin{appendix}...\end{appendix}'.
@@ -1442,18 +1487,13 @@ Class scrbook Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrbook)              and replace `\begin{appendix}' by command
 (scrbook)              `\appendix' on input line 3.
 
-) [27] (thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux))
+) [29
+
+] (thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `thesis_template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'thesis_template.run.xml'.
@@ -1461,17 +1501,17 @@ Package logreq Info: Writing requests to 'thesis_template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37710 strings out of 474486
- 763852 string characters out of 5743754
- 1946542 words of memory out of 5000000
- 59297 multiletter control sequences out of 15000+600000
- 575641 words of font info for 68 fonts, out of 8000000 for 9000
+ 38274 strings out of 474486
+ 772044 string characters out of 5743754
+ 1947542 words of memory out of 5000000
+ 59836 multiletter control sequences out of 15000+600000
+ 576876 words of font info for 74 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
  108i,20n,107p,10983b,2463s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on thesis_template.pdf (37 pages, 862055 bytes).
+ <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis_template.pdf (39 pages, 1094221 bytes).
 PDF statistics:
- 1177 PDF objects out of 1200 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 339 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1219 PDF objects out of 1440 (max. 8388607)
+ 116 named destinations out of 1000 (max. 500000)
+ 320 words of extra memory for PDF output out of 10000 (max. 10000000)
 

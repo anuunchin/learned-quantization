@@ -198,33 +198,36 @@ W = W - \eta \frac{\partial L}{\partial W}, \quad b = b - \eta \frac{\partial L}
 \\
 \noindent where \( L \) is the loss function, and \( \eta \) is the learning rate.
 \\
-INSTEAD OF THIS WE NEED TO EXPLAIN HOW A CLASSICAL WEIGHT UPDATE LOOKS LIKE IN TENSORFLO
-ALSO ADD how the theory looks like in tensorflow so that it's easier to follow
 \\
-For example, consider the weight \( W_{I1,H1_1} \) represented as the line between \textit{Input 1} and the hidden layer node \( H1_1 \) in Figure~\ref{fig:mlp_diagram}. 
+For example, consider the weight \( w_{1,1} \) represented as the line between \( x_1 \)
+ and the hidden layer node \( {a_1}^{(1)} \) in Figure~\ref{fig:dense_layer}. 
 The gradient of this weight with respect to the loss is calculated using the chain rule:
 
 \[
-\frac{\partial L}{\partial W_{I1,H1_1}} = \frac{\partial L}{\partial \text{Output 1}} \cdot \frac{\partial \text{Output 1}}{\partial H1_1} \cdot \frac{\partial H1_1}{\partial W_{I1,H1_1}}
+\frac{\partial L}{\partial w_{1,1}} = \frac{\partial L}{\partial o_1} \cdot \frac{\partial o_1}{\partial {a_1}^{(1)}} \cdot \frac{\partial {a_1}^{(1)}}{\partial w_{1,1}}
 \]
 
 \noindent Where:
 \begin{itemize}
-    \item \( \frac{\partial L}{\partial \text{Output 1}} \) is the gradient of the loss with respect to \textit{Output 1}.
-    \item \( \frac{\partial \text{Output 1}}{\partial H1_1} \) is the gradient of \textit{Output 1} with respect to the output of \( H1_1 \).
-    \item \( \frac{\partial H1_1}{\partial W_{I1,H11}} \) is the value of \textit{Input 1}, since \( H1_1 \) is a weighted sum of the inputs.
+    \item \( \frac{\partial L}{\partial o_1} \) is the gradient of the loss with respect to \( o_1 \).
+    \item \( \frac{\partial o_1}{\partial {a_1}^{(1)}} \) is the gradient of \( o_1 \) with respect to the output of \( {a_1}^{(1)} \).
+    \item \( \frac{\partial {a_1}^{(1)} }{\partial w_{1,1}} \) is the value of  \( x_1 \), since  \( {a_1}^{(1)} \) is a weighted sum of the inputs.
 \end{itemize}
 
 \noindent This shows how each weight contributes to the final error during back-propagation.
 
-% ----------------------- basics of quantization ----------------------- 
+% ------------------------------------------------------------
+% ----------------------- basicsofquantization ----------------------- 
+% ------------------------------------------------------------
 
 \section{Basics of Quantization}
-\label{sec:section2}
+\label{sec:basicsofquantization}
 This section aims to answer the \textit{why} question with respect to quantization and further provides a broader understanding of the term regarding its types.
 
+% -------------------- purpose and definition --------------------
+
 \subsection{Purpose and Definition}
-\label{subsec:subsection1}
+\label{subsec:purposeanddefinition}
 As we become increasingly dependent on deep learning models disguised as everyday tools, 
 the need for these models to function in a resource- and time-efficient manner is more imperative than ever. 
 The focus on resource efficiency is particularly important, 
@@ -271,12 +274,14 @@ Other applications include, but are not limited to, layer activation and layer i
 as well as gradient quantization. The bottom line is that wherever there is an opportunity for arithmetic or memory optimization,
 there is room for quantization.
 
-\subsection{Common Quantization Approaches}
-\label{subsec:subsection2}
+% -------------------- Common Quantization Approaches --------------------
+
+\subsection{Core Quantization Approaches}
+\label{subsec:commonquantizationapproaches}
 
 There is a multitude of ways to classify NN quantization methods, a broader overview of which will be covered
 in the Related Work chapter \ref{cha:chapter5}.
-For now, we will focus on a few selected approaches from the general categories of both 
+For now, we will focus on a few basic approaches from the general categories of both 
 \textit{data-driven} and \textit{data-free} methods \cite{Edouard2022SPIQ} to provide a basic understanding of the NN quantization process.
 \\
 \\
@@ -317,8 +322,9 @@ As a next step, based on the validation data, Ristretto adjusts the quantization
 under the given constraints. Finally, the quantized model is fine-tuned using the training data.
 \\
 \\
-A much simpler example could be the min-max quantization on input data as shown in Figure \ref{fig:min_max_quantization}. 
-This method is used by Tensorflow Lite as part of its post-training quantization process.
+A much simpler example of data-driven quantization could be the min-max quantization on input data as shown in Figure \ref{fig:min_max_quantization}. 
+This method can also be used in a data-free scenario to quantize learned model parameters and is internally used as one of the
+default techniques in popular ML frameworks like Tensorflow and PyTorch.
 
 \begin{figure}[h!]
   \centering
@@ -328,36 +334,112 @@ This method is used by Tensorflow Lite as part of its post-training quantization
   \label{fig:min_max_quantization}
 \end{figure}
 
-    \begin{itemize}
-        \item In \textbf{static quantization}, quantization parameters are fixed before model inference, based on the data observed during training or calibration.
-        This corresponds to Post-Training Quantization (PTQ), which directly quantizes the trained floating-point model \cite{jiang2021efficient}, 
-        using various discretization approaches based on the range and distribution of the parameters being quantized, 
-        as well as the level of granularity at which the quantization values are applied.
-        
-        \item In \textbf{dynamic quantization}, the quantization parameters are calculated dynamically during inference. 
-        This typically applies to activations, as their range changes depending on the input data and, unlike that of the weights, 
-        cannot be precomputed with static quantization \cite{kim2021ibert}.
-        
-        \item In \textbf{learned quantization}, quantization parameters are learned as part of the model training process.
-        This corresponds to Quantization Aware Training (QAT) \cite{jacob2018quantization}, where quantization is integrated directly into training rather than applied afterwards.
-        Since learned quantization is central to this work, a detailed review of QAT and its applications is provided in the Related Work chapter. 
+\noindent In the previous subsection, we discussed \textit{where} quantization could be applied in a model, 
+mentioning weights, kernels, and biases as the focus of this thesis.
+Figures \ref{fig:quantizing_example} and \ref{fig:min_max_quantization} show examples of quantization
+using a scalar scaling factor. However, scaling factors could be applied at varying levels of detail,
+and this is where the concept of \textit{quantization granularity} comes into play.
+\\
+\\
+Granularity refers to the level of detail at which scaling factors are applied,
+ranging from a single factor for an entire kernel (coarse granularity) to separate factors for individual spatial locations,
+channels, or filters (fine granularity). For instance, Figure \ref{fig:granularity-conv2d} illustrates various possible granularities
+for the kernels of convolutional layers.
+Despite this wide range of possibilities, channel-wise quantization is currently the standard for convolutional layers \cite{gholami2021survey},
+as it helps parallel processing capabilities of accelerators that compute channel outputs independently. 
+For dense layers, row-wise quantization (one scaling factor for weights used by a single output neuron) is more prevalent
+because it aligns with matrix-vector multiplication, which then can be carried out by specialized linear algebra libraries
+in an optimized way \cite{DBLP:journals/corr/abs-2101-05615}.
 
-    \end{itemize}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=15cm]{granularity-conv2d.png}
+  \caption{A demonstration of the varying application of scaling factors, ranging from a single scalar applied to the entire kernel (1) to separate scalars assigned to spatial dimensions (e.g., 1, 2), channels (4), filters (9), and other granular configurations.}
+  \label{fig:granularity-conv2d}
+\end{figure}
 
-% ----------------------- third section
 
+
+% ------------------------------------------------------------
+% ----------------------- learnedquantization ----------------------- 
+% ------------------------------------------------------------
 \section{Learned Quantization}
 \label{sec:section3}
 Now that the fundamentals of quantization have been covered, 
 this section introduces key concepts commonly encountered in learned quantization,
 including its challenges, trade-offs, and the popular techniques used to overcome them.
 
-\subsection{Strategies and Applications}
-\label{subsec:subsection1}
-This
+
+% -------------------- tradeoffs and challenges --------------------
 
 \subsection{Trade-offs and Challenges}
+\label{subsec:subsection1}
+The inherent — or rather the generally accepted — characteristic of quantization is
+that it negatively influences performance. 
+This is referred to as the trade-off between quantization and generalization, 
+which reflects the question of how much accuracy — or whatever performance metric is being used — 
+we are willing to sacrifice to gain a reduction in computational cost, memory usage, or inference time.
+However, the truth is that we usually cannot afford sacrificing anything.  This, coupled with the lack of a guarantee
+ that pre-defined \textit{quantizers} can yield optimal results \cite{DBLP:conf/eccv/ZhangYYH18} \cite{DBLP:conf/iclr/EsserMBAM20}, 
+ has paved the way for the burgeoning field of learned quantization,
+ which aims to \textit{learn} how to quantize the model in a manner that mitigates performance loss.
+\\
+\\
+Learned quantization is, however, a double-edged sword in the sense that, despite producing compact results,
+the cost to achieve them is higher \cite{DBLP:conf/eccv/ParkYV18}. The obvious reason is the additional computational overhead
+introduced by learnable quantizers.
+Thus, it is important to strike a balance between learning optimal quantization and keeping the training process manageable
+— which explains the prevailing emphasis on simplicity in most learned quantization research.
+\\
+\\
+The main issue in achieving this simplicity is posed by the fact that discretization, in its essence, is non-differentiable
+ — meaning it is challenging to integrate any kind of discretizing operations into gradient-based optimization methods, 
+ upon which ML models rely. Using the chain rule back-propagation example from subsection \ref{subsec:forwardback}, let's
+consider a simple flooring operation introduced into the process to better understand the problem.
+\\
+\\
+Suppose we want to quantize activations and apply \( floor(\cdot) \) to hidden layer outputs:
+\[
+  {a_{1,q}}^{(1)} =  floor({a_1}^{(1)})
+  \]
+As a result, the chain rule becomes:
+ \[
+  \frac{\partial L}{\partial w_{1,1}} =  \frac{\partial L}{\partial {a_{1,q}}^{(1)}} 
+  \cdot \frac{\partial {a_{1,q}}^{(1)}}{\partial {a_1}^{(1)}} 
+  \cdot \frac{\partial {a_1}^{(1)}}{\partial w_{1,1}}
+  \]
+  
+  \noindent where \( \frac{\partial {a_{1,q}}^{(1)}}{\partial {a_1}^{(1)}} \) presents a challenge. 
+  Since \(  {a_{1,q}}^{(1)} =  floor({a_1}^{(1)}) \), the derivative is: 
+            \[
+            \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}} =
+            \begin{cases} 
+                0 & \text{if } a_{1}^{(1)} \notin \mathbb{Z}, \\
+                \text{undefined} & \text{if } a_{1}^{(1)} \in \mathbb{Z}.
+            \end{cases}
+            \]
+  This means that for most values of \( {a_1}^{(1)} \), which are non-integer, the gradient becomes $0$, resulting in 
+  $w_{1,1}$ not receiving any updates. For integer values of \( {a_1}^{(1)} \), the backpropagation process fails altogether.
+\\
+\\
+In essence, circumventing the issue of non-differentiability is the fundamental problem that learned quantization aims to solve,
+all while managing the aforementioned trade-offs to produce a model that is compact, not overly complex to train,
+and highly performant.
+
+\subsection{Common Methods}
 \label{subsec:subsection2}
+STE
+\begin{itemize}
+
+  \item In \textbf{learned quantization}, quantization parameters are learned as part of the model training process.
+  This corresponds to Quantization Aware Training (QAT) \cite{jacob2018quantization}, where quantization is integrated directly into training rather than applied afterwards.
+  Since learned quantization is central to this work, a detailed review of QAT and its applications is provided in the Related Work chapter. 
+
+\end{itemize}
+
+learned parameter
+
+
 
 %\subsection{Low-Precision Forward-Pass}
 %\label{subsec:subsection1}

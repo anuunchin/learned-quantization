@@ -10,6 +10,7 @@ RNN - \cite{ott2016rnn}\\
 CNN - \cite{rastegari2016xnor}\\
 CNN - \cite{courbariaux2015binaryconnect}
 DNN - \cite{yunchao2014compressing}
+Tranformer bases - \cite{kim2021ibert}
 
 \noindent
 \textbf{Quantization target parameters.}\\
@@ -20,12 +21,13 @@ weigths - \cite{ott2016rnn}\\
 binary weights and input activations - \cite{rastegari2016xnor}\\
 gradients - \cite{shuchang2016dorafenet}
 layer inputs and weights - \cite{Edouard2022SPIQ} 
-
+weights an activations -  \cite{DBLP:conf/eccv/ZhangYYH18}
 \noindent
 \textbf{Granularity of quantization.}
 
 \noindent
 \textbf{Handling of differentiability.}
+STE -  \cite{DBLP:conf/eccv/ZhangYYH18}
 
 \noindent
 \textbf{Quantization precision.}\\
@@ -33,13 +35,14 @@ binary weights and input activations - \cite{courbariaux2015binaryconnect}\\
 binary weights and activations - \cite{hubara2016qnn}\\
 binary weights and input activations - \cite{rastegari2016xnor}\\
 ternary weights - \cite{ott2016rnn}\\
-higher precision for more important parameters and lowe precision for less important ones - \cite{soroosh2018adaptive}
-
+higher precision for more important parameters and lowe precision for less important ones - \cite{soroosh2018adaptive}\\
+mixed precision - \cite{DBLP:conf/eccv/WangLGAC22}
 \noindent
 \textbf{Integration with pruning \& other techniques.}\\
 pruning and Huffman Codign - \cite{han2016deepcompression}\\
 distillation - \cite{polino2018modelcompression}\\
 higher precision for more important parameters and lowe precision for less important ones or pruning - \cite{soroosh2018adaptive}
+knowledge distillation \cite{DBLP:conf/eccv/WeiPQOY18}
 
 \noindent
 \textbf{Modifications to loss functions.}
@@ -48,3 +51,5 @@ regularization term WaveQ - \cite{DBLP:journals/corr/abs-2003-00146}
 \noindent
 \textbf{Other interesting approaches.}
 k-means for parameters \cite{yunchao2014compressing}
+
+I BERT article has a good related work overview

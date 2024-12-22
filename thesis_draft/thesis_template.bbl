@@ -188,6 +188,57 @@
       \verb https://arxiv.org/abs/2003.00146
       \endverb
     \endentry
+    \entry{DBLP:conf/iclr/EsserMBAM20}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=2e1cf15d1f64674f612a4305f99c0149}{%
+           family={Esser},
+           familyi={E\bibinitperiod},
+           given={Steven\bibnamedelima K.},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=130d03095163b9b00b1577105c1238d0}{%
+           family={McKinstry},
+           familyi={M\bibinitperiod},
+           given={Jeffrey\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e079114c49becc2c4ef438d2799d0d1d}{%
+           family={Bablani},
+           familyi={B\bibinitperiod},
+           given={Deepika},
+           giveni={D\bibinitperiod}}}%
+        {{hash=be8bff2fda6f31713e9bcdcb0cb935bb}{%
+           family={Appuswamy},
+           familyi={A\bibinitperiod},
+           given={Rathinakumar},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c7d91a7b0d3d0bedbcfc0d0149773d3a}{%
+           family={Modha},
+           familyi={M\bibinitperiod},
+           given={Dharmendra\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OpenReview.net}%
+      }
+      \strng{namehash}{caf7e50ac756a209265171d17bc9b68f}
+      \strng{fullhash}{d914260593815d2d9e6ded1bb719bc88}
+      \strng{bibnamehash}{caf7e50ac756a209265171d17bc9b68f}
+      \strng{authorbibnamehash}{caf7e50ac756a209265171d17bc9b68f}
+      \strng{authornamehash}{caf7e50ac756a209265171d17bc9b68f}
+      \strng{authorfullhash}{d914260593815d2d9e6ded1bb719bc88}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{8th International Conference on Learning Representations, {ICLR} 2020, Addis Ababa, Ethiopia, April 26-30, 2020}
+      \field{title}{Learned Step Size quantization}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=rkgO66VKDS
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=rkgO66VKDS
+      \endverb
+    \endentry
     \entry{gholami2021survey}{article}{}
       \name{author}{6}{}{%
         {{hash=ff99b6be6f7ad0c9f311e5ddf91c01f7}{%
@@ -643,6 +694,69 @@
       \verb https://openreview.net/forum?id=SyOK1Sg0W
       \endverb
     \endentry
+    \entry{DBLP:journals/corr/abs-2101-05615}{article}{}
+      \name{author}{7}{}{%
+        {{hash=05af9385c8bb7050f63911714d9b2c81}{%
+           family={Khudia},
+           familyi={K\bibinitperiod},
+           given={Daya\bibnamedelima Shanker},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=4d5dd7060b67c3b1f62b82e0dea2a4e0}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Jianyu},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9fcafd11a01d6597c14d71f5fb9dc2df}{%
+           family={Basu},
+           familyi={B\bibinitperiod},
+           given={Protonu},
+           giveni={P\bibinitperiod}}}%
+        {{hash=700be19f5f7477ed2c36138289fbe5a5}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Summer},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f6e8f2797d84fc7c48901f4b562900cd}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Haixin},
+           giveni={H\bibinitperiod}}}%
+        {{hash=d453b06ade17d41da4d373ecf988e52a}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Jongsoo},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9e7183ff690cd4bd193b4b725fad9621}{%
+           family={Smelyanskiy},
+           familyi={S\bibinitperiod},
+           given={Mikhail},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{cb488dce09b5cad125113e18ea656347}
+      \strng{fullhash}{a8a0de59ceb5784754460ae1e4ac55cb}
+      \strng{bibnamehash}{cb488dce09b5cad125113e18ea656347}
+      \strng{authorbibnamehash}{cb488dce09b5cad125113e18ea656347}
+      \strng{authornamehash}{cb488dce09b5cad125113e18ea656347}
+      \strng{authorfullhash}{a8a0de59ceb5784754460ae1e4ac55cb}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{{FBGEMM:} Enabling High-Performance Low-Precision Deep Learning Inference}
+      \field{volume}{abs/2101.05615}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 2101.05615
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2101.05615
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2101.05615
+      \endverb
+    \endentry
     \entry{kim2021ibert}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=faeabf11d1a7a5d933680f8e5a503098}{%
@@ -765,6 +879,57 @@
       \verb https://doi.org/10.48550/arXiv.2404.05639
       \endverb
     \endentry
+    \entry{DBLP:conf/iclr/MolchanovTKAK17}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=8ac65f0c6a6050a1bdbe904e1f4a1cf9}{%
+           family={Molchanov},
+           familyi={M\bibinitperiod},
+           given={Pavlo},
+           giveni={P\bibinitperiod}}}%
+        {{hash=383607c1407181bff13dce5ec57621ec}{%
+           family={Tyree},
+           familyi={T\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9c6cb97b8c2c22b41d64c2c4f4520c11}{%
+           family={Karras},
+           familyi={K\bibinitperiod},
+           given={Tero},
+           giveni={T\bibinitperiod}}}%
+        {{hash=70c1210f7c167faac22c68d1db1d9175}{%
+           family={Aila},
+           familyi={A\bibinitperiod},
+           given={Timo},
+           giveni={T\bibinitperiod}}}%
+        {{hash=08129312c062dd971f82ea43031cdef0}{%
+           family={Kautz},
+           familyi={K\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OpenReview.net}%
+      }
+      \strng{namehash}{055d297369a35d168e27eaaedf364f12}
+      \strng{fullhash}{016dcc9913110f9ed0a7fea61d6e310d}
+      \strng{bibnamehash}{055d297369a35d168e27eaaedf364f12}
+      \strng{authorbibnamehash}{055d297369a35d168e27eaaedf364f12}
+      \strng{authornamehash}{055d297369a35d168e27eaaedf364f12}
+      \strng{authorfullhash}{016dcc9913110f9ed0a7fea61d6e310d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{5th International Conference on Learning Representations, {ICLR} 2017, Toulon, France, April 24-26, 2017, Conference Track Proceedings}
+      \field{title}{Pruning Convolutional Neural Networks for Resource Efficient Inference}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=SJGCiw5gl
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=SJGCiw5gl
+      \endverb
+    \endentry
     \entry{DBLP:journals/corr/abs-2105-13331}{article}{}
       \name{author}{5}{}{%
         {{hash=1ff14a769142b397e706d94abedc0113}{%
@@ -818,6 +983,62 @@
       \verb https://arxiv.org/abs/2105.13331
       \endverb
     \endentry
+    \entry{DBLP:conf/icmlt/OkadoMIKS22}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=6bedf2c7a760bef11375dcb512765d11}{%
+           family={Okado},
+           familyi={O\bibinitperiod},
+           given={Kazuki},
+           giveni={K\bibinitperiod}}}%
+        {{hash=863bb7cdaa12346f2a844c9625900122}{%
+           family={Matsumoto},
+           familyi={M\bibinitperiod},
+           given={Kengo},
+           giveni={K\bibinitperiod}}}%
+        {{hash=86acd93fecce6ba0897c730da048e603}{%
+           family={Inoue},
+           familyi={I\bibinitperiod},
+           given={Atsuki},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4aabb7edbaaa12b6b862cfe867bb2a51}{%
+           family={Kawaguchi},
+           familyi={K\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=be277c772a1e533e2e76679c117c16fd}{%
+           family={Sakai},
+           familyi={S\bibinitperiod},
+           given={Yasufumi},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{ba8c825aff0a6b53b0304b0cfbd9a97d}
+      \strng{fullhash}{510065d7a44d2d0e1bc67935bcf74ace}
+      \strng{bibnamehash}{ba8c825aff0a6b53b0304b0cfbd9a97d}
+      \strng{authorbibnamehash}{ba8c825aff0a6b53b0304b0cfbd9a97d}
+      \strng{authornamehash}{ba8c825aff0a6b53b0304b0cfbd9a97d}
+      \strng{authorfullhash}{510065d7a44d2d0e1bc67935bcf74ace}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{ICMLT} 2022: 7th International Conference on Machine Learning Technologies, Rome, Italy, March 11 - 13, 2022}
+      \field{title}{Channel-wise quantization without accuracy degradation using {\(\Delta\)}loss analysis}
+      \field{year}{2022}
+      \field{pages}{56\bibrangedash 61}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/3529399.3529409
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3529399.3529409
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3529399.3529409
+      \endverb
+    \endentry
     \entry{ott2016rnn}{article}{}
       \name{author}{5}{}{%
         {{hash=325c0101c9b1d314e4a5d14a7bc6c71d}{%
@@ -869,6 +1090,79 @@
       \endverb
       \verb{url}
       \verb http://arxiv.org/abs/1611.07065
+      \endverb
+    \endentry
+    \entry{DBLP:conf/eccv/ParkYV18}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=9f786b2380b2d8a162784257496c4340}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Eunhyeok},
+           giveni={E\bibinitperiod}}}%
+        {{hash=2538148fcfacddefed8d7acd8201539b}{%
+           family={Yoo},
+           familyi={Y\bibinitperiod},
+           given={Sungjoo},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bca94394dca104249af241313226762d}{%
+           family={Vajda},
+           familyi={V\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=2d9b2bb140830bf8f7f642c17692a8e4}{%
+           family={Ferrari},
+           familyi={F\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c4c76fca369ecb436d9729820e745123}{%
+           family={Hebert},
+           familyi={H\bibinitperiod},
+           given={Martial},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bd7af1e31d4938e27dbc867b4bb71e9d}{%
+           family={Sminchisescu},
+           familyi={S\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=214a71ab353c5570ed4acb95cf84f539}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Yair},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{169c00682c834493245861da3ecf03ac}
+      \strng{fullhash}{169c00682c834493245861da3ecf03ac}
+      \strng{bibnamehash}{169c00682c834493245861da3ecf03ac}
+      \strng{authorbibnamehash}{169c00682c834493245861da3ecf03ac}
+      \strng{authornamehash}{169c00682c834493245861da3ecf03ac}
+      \strng{authorfullhash}{169c00682c834493245861da3ecf03ac}
+      \strng{editorbibnamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editornamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editorfullhash}{0d71006df560b3f7aa8fdb55efa8491f}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision - {ECCV} 2018 - 15th European Conference, Munich, Germany, September 8-14, 2018, Proceedings, Part {IV}}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Value-Aware Quantization for Training and Inference of Neural Networks}
+      \field{volume}{11208}
+      \field{year}{2018}
+      \field{pages}{608\bibrangedash 624}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/978-3-030-01225-0\_36
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-01225-0\_36
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-01225-0%5C_36
       \endverb
     \endentry
     \entry{polino2018modelcompression}{inproceedings}{}
@@ -1002,6 +1296,177 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1016/j.csi.2024.103906
+      \endverb
+    \endentry
+    \entry{DBLP:conf/eccv/WangLGAC22}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=edcb27361de88ed2a8ec1c9dca30dd7a}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zhe},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=4da9df32f0549fd84e52ca592356f954}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c05b9b4a7b1b03fd9743725a7ae6046e}{%
+           family={Geng},
+           familyi={G\bibinitperiod},
+           given={Xue},
+           giveni={X\bibinitperiod}}}%
+        {{hash=a8b6755e130d8aa0f94055b366a13561}{%
+           family={Aly},
+           familyi={A\bibinitperiod},
+           given={Mohamed\bibnamedelimb M.\bibnamedelimi Sabry},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=9b600299f9068ad52313af3314f96e07}{%
+           family={Chandrasekhar},
+           familyi={C\bibinitperiod},
+           given={Vijay},
+           giveni={V\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=477bdcd3c66a7104c37842872905df4b}{%
+           family={Avidan},
+           familyi={A\bibinitperiod},
+           given={Shai},
+           giveni={S\bibinitperiod}}}%
+        {{hash=270235fe902d7b1c9fbc1ff59db7640c}{%
+           family={Brostow},
+           familyi={B\bibinitperiod},
+           given={Gabriel\bibnamedelima J.},
+           giveni={G\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=e8885d7049e4c4ef8796deec010e6a9c}{%
+           family={Cissé},
+           familyi={C\bibinitperiod},
+           given={Moustapha},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a79bf15b29522f05fc8a35b7bab3bc47}{%
+           family={Farinella},
+           familyi={F\bibinitperiod},
+           given={Giovanni\bibnamedelima Maria},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=46a03ab511e1b24870696b8a70022509}{%
+           family={Hassner},
+           familyi={H\bibinitperiod},
+           given={Tal},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8c5ddbd536081e8661b153cdc721738d}
+      \strng{fullhash}{7542dfb812031a900066b934fb316676}
+      \strng{bibnamehash}{8c5ddbd536081e8661b153cdc721738d}
+      \strng{authorbibnamehash}{8c5ddbd536081e8661b153cdc721738d}
+      \strng{authornamehash}{8c5ddbd536081e8661b153cdc721738d}
+      \strng{authorfullhash}{7542dfb812031a900066b934fb316676}
+      \strng{editorbibnamehash}{77d7134a93bb0830026424b1ee217c4d}
+      \strng{editornamehash}{77d7134a93bb0830026424b1ee217c4d}
+      \strng{editorfullhash}{5dfccac6f91982ac3f21dc5b5cfc92bd}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision - {ECCV} 2022 - 17th European Conference, Tel Aviv, Israel, October 23-27, 2022, Proceedings, Part {XII}}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{{RDO-Q:} Extremely Fine-Grained Channel-Wise Quantization via Rate-Distortion Optimization}
+      \field{volume}{13672}
+      \field{year}{2022}
+      \field{pages}{157\bibrangedash 172}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1007/978-3-031-19775-8\_10
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-031-19775-8\_10
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-031-19775-8%5C_10
+      \endverb
+    \endentry
+    \entry{DBLP:conf/eccv/WeiPQOY18}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=ad9659fb9466b00dc23f0e1825b3cfda}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=1d5a75a4f80945b6b54743a51465ec2a}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={Xinyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=faa8123d39d1da0315a2a8f98d72809e}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Hongwei},
+           giveni={H\bibinitperiod}}}%
+        {{hash=dd64c5c44b678dcb01b887fcbcfedd40}{%
+           family={Ouyang},
+           familyi={O\bibinitperiod},
+           given={Wanli},
+           giveni={W\bibinitperiod}}}%
+        {{hash=023ca71aae2b09592d308aea533a7630}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Junjie},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=2d9b2bb140830bf8f7f642c17692a8e4}{%
+           family={Ferrari},
+           familyi={F\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c4c76fca369ecb436d9729820e745123}{%
+           family={Hebert},
+           familyi={H\bibinitperiod},
+           given={Martial},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bd7af1e31d4938e27dbc867b4bb71e9d}{%
+           family={Sminchisescu},
+           familyi={S\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=214a71ab353c5570ed4acb95cf84f539}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Yair},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0b241e6b172fde7410c4624abb5c7542}
+      \strng{fullhash}{42d6b97700c8dd31f1f02f03c238e78f}
+      \strng{bibnamehash}{0b241e6b172fde7410c4624abb5c7542}
+      \strng{authorbibnamehash}{0b241e6b172fde7410c4624abb5c7542}
+      \strng{authornamehash}{0b241e6b172fde7410c4624abb5c7542}
+      \strng{authorfullhash}{42d6b97700c8dd31f1f02f03c238e78f}
+      \strng{editorbibnamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editornamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editorfullhash}{0d71006df560b3f7aa8fdb55efa8491f}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision - {ECCV} 2018 - 15th European Conference, Munich, Germany, September 8-14, 2018, Proceedings, Part {VIII}}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Quantization Mimic: Towards Very Tiny {CNN} for Object Detection}
+      \field{volume}{11212}
+      \field{year}{2018}
+      \field{pages}{274\bibrangedash 290}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/978-3-030-01237-3\_17
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-01237-3\_17
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-01237-3%5C_17
       \endverb
     \endentry
     \entry{DBLP:journals/corr/abs-2111-00364}{article}{}
@@ -1206,6 +1671,84 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.48550/arXiv.2203.14642
+      \endverb
+    \endentry
+    \entry{DBLP:conf/eccv/ZhangYYH18}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=69d38c6fe2a3b0743c5e5d9c7fdf1470}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Dongqing},
+           giveni={D\bibinitperiod}}}%
+        {{hash=164bcc366a0366eb11140af891f0d1dd}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jiaolong},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fdfa3decd7e16f8878317be59b93b802}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Dongqiangzi},
+           giveni={D\bibinitperiod}}}%
+        {{hash=46d2f1df658204626b940f778e0f7e82}{%
+           family={Hua},
+           familyi={H\bibinitperiod},
+           given={Gang},
+           giveni={G\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=2d9b2bb140830bf8f7f642c17692a8e4}{%
+           family={Ferrari},
+           familyi={F\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c4c76fca369ecb436d9729820e745123}{%
+           family={Hebert},
+           familyi={H\bibinitperiod},
+           given={Martial},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bd7af1e31d4938e27dbc867b4bb71e9d}{%
+           family={Sminchisescu},
+           familyi={S\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=214a71ab353c5570ed4acb95cf84f539}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Yair},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c3fc6d7f229adc37908e935c9f0b6046}
+      \strng{fullhash}{3441e44f3896e593901fa88bf50a3346}
+      \strng{bibnamehash}{c3fc6d7f229adc37908e935c9f0b6046}
+      \strng{authorbibnamehash}{c3fc6d7f229adc37908e935c9f0b6046}
+      \strng{authornamehash}{c3fc6d7f229adc37908e935c9f0b6046}
+      \strng{authorfullhash}{3441e44f3896e593901fa88bf50a3346}
+      \strng{editorbibnamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editornamehash}{55075d71201f5d17a91f0ae9d748d278}
+      \strng{editorfullhash}{0d71006df560b3f7aa8fdb55efa8491f}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision - {ECCV} 2018 - 15th European Conference, Munich, Germany, September 8-14, 2018, Proceedings, Part {VIII}}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{LQ-Nets: Learned Quantization for Highly Accurate and Compact Deep Neural Networks}
+      \field{volume}{11212}
+      \field{year}{2018}
+      \field{pages}{373\bibrangedash 390}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/978-3-030-01237-3\_23
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-01237-3\_23
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-01237-3%5C_23
       \endverb
     \endentry
     \entry{shuchang2016dorafenet}{article}{}
