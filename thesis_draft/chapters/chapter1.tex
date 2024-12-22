@@ -1,11 +1,12 @@
 \chapter{Introduction\label{cha:chapter1}}
 
-\hspace{1em}Such is the life of a modern human being that not a single day passes 
+Such is the life of a modern human being that not a single day passes 
 without a machine learning model toiling away in the background. 
 From unlocking one's phone with Face ID in the morning 
-to receiving a curated recommendation feed on Netflix in the evening - 
-all is ML - but at what cost?
-
+to receiving a curated recommendation feed on Netflix in the evening — 
+all is ML — but at what cost?
+\\
+\\
 If we consider GPT-3 as an example, 
 its 175 billion parameters need a whopping 700 gigabytes of storage in total - 
 4 bytes for each parameter represented in single-precision floating-point format (FP32).
@@ -17,27 +18,50 @@ needed to store parameters numbering in the millions or billions.
 Going back to the GPT-3 example, by directly clamping its FP32 parameters 
 to an 8-bit integer (INT8) representation, we can reduce its storage requirement 
 from 700 to just 175 gigabytes. 
-
+\\
+\\
 But what costs does quantization itself entail? The natural answer to this question 
 would be a reduction in model performance, as a decrease in precision logically implies 
 a decrease in accuracy. However, there is a somewhat counterintuitive phenomenon where 
-quantization improves accuracy by introducing discretization effects, which act like a
-form of regularization, forcing the model to generalize better. No matter whether quantization
+quantization improves accuracy by introducing noise, which act like a
+form of regularization, forcing the model to generalize better \cite{courbariaux2015binaryconnect}. No matter whether quantization
 results in better or a slightly worse performance, the conclusion is that 
 for each model there is an optimal way to quantize it within reasonable degradation ranges.
 And if the model is able to learn its optimal parameters, 
 it is most likely also able to learn its optimal quantization parameters. 
-
+\\
+\\
 The fact that, indeed, models can learn their optimal quantization parameters has been proven 
 many times in the past. But is there a way to make them do it better - is a question 
 that will always remain and to which this thesis aims to contribute. In that sense, 
-the current work will explore non-standard ways to tackle the two main problems that the process 
+the current work will explore novel ways to tackle the two main problems that the process 
 of learning optimal quantization parameters poses. First, how to overcome the issue 
-of non-differentiability of rounding operations in the back-propagation. Second, how
-to encourage the model to quantize only where it's necessary and feasible. 
-
-
-This paragraph is gonna be about how previous reseacrh has tried to tackle the wbove two questions.
-
-
-Finally, factually, how this thesis implemented the actions to the goal.
+of non-differentiability of rounding operations in the back-propagation. 
+Second, how to guide the model to quantize selectively where necessary
+and adaptively relax the quantization when a certain threshold is reached. 
+\\
+\\
+While there is a number of methods dealing with the issue of non-differentiability of rounding operations
+in quantization, the most popular of them are the Straight-Through Estimator and other similar approaches 
+that employ continuous relaxations of discrete functions to enable gradient-based optimization. 
+Besides these approximation methods, other more aggressive techniques — in a sense — avoid 
+non-differentiability altogether and perform quantization based on strictly defined constraints. 
+Binary Connect \cite{courbariaux2015binaryconnect}, for example, binarizes weights during both forward pass and backpropagation, 
+with the real values of weights used only during parameter update. 
+However, these aggressive methods, while effective in simpler scenarios, 
+often struggle on more complex datasets. The more effective methods seem to combine both constraints 
+and gradient approximations — just like XNOR-Net enhances BinaryConnect with a 
+gradient computation formula designed for binary weights \cite{rastegari2016xnor}. 
+\\
+\\
+Despite the abundance of different methods, they do not seem to tackle the second problem mentioned earlier,
+namely, not only how to quantize but also where and when to do so.
+In this thesis, we try to bridge this gap by introducing a method 
+that directly takes into account the gradient and value of the parameters that are being quantized 
+and adjusts the quantization process using trainable scaling factors. 
+These factors are guided by a threshold-like penalty mechanism 
+that remains inactive when a certain parameter is too sensitive to quantization, 
+encouraging selective quantization and adaptively relaxing it when it becomes too aggressive.
+\\
+\\
+Paragraph about custom loss function term.

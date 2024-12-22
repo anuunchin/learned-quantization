@@ -225,21 +225,51 @@ This section aims to answer the \textit{why} question with respect to quantizati
 
 \subsection{Purpose and Definition}
 \label{subsec:subsection1}
-With humans becoming increasingly dependent on deep learning models disguised as everyday tools on edge devices with 
-limited capacities — the need for these models to function in a resource- and 
-time-efficient manner is more imperative than ever. Among the many ways to meet this need, 
-quantization has become one of the most popular techniques used to reduce the computational 
-and memory costs of deep NNs.
+As we become increasingly dependent on deep learning models disguised as everyday tools, 
+the need for these models to function in a resource- and time-efficient manner is more imperative than ever. 
+The focus on resource efficiency is particularly important, 
+with the research community expressing concerns regarding the environmental effects of large models, 
+the exponential size growth of which continues to significantly outpace that of system hardware \cite{DBLP:journals/corr/abs-2111-00364}. 
+In this regard, studies have examined quantization within the context of Green AI as a method to reduce the carbon footprint of
+ML models \cite{DBLP:journals/csi/RegueroMV25}.
 \\
 \\
-The popularity of quantization stems from the inherent over-parameterization of NNs \cite{gholami2021survey},
-which makes them generally \textit{robust} to precision reduction without significant degradation in performance \cite{DBLP:journals/tcad/DuLCPTW15}.
-This robustness is akin to how near-sightedness does not prevent people from walking straight,
-or how someone can still understand a text message filled with typos as long as the essential words are there.
+Aside from the environmental considerations, the mere need to reduce 
+the computational cost and speed of predictive models
+comes as an apparent business requirement. 
+This requirement is essential when — quite ironically — embedded systems, famous for their compactness, meet 
+ML models, infamous for their complexity. Microcontrollers, for instance, 
+usually are not able to perform floating-point operations, which must therefore be emulated in software, 
+introducing significant overhead. This is why quantization, the process which reduces the memory footprint of a model,
+is also extensively covered in the realm of embedded systems that 
+inherently prefer integer arithmetic \cite{DBLP:conf/codit/KhalifaM24}\cite{DBLP:journals/corr/abs-2105-13331}.
 \\
 \\
-Setting aside other possible real-life analogies, the term "quantization"— rooted in the early 20th century \cite{gray1998quantization} — 
-formally refers to the process of reducing the bit precision of parameters while ensuring accuracy remains within an acceptable range.
+Another motivation for quantization — although somewhat controversial — is the fact that reducing the bit-width of
+ML models makes them robust to adversial attacks in certain cases \cite{DBLP:journals/corr/abs-2404-05639}.
+This holds significant value in fields, such as autonomous driving,
+where model vulnerability may result in fatal outcomes.
+Interestingly enough, the use cases where such robustness is required also demand fast inference, 
+as they rely on real-time predictions. Consider healthcare diagnostics needed for emergency scenarios 
+or military defense mechanisms designed for immediate action.
+\\
+\\
+The list of reasons why quantization is useful may go on for a while, but regardless of the motivation,
+the essence of the term itself — rooted in the early 20th century — remains unchanged:
+quantization refers to the division of a quantity into a discrete number
+of small parts \cite{gray1998quantization}. With regard to ML models, 
+it describes the process of dividing higher bit-width numbers into a discrete number of lower bit-width representations
+without causing significant degradation in performance \cite{gholami2021survey}.
+\\
+\\
+Since ML models are generally considered redundant or over-parameterized,
+there are multiple points where quantization can be applied.
+Specifically, in this thesis, we apply quantization to the weights and biases of dense layers, 
+as well as the kernels and biases of convolutional layers. 
+Although not explicitly a part of a model, we also explore input data quantization. 
+Other applications include, but are not limited to, layer activation and layer input quantization (two sides of the same coin),
+as well as gradient quantization. The bottom line is that wherever there is an opportunity for arithmetic or memory optimization,
+there is room for quantization.
 
 \subsection{Common Quantization Approaches}
 \label{subsec:subsection2}
