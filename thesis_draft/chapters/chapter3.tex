@@ -1,14 +1,64 @@
-\chapter{Learned Quantization\label{cha:chapter3}}
-This chapter presents the custom methods of learned quantization developed to address the challenges posed by non-differentiability, 
-while enabling the model to make informed decisions on whether to proceed with quantization or revert to preserve performance.
-The first section will discuss the \textit{custom quantization layers} written in Tensorflow that can easily be
-integrated to existing workflows and directly deal with gradient calculation. The next section provides details on the \textit{custom loss functions} as 
-an alternative approach to learned quantization.
+\chapter{Learned Quantization\label{cha:chapter3} Schemes}
+This chapter introduces two custom learned quantization schemes — approaches that allow models to learn to quantize themselves
+with adjustable aggressiveness. The first one, a custom quantization layer featuring tailored logic and a threshold for scale updates,
+will be discussed in the first section. The second scheme, which focuses on custom regularization terms with a configurable penalty rate,
+will be covered second.
 
-\textit{This chapter elaborates on the problem that this thesis tries to solve and explains the individual methods used for solving the problem. }
+% ------------------------------------------------------------
+% ----------------------- learnedquantization Schemes ----------------------- 
+% ------------------------------------------------------------
 
-\section{Custom Quantization Layers}
+\section{Nested Quantization Layer}
 \label{sec:customlayer}
+To separate the quantization logic from the usual structure of NN layers,
+we define a nested quantization layer that can be used within a standard layer. 
+This approach provides usability, making it easy to extend the logic to other types of layers beyond dense and convolutional ones.
+The implementation details will follow after we first explain the core logic it incorporates.
+
+% -------------------- tradeoffs and challenges --------------------
+
+\subsection{Concept and Design}
+\label{subsec:quantizeddense}
+Our nested quantization layer has only one trainable parameter, \textit{scale} (\( s \)),
+which serves as the scaling factor for model parameter quantization.
+The quantization itself is performed using a simple flooring operation:
+
+\[
+  P_{quantized} = floor(\frac{P}{s})
+\]
+
+\noindent where \( P \) denotes the parameter being qua`ntized, such as a weight, bias, or kernel.
+The scaling factor \( s \) has an adjustable shape, allowing it to be applied at different levels of granularity,
+such as per-row, per-column, per-channel, or even per-element. 
+\\
+\\
+During back-propagation, the scaling factor \( s \) is updated using a custom gradient formula. 
+The gradient of the loss with respect to \( s \), denoted as \( \nabla_s L \), is computed as:
+\[
+\nabla_s L = g_s \cdot m,
+\]
+Let's consider both multiplication terms separately. \(  g_s  \) is the main "decision maker" on whether to
+increase scale and therefore quantize more. It is based on a hyperparameter threshold  \(  \lambda  \)
+that is compared against against the ratio \(  r  \).
+
+\[
+g_s = 
+\begin{cases} 
+0, & \text{if } r \geq \lambda, \\
+-\tanh(r - \lambda), & \text{if } r < \lambda,
+\end{cases}
+\]
+In its turn, \(  r  \) is the raito between the gradient of the model parameter with respect to loss and it's absolute value.
+In essence, it conveys how much the parameter 
+
+
+
+% -------------------- tradeoffs and challenges --------------------
+
+\subsection{Implementation Details}
+
+
+\label{subsec:quantizedconvolutional}
 In this section, we introduce custom layers built upon Tensorflow's \texttt{tf.keras.Layer} class, 
 which serves as the base for all Keras layers. Each custom layer also leverages Tensorflow's 
 \texttt{tf.custom\_gradient} decorator to define its own gradient computation.
@@ -16,11 +66,8 @@ For clarity, the upcoming subsections start by showing how to define the corresp
 non-quantized layer using \texttt{tf.keras.Layer} and \texttt{tf.customg\_gradient},
 then move on to the specific quantized implementations.
 
-\subsection{Quantized Dense Layer}
-\label{subsec:quantizeddense}
-
-\subsection{Quantized Convolutional Layer}
-\label{subsec:quantizedconvolutional}
+Yang You, Igor Gitman, and Boris Ginsburg - Large batch training of convolutional networks
+This might have info on the ratio thingie
 
 \section{Custom Loss Functions}
 \label{sec:customloss}

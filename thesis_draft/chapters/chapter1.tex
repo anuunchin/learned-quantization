@@ -8,7 +8,7 @@ all is ML — but at what cost?
 \\
 \\
 If we consider GPT-3 as an example, 
-its 175 billion parameters need a whopping 700 gigabytes of storage in total - 
+its 175 billion parameters need a whopping 700 gigabytes of storage in total —  
 4 bytes for each parameter represented in single-precision floating-point format (FP32).
 This costliness of modern ML models has revitalized interest in the research area
 of \textit{quantization of Neural Networks} (NNs) 
@@ -25,7 +25,7 @@ would be a reduction in model performance, as a decrease in precision logically 
 a decrease in accuracy. However, there is a somewhat counterintuitive phenomenon where 
 quantization improves accuracy by introducing noise, which act like a
 form of regularization, forcing the model to generalize better \cite{courbariaux2015binaryconnect}. No matter whether quantization
-results in better or a slightly worse performance, the conclusion is that 
+results in better or a slightly worse performance, the assumptions is that 
 for each model there is an optimal way to quantize it within reasonable degradation ranges.
 And if the model is able to learn its optimal parameters, 
 it is most likely also able to learn its optimal quantization parameters. 
@@ -54,14 +54,16 @@ and gradient approximations — just like XNOR-Net enhances BinaryConnect with a
 gradient computation formula designed for binary weights \cite{rastegari2016xnor}. 
 \\
 \\
-Despite the abundance of different methods, they do not seem to tackle the second problem mentioned earlier,
-namely, not only how to quantize but also where and when to do so.
-In this thesis, we try to bridge this gap by introducing a method 
-that directly takes into account the gradient and value of the parameters that are being quantized 
-and adjusts the quantization process using trainable scaling factors. 
-These factors are guided by a threshold-like penalty mechanism 
-that remains inactive when a certain parameter is too sensitive to quantization, 
-encouraging selective quantization and adaptively relaxing it when it becomes too aggressive.
-\\
-\\
-Paragraph about custom loss function term.
+Despite the abundance of different methods, there is still room for improvement with regard to the second problem mentioned earlier,
+namely, not only how to quantize, but also where to do so and when to stop.
+Therefore, in this thesis, we try to fill this room with the following contributions:
+\begin{itemize}
+    \item We introduce a method that directly considers the gradient-to-parameter ratio,
+    which conveys how much the parameter is being adjusted relative to its current value.
+    Based on this ratio, the model learns its quantizer scaling factors, applied at different granularities,
+    alongside the standard trainable parameters.
+    \item We also provide a modular framework that can be easily integrated into a wide range of applications and layers
+    with minimal adjustments, ensuring flexibility and usability.
+    \item We also provide appliccable ranges for this ratio for effective quantizaiton for dense and convolutional layers.
+\end{itemize}
+ 

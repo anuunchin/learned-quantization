@@ -22,6 +22,7 @@ binary weights and input activations - \cite{rastegari2016xnor}\\
 gradients - \cite{shuchang2016dorafenet}
 layer inputs and weights - \cite{Edouard2022SPIQ} 
 weights an activations -  \cite{DBLP:conf/eccv/ZhangYYH18}
+weights activations and gradients - \cite{shuchang2016dorafenet}
 \noindent
 \textbf{Granularity of quantization.}
 
@@ -37,6 +38,8 @@ binary weights and input activations - \cite{rastegari2016xnor}\\
 ternary weights - \cite{ott2016rnn}\\
 higher precision for more important parameters and lowe precision for less important ones - \cite{soroosh2018adaptive}\\
 mixed precision - \cite{DBLP:conf/eccv/WangLGAC22}
+mixed precision - \cite{DBLP:journals/ijcv/DongNLCSZ19}
+
 \noindent
 \textbf{Integration with pruning \& other techniques.}\\
 pruning and Huffman Codign - \cite{han2016deepcompression}\\
@@ -46,8 +49,9 @@ knowledge distillation \cite{DBLP:conf/eccv/WeiPQOY18}
 
 \noindent
 \textbf{Modifications to loss functions.}
-regularization term WaveQ - \cite{DBLP:journals/corr/abs-2003-00146}
-
+regularization term WaveQ - \cite{DBLP:journals/corr/abs-2003-00146}\\
+proposes a regularization term into the loss function to push the weight values towards +1 and -1 \cite{DBLP:conf/aaai/TangH017}\\
+introduces a novel loss formulation where each quantization has different importance - \cite{DBLP:conf/iclr/HouYK17}
 \noindent
 \textbf{Other interesting approaches.}
 k-means for parameters \cite{yunchao2014compressing}

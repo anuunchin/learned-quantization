@@ -245,7 +245,7 @@ ML models, infamous for their complexity. Microcontrollers, for instance,
 usually are not able to perform floating-point operations, which must therefore be emulated in software, 
 introducing significant overhead. This is why quantization, the process which reduces the memory footprint of a model,
 is also extensively covered in the realm of embedded systems that 
-inherently prefer integer arithmetic \cite{DBLP:conf/codit/KhalifaM24}\cite{DBLP:journals/corr/abs-2105-13331}.
+inherently prefer integer arithmetic, as well as bitwise operations \cite{rastegari2016xnor} \cite{DBLP:conf/eccv/ZhangYYH18} \cite{DBLP:conf/codit/KhalifaM24}\cite{DBLP:journals/corr/abs-2105-13331}.
 \\
 \\
 Another motivation for quantization — although somewhat controversial — is the fact that reducing the bit-width of
@@ -269,7 +269,6 @@ Since ML models are generally considered redundant or over-parameterized,
 there are multiple points where quantization can be applied.
 Specifically, in this thesis, we apply quantization to the weights and biases of dense layers, 
 as well as the kernels and biases of convolutional layers. 
-Although not explicitly a part of a model, we also explore input data quantization. 
 Other applications include, but are not limited to, layer activation and layer input quantization (two sides of the same coin),
 as well as gradient quantization. The bottom line is that wherever there is an opportunity for arithmetic or memory optimization,
 there is room for quantization.
@@ -426,95 +425,54 @@ In essence, circumventing the issue of non-differentiability is the fundamental 
 all while managing the aforementioned trade-offs to produce a model that is compact, not overly complex to train,
 and highly performant.
 
+% -------------------- common methods --------------------
+
 \subsection{Common Methods}
 \label{subsec:subsection2}
-STE
-\begin{itemize}
 
-  \item In \textbf{learned quantization}, quantization parameters are learned as part of the model training process.
-  This corresponds to Quantization Aware Training (QAT) \cite{jacob2018quantization}, where quantization is integrated directly into training rather than applied afterwards.
-  Since learned quantization is central to this work, a detailed review of QAT and its applications is provided in the Related Work chapter. 
-
-\end{itemize}
-
-learned parameter
-
-
-
-%\subsection{Low-Precision Forward-Pass}
-%\label{subsec:subsection1}
-%In QAT, the operation performed during the forward-pass is often modified. Instead of propagating the full precision values, 
-%the output of a layer is first quantized and then dequantized before being passed to the next layer \cite{jacob2018quantization}. 
-%This simulates the effect of quantization during inference, helping the network adjust to the reduced precision parameters.
-%\\
-%\\
-%The \textit{quantization} process can be generalized as follows:
-%
-%\[
-%q(x) = \text{round}\left( \frac{x}{P} \right) - Z
-%\]
-%\\
-%\noindent where \( q(x) \) is the quantized value, \( x \) is the full precision value of the parameter that is being quantized, \( P \) is a quantization parameter, such as a scaling factor, 
-%and \( Z \) represents the zero point. This method is the most commonly used \textit{uniform quantization}, which can be either \textit{asymmetric} or \textit{symmetric}, 
-%depending on the value of \( Z \), with  \( Z \) = 0 representing \textit{symmetric quantization}.
-%\\
-%\\
-%For \textit{dequantization}, we apply:
-%
-%\[
-%x_{\text{dequant}} = P \cdot ( q(x) + Z)
-%\]
-%\\
-%\noindent Note that the dequantized value does not necessarily match the initial value. 
-%For example, if \( x = 7.8 \) and \( P = 2 \), then quantization gives \( q(x) = 4 \), and dequantization results in \( x_{\text{dequant}} = 8 \). 
-%This demonstrates how the \textit{quantization} and dequantization process approximates the original value \( x \)
-%by rounding it to the nearest representable value based on the quantization parameter \( P \).
-
-%\subsection{Full-Precision Back-Propagation}
-%\label{subsec:subsection1}
-%In QAT, although the forward-pass operates on quantized values, back-propagation typically uses full-precision values. 
-%This is because the rounding operation in the forward-pass is non-differentiable, which makes it impossible to compute gradients directly \cite{polino2018modelcompression}.
-%\\
-%\\
-%Consider the example of computing the gradient of the weight \( W_{I1,H1_1} \) in Figure~\ref{fig:mlp_diagram}:
-%
-%\[
-%\frac{\partial L}{\partial W_{I1,H1_1}} = \frac{\partial L}{\partial \text{Output 1}} \cdot \frac{\partial \text{Output 1}}{\partial H1_1} \cdot \frac{\partial H1_1}{\partial W_{I1,H1_1}}
-%\]
-%\\
-%\noindent If the output of \( H1_1 \) was quantized using a rounding operation, the gradient 
-%\[
-%\frac{\partial H1_1}{\partial W_{I1,H1_1}} 
-%\]
-%would be undefined due to the non-differentiability of rounding. This would break the gradient flow, making it impossible to update  \( W_{I1,H1_1} \)
-%during back-propagation.
-%\\
-%\\
-%To work around this, techniques such as the Straight-Through Estimator (STE) are commonly used \cite{bengio2013estimating} \cite{fan2021training} \cite{zhuang2018towards} \cite{krishnamoorthi2018quantizing}.
-%The STE approximates the gradient by treating the rounding function as if it were differentiable during the back-propagation.
-%This approach ensures that the model can simulate low-precision inference during the forward pass,
-%while still benefiting from the accuracy of full-precision gradient updates during back-propagation.
-%\\
-%\\
-%The Experimental Setup section will explain a slighly different version of the typical STE that was used in the current work.
-
-THIS PART WILL GO TO THE NEXT SECTION:
-\\
-\\
-An example approach is to define a regularization term that directly penalizes large differences between full-precision values 
-and their quantized counterparts \cite{zhuang2018towards}. This can encourage the model to learn parameters that are easily quantizable without significant performance loss.
-If the values that are being quantized are \( W \), then this regularization term could look like:
-
+The most common method to address the issue of non-differentibility is to approximate the gradient of quantization operators
+using the Straight-Through Estimator (STE) \cite{bengio2013estimating} \cite{fan2021training}. This workaround applies the quantizion operation as is 
+during the forward-pass, but replaces the gradient of the piece-wise discontinuous function 
+with that of a continuous identity function. Returning to the example from the previous subsection,
+if we apply the STE to the problematic gradient, instead of:
 \[
-\mathcal{L}_{\text{quant}} = \lambda \sum_{i} \| W_i - q(W_i) \|^2
-\]
-
-\noindent Where:
-\begin{itemize}
-    \item \( \lambda \) is a scalar that controls the importance of the quantization penalty.
-    \item \( W_i \) represents the full-precision weight value before quantization at index \( i \).
-    \item \( q(W_i) \) represents the quantized version of \( W_i \).
-\end{itemize}
-
-\noindent The current work uses multiple custom regularization terms that trigger the quantization process during training. 
-These will be discussed in detail in the Experimental Setup section.
+  \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}} =
+  \begin{cases} 
+      0 & \text{if } a_{1}^{(1)} \notin \mathbb{Z}, \\
+      \text{undefined} & \text{if } a_{1}^{(1)} \in \mathbb{Z}.
+  \end{cases}
+  \]
+we approximate it as: 
+\[
+  \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}}  \approx 1
+  \]
+This enables gradient flow, allowing model parameters to receive updates
+without being hindered by the non-differentiability of the quantization step.
+\\
+\\
+The STE — and other estimators \cite{DBLP:journals/jstsp/Chen0ZHY20} —  are the cornerstone of quantization-aware training (QAT) \cite{jacob2018quantization},
+a subfield that falls under the broader umbrella of learned quantization.
+QAT, however, does not necessarily focus on learning quantization parameters.
+Instead, it focuses on helping the model adapt to the loss caused by the quantization process during the forward pass,
+whether or not trainable quantizers are involved.
+\\
+\\
+More often than not QAT and trainable quantization parameters are combined. 
+An example is quantization-interval-learning (QIL) \cite{DBLP:conf/cvpr/JungSLSHKHC19}, 
+which uses three trainable quantization parameters 
+(the center of the interval, the distance to the center, and a parameter that controls the scaling itself) 
+with piecewise differentiable operations and relies on STE for gradient updates of quantized weights and activations. 
+Similarly, the learned step size quantization (LSQ) approach \cite{DBLP:conf/iclr/EsserMBAM20} 
+defines a single trainable quantization parameter (step size) with an explicit gradient formula and also uses STE for standard parameter updates.
+LQ-Nets \cite{DBLP:conf/eccv/ZhangYYH18} depend on STE too, but  —  unlike the two previous techniques — 
+directly incroporate a quantization error minimazation algorithm to calculate binary encodings and the associated bases of
+model parameters given a predefined bit size. 
+\\
+\\
+INSERT STUFF ABOUT QUANTIZATION ENCOURAGING REGULARIZATION
+\\
+\\
+In this thesis, we will utilize the STE but introduce a custom gradient calculation for the scale factor gradients
+based on a specific type of gradient sensitivity in the model parameters.
+Additionally, we will explore custom loss regularization terms that encourage quantization
+and systematically compare them across different datasets.

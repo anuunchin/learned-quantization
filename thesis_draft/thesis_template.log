@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  22 DEC 2024 21:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  23 DEC 2024 21:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1236,33 +1236,28 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              \float@addtolist interface has been
 (scrbook)              removed from all KOMA-Script classes.
 
-) (chapters/chapter2.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
+Underfull \hbox (badness 10000) in paragraph at lines 3--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
+Underfull \hbox (badness 10000) in paragraph at lines 3--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
+Underfull \hbox (badness 10000) in paragraph at lines 3--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--1
+Underfull \hbox (badness 10000) in paragraph at lines 3--60
 
  []
 
@@ -1270,7 +1265,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--1
 
 
 
-] [2]
+]) (chapters/chapter2.tex [2]
 chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 25--36
@@ -1280,7 +1275,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--36
 [3
 
 ]
-<./figures/dense_layer.png, id=166, 1737.49126pt x 1260.71pt>
+<./figures/dense_layer.png, id=170, 1737.49126pt x 1260.71pt>
 File: ./figures/dense_layer.png Graphic file (type png)
 <use ./figures/dense_layer.png>
 Package pdftex.def Info: ./figures/dense_layer.png  used on input line 56.
@@ -1290,12 +1285,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--85
 
  []
 
-<./figures/convolution.png, id=176, 1965.3425pt x 1154.3125pt>
+<./figures/convolution.png, id=180, 1965.3425pt x 1154.3125pt>
 File: ./figures/convolution.png Graphic file (type png)
 <use ./figures/convolution.png>
 Package pdftex.def Info: ./figures/convolution.png  used on input line 88.
 (pdftex.def)             Requested size: 398.33858pt x 233.95836pt.
-<./figures/convolution_multiple_channels.png, id=177, 1965.3425pt x 1154.3125pt>
+<./figures/convolution_multiple_channels.png, id=181, 1965.3425pt x 1154.3125pt>
 File: ./figures/convolution_multiple_channels.png Graphic file (type png)
 <use ./figures/convolution_multiple_channels.png>
 Package pdftex.def Info: ./figures/convolution_multiple_channels.png  used on input line 101.
@@ -1339,64 +1334,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--205
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--276
+Underfull \hbox (badness 10000) in paragraph at lines 231--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--276
+Underfull \hbox (badness 10000) in paragraph at lines 231--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--276
+Underfull \hbox (badness 10000) in paragraph at lines 231--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--276
+Underfull \hbox (badness 10000) in paragraph at lines 231--275
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 282--293
+Underfull \hbox (badness 10000) in paragraph at lines 281--292
 
  []
 
 [9]
-<./figures/quantizing_example.png, id=235, 1601.985pt x 814.04124pt>
+<./figures/quantizing_example.png, id=242, 1601.985pt x 814.04124pt>
 File: ./figures/quantizing_example.png Graphic file (type png)
 <use ./figures/quantizing_example.png>
-Package pdftex.def Info: ./figures/quantizing_example.png  used on input line 311.
+Package pdftex.def Info: ./figures/quantizing_example.png  used on input line 310.
 (pdftex.def)             Requested size: 284.52756pt x 144.57095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--328
+Underfull \hbox (badness 10000) in paragraph at lines 316--327
 
  []
 
 [10 <./figures/quantizing_example.png (PNG copy)>]
-<./figures/min_max_quantization.png, id=248, 2159.06625pt x 996.72375pt>
+<./figures/min_max_quantization.png, id=255, 2159.06625pt x 996.72375pt>
 File: ./figures/min_max_quantization.png Graphic file (type png)
 <use ./figures/min_max_quantization.png>
-Package pdftex.def Info: ./figures/min_max_quantization.png  used on input line 331.
+Package pdftex.def Info: ./figures/min_max_quantization.png  used on input line 330.
 (pdftex.def)             Requested size: 426.79134pt x 197.01428pt.
 
-Overfull \hbox (8.53766pt too wide) in paragraph at lines 331--333
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 330--332
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--353
+Underfull \hbox (badness 10000) in paragraph at lines 336--352
 
  []
 
-<./figures/granularity-conv2d.png, id=256, 2469.225pt x 1708.3825pt>
+<./figures/granularity-conv2d.png, id=263, 2469.225pt x 1708.3825pt>
 File: ./figures/granularity-conv2d.png Graphic file (type png)
 <use ./figures/granularity-conv2d.png>
-Package pdftex.def Info: ./figures/granularity-conv2d.png  used on input line 356.
+Package pdftex.def Info: ./figures/granularity-conv2d.png  used on input line 355.
 (pdftex.def)             Requested size: 426.79134pt x 295.26979pt.
 
-Overfull \hbox (8.53766pt too wide) in paragraph at lines 356--357
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 355--356
  [][] 
  []
 
@@ -1407,42 +1402,63 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11 <./figures/min_max_quantization.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 377--402
+Underfull \hbox (badness 10000) in paragraph at lines 376--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--402
+Underfull \hbox (badness 10000) in paragraph at lines 376--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--402
+Underfull \hbox (badness 10000) in paragraph at lines 376--401
 
  []
 
 [12 <./figures/granularity-conv2d.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 420--428
+Underfull \hbox (badness 10000) in paragraph at lines 419--427
+
+ []
+
+[13]) (chapters/chapter3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 448--1
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 501--507
+Underfull \hbox (badness 10000) in paragraph at lines 448--1
 
  []
 
-[13]) (chapters/chapter3.tex [14]
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--1
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--1
+
+ []
+
+[14]
 chapter 3.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 12.
-(C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)) (chapters/chapter4.tex [15
 
-] [16
+Underfull \hbox (badness 10000) in paragraph at lines 30--37
+
+ []
+
+[15
 
 ]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 62.
+ (C:\Users\gunde\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)) (chapters/chapter4.tex [16]
 chapter 4.
-) (chapters/chapter5.tex [17] [18
+) (chapters/chapter5.tex [17
+
+] [18
 
 ]
 chapter 5.
@@ -1466,12 +1482,14 @@ Overfull \hbox (17.53911pt too wide) in paragraph at lines 83--83
 \T1/cmtt/m/n/10.95 proceedings . neurips . cc / paper / 2015 / hash / 3e15cc11f979ed25912dff5b0669f2cd -[]
  []
 
-[25] [26]
+[25] [26] [27]
 Overfull \hbox (7.2852pt too wide) in paragraph at lines 83--83
 \T1/cmr/m/n/10.95 quan-ti-za-tion, and early stop-ping''. In: \T1/cmr/m/it/10.95 Com-put. Stand. In-ter-faces \T1/cmr/m/n/10.95 92 (2025), p. 103906.
  []
 
-[27] (misc/annex.tex [28]
+[28] (misc/annex.tex [29] [30
+
+]
 chapter without number
 
 Class scrbook Warning: You are using `\begin{appendix}...\end{appendix}'.
@@ -1487,9 +1505,7 @@ Class scrbook Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrbook)              and replace `\begin{appendix}' by command
 (scrbook)              `\appendix' on input line 3.
 
-) [29
-
-] (thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux))
+) [31] (thesis_template.aux (misc/titlepage.aux) (misc/self-assertion.aux) (misc/abstract.aux) (misc/abstract_de.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1501,17 +1517,17 @@ Package logreq Info: Writing requests to 'thesis_template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38274 strings out of 474486
- 772044 string characters out of 5743754
- 1947542 words of memory out of 5000000
- 59836 multiletter control sequences out of 15000+600000
+ 38309 strings out of 474486
+ 773719 string characters out of 5743754
+ 1949542 words of memory out of 5000000
+ 59861 multiletter control sequences out of 15000+600000
  576876 words of font info for 74 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
  108i,20n,107p,10983b,2463s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis_template.pdf (39 pages, 1094221 bytes).
+ <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis_template.pdf (41 pages, 1119584 bytes).
 PDF statistics:
- 1219 PDF objects out of 1440 (max. 8388607)
- 116 named destinations out of 1000 (max. 500000)
+ 1278 PDF objects out of 1440 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
  320 words of extra memory for PDF output out of 10000 (max. 10000000)
 
