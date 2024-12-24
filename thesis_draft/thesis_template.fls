@@ -511,6 +511,10 @@ INPUT ./figures/nested_quantization_layer.png
 INPUT ./figures/nested_quantization_layer.png
 INPUT ./figures/nested_quantization_layer.png
 INPUT ./figures/nested_quantization_layer.png
+INPUT ./figures/Scaler-application-dense.png
+INPUT ./figures/Scaler-application-dense.png
+INPUT ./figures/Scaler-application-dense.png
+INPUT ./figures/Scaler-application-dense.png
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd

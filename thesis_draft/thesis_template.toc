@@ -13,24 +13,24 @@
 \contentsline {subsection}{\numberline {2.3.2}Common Methods}{13}{subsection.2.3.2}%
 \contentsline {chapter}{\numberline {3}Learned Quantization Schemes}{15}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Nested Quantization Layer}{15}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Concept and Design}{15}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Implementation Details}{17}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.1}Core Logic and Structure}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Learned Scale Factor}{17}{subsection.3.1.2}%
 \contentsline {section}{\numberline {3.2}Custom Loss Functions}{18}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Penalty for Inverse Scale Factor Magnitude}{18}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Constraint on Bin Count for Quantization}{18}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Deviation between Quantized and Original Values}{18}{subsection.3.2.3}%
 \contentsline {chapter}{\numberline {4}Experiments}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Experimental Setup}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Hyperparamter Tuning}{19}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Learning Rate and Regularization Coefficients}{19}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Quantization Threshold Coefficient}{19}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Results and Analysis}{19}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Overall Results}{19}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Dataset-Specific Insights}{19}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Further Implications}{19}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.2}Pareto Fronts for Nested Quantization Layers}{19}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Learning Rate and Regularization Coefficients}{20}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Quantization Threshold Coefficient}{20}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Systematic Analysis of Custom Loss Terms}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Overall Results}{20}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Dataset-Specific Insights}{20}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Further Implications}{20}{subsection.4.3.3}%
 \contentsline {chapter}{\numberline {5}Related Work}{21}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Conclusions}{23}{chapter.6}%
-\contentsline {chapter}{\nonumberline List of Acronyms}{25}{chapter*.11}%
-\contentsline {chapter}{\nonumberline Bibliography}{27}{chapter*.12}%
-\contentsline {chapter}{\nonumberline Appendix}{33}{chapter*.13}%
+\contentsline {chapter}{\nonumberline List of Acronyms}{25}{chapter*.12}%
+\contentsline {chapter}{\nonumberline Bibliography}{27}{chapter*.13}%
+\contentsline {chapter}{\nonumberline Appendix}{33}{chapter*.14}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

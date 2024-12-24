@@ -1,15 +1,52 @@
 \chapter{Experiments\label{cha:chapter4}}
-This chapter provides details about the experiments conducted within the context of this thesis. 
+This chapter details the experiments conducted in the context of this thesis.
+We evaluate the proposed methods on three image classification datasets:
+MNIST \cite{lecun2010mnist},
+CIFAR-10 \cite{krizhevsky2009learning},
+and Imagenette \cite{DBLP:journals/information/HowardG20}, which is a subset of 10 easily classified classes from the ImageNet dataset.
+First, we provide an overview of the experimental setup.
+We then present the results of the gradient ratio thresholding method, as detailed in Section \ref{sec:nestedquantizationlayer},
+followed by the results of the custom loss terms discussed in Section \ref{sec:customloss}.
 
-You'll need these:
-there's a formula for precision requirement in \cite{soroosh2018adaptive}
+% ------------------------------------------------------------
+% ----------------------- Setup ----------------------- 
+% ------------------------------------------------------------
 
 \section{Experimental Setup}
 \label{sec:setup}
-All experiments are caried out on machine XYZ. 
+\textbf{Software and Hardware Setup.} As briefly mentioned in Section \ref{sec:nestedquantizationlayer},
+our custom methods are implemented in TensorFlow.
+Specifically, we used TensorFlow version 2.11.0, running on Python 3.10.14. 
+All experiments are conducted on a server equipped with two NVIDIA A40 GPUs, 
+each with 48 GB of memory, running on CUDA 11.4 and driver version 470.256.02.
+\\
+\\
+\textbf{Experiment Networks.} 
+For simplicity and tractability, we define custom networks for each dataset.
+For MNIST, we use a small network consisting of two dense layers, 
+each adjusted to incorporate nested quantization layers for both weights and biases. 
+For CIFAR-10, we use a convolutional network with three blocks of convolutional layers, 
+each adjusted to incorporate nested quantization layers for both kernels and biases.
+These are followed by two dense layers.
+The Imagenette model is a ResNet-inspired architecture,
+featuring an initial quantized convolutional block followed by four stages of residual blocks. 
+Each residual block incorporates the adjusted convolutional layers with nested quantization 
+for both kernels and biases. For the experimentation with custom loss terms, 
+we use equivalent networks without the nested quantization layer logic.
+\\
+\\
+\textbf{Baseline Hyperparameters and Initialization.}
 
-\section{Hyperparamter Tuning}
-\label{sec:hyperparameter}
+
+% ------------------------------------------------------------
+% ----------------------- Pareto stuff ----------------------- 
+% ------------------------------------------------------------
+
+\section{Pareto Fronts for Nested Quantization Layers}
+\label{sec:paretofronts}
+
+- let's start with 
+
 
 \subsection{Learning Rate and Regularization Coefficients}
 \label{subsec:learning rate}
@@ -17,7 +54,11 @@ All experiments are caried out on machine XYZ.
 \subsection{Quantization Threshold Coefficient}
 \label{subsec:penalty rate}
 
-\section{Results and Analysis}
+% ------------------------------------------------------------
+% ----------------------- Custom loss terms analysis ----------------------- 
+% ------------------------------------------------------------
+
+\section{Systematic Analysis of Custom Loss Terms}
 \label{sec:dataset}
 
 \subsection{Overall Results}
@@ -29,35 +70,3 @@ All experiments are caried out on machine XYZ.
 \subsection{Further Implications}
 \label{subsec:imagenette}
 
-
-%\section{Results for Experiment A\label{sec:results1}}
-%Figure~\ref{fig:aliceandbob} illustrates the situation between Alice and Bob. (sequence diagram from www.websequencediagrams.com)
-
-%\begin{figure}[htb]
-%  \centering
-%  \includegraphics[width=9cm]{uml_seq_example.png}\\
-%  \caption[Example figure]{Alice and Bob}
-%  \label{fig:aliceandbob}
-%\end{figure}
-
-%\section{Results for Experiment B\label{sec:results2}}
-%In Table~\ref{table:example} the statistics for...
-
-%\begin{table}[H]
-%  \begin{center}
-%  \begin{tabular}{ | p {2.5cm}| p{3.6cm}| p{3.6cm}| p{3.3cm}| }
-%  \hline
-%  \textbf{Dateset} & \textbf{Minimum y} & \textbf{Maximum y} & \textbf{Average y} \\
-%  \hline
-%  DS 1 & -68.57 & 506.78 & 86.05 \\ \hline
-%  DS 2 & -0.18 & 537.67 & 102.51 \\
-%  \hline
-%  \end{tabular}
-%  \caption[Example table]{This table shows the statistics (minimum, maximum, and average) for the different datasets.}
-%  \label{table:example}
-%  \end{center}
-%\end{table}
-
-
-%\section{Discussion of Results\label{sec:resultDiscussion}}
-%...

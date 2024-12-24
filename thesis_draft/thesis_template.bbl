@@ -757,6 +757,46 @@
       \verb https://openreview.net/forum?id=S1oWlN9ll
       \endverb
     \endentry
+    \entry{DBLP:journals/information/HowardG20}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5ed422e177c5444b96679479aeed0c51}{%
+           family={Howard},
+           familyi={H\bibinitperiod},
+           given={Jeremy},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e8a58125af15e56d1db521647af99086}{%
+           family={Gugger},
+           familyi={G\bibinitperiod},
+           given={Sylvain},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2a7259908a2cbe9913ec19b7633e3136}
+      \strng{fullhash}{2a7259908a2cbe9913ec19b7633e3136}
+      \strng{bibnamehash}{2a7259908a2cbe9913ec19b7633e3136}
+      \strng{authorbibnamehash}{2a7259908a2cbe9913ec19b7633e3136}
+      \strng{authornamehash}{2a7259908a2cbe9913ec19b7633e3136}
+      \strng{authorfullhash}{2a7259908a2cbe9913ec19b7633e3136}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Inf.}
+      \field{number}{2}
+      \field{title}{Fastai: {A} Layered {API} for Deep Learning}
+      \field{volume}{11}
+      \field{year}{2020}
+      \field{pages}{108}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/INFO11020108
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3390/info11020108
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3390/info11020108
+      \endverb
+    \endentry
     \entry{huang2017densely}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=0d12f90a1d1945cb1b98f583c9dc9572}{%
@@ -1179,6 +1219,68 @@
       \field{journaltitle}{arXiv preprint arXiv:1806.08342}
       \field{title}{Quantizing deep convolutional networks for efficient inference: A whitepaper}
       \field{year}{2018}
+    \endentry
+    \entry{krizhevsky2009learning}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{%
+           family={Krizhevsky},
+           familyi={K\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \strng{fullhash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \strng{bibnamehash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \strng{authorbibnamehash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \strng{authornamehash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \strng{authorfullhash}{c5e3a676e2ac1164b3afcd539c131fc9}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning Multiple Layers of Features from Tiny Images}
+      \field{year}{2009}
+      \field{pages}{32\bibrangedash 33}
+      \range{pages}{2}
+      \verb{urlraw}
+      \verb https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf
+      \endverb
+    \endentry
+    \entry{lecun2010mnist}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=17acda211a651e90e228f1776ee07818}{%
+           family={Cortes},
+           familyi={C\bibinitperiod},
+           given={Corinna},
+           giveni={C\bibinitperiod}}}%
+        {{hash=270087258d6a002033f05032fbdf6fad}{%
+           family={Burges},
+           familyi={B\bibinitperiod},
+           given={CJ},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2aa156a476841eb9aa413b99e0bd259}
+      \strng{fullhash}{b2aa156a476841eb9aa413b99e0bd259}
+      \strng{bibnamehash}{b2aa156a476841eb9aa413b99e0bd259}
+      \strng{authorbibnamehash}{b2aa156a476841eb9aa413b99e0bd259}
+      \strng{authornamehash}{b2aa156a476841eb9aa413b99e0bd259}
+      \strng{authorfullhash}{b2aa156a476841eb9aa413b99e0bd259}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ATT Labs [Online]. Available: http://yann.lecun.com/exdb/mnist}
+      \field{title}{MNIST handwritten digit database}
+      \field{volume}{2}
+      \field{year}{2010}
     \endentry
     \entry{DBLP:conf/nips/CunDS89}{inproceedings}{}
       \name{author}{3}{}{%
