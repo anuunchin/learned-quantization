@@ -15,14 +15,14 @@ they offer the main ingredient for the remedy to the malady - redundancy -
 which can be exploited to reduce their memory usage.
 While the redundancy exploitation of ML models is already a common 
 technique that comes in different forms, starting from weight pruning  \cite{DBLP:conf/nips/CunDS89} \cite{DBLP:conf/iclr/MolchanovTKAK17}\cite{han2016deepcompression} and
-ending with knowledge distillation \cite{DBLP:journals/corr/HintonVD15} \cite{DBLP:conf/icmlt/OkadoMIKS22}, quantization presents itself as an especially promising 
-area especically in the sense of learned quantization - 
-the process of making ML models learn their optimal quantization parameters
+ending with knowledge distillation \cite{DBLP:journals/corr/HintonVD15} \cite{DBLP:conf/icmlt/OkadoMIKS22}, quantization presents itself as a promising 
+area especially in the sense of learned quantization - 
+the process of making ML models learn their optimal quantization
 on their own.
-Hence, the current work employs two techniques that bypass the main issue of learned quantization,
-that is, the non-differentiability of rounding operations.
+Hence, this work introduces two techniques designed to address the primary challenge of learned quantization:
+achieving effective model compression without incurring significant accuracy degradation.
 While the first technique involves custom loss functions that directly take into account
 quantization goals, the second, more novel approach incorporates a custom scaling factor gradient calculation that takes into account 
 the gradient of the parameters that are being quantized.
-As a result of these two techniques, a memory usage reduction of up to ..x is obtained 
-on MNIST, CIFAR10, and Imagenette. 
+As a result, a memory usage reduction of up to \( 8 \times \) is achieved for the parameters of networks
+trained on MNIST, CIFAR-10, and Imagenette. 
