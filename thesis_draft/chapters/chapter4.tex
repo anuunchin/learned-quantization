@@ -107,7 +107,9 @@ As an example, the actual integer values after quantization for the rowwise scen
 depicted in Figure \ref{fig:quantization_results_1e-10_dense} for all four parameters separately.
 While the total number of unique values is only \( 10 \), the range spans from \( -5 \) to \( 5 \).
 This means that \( 4 \) bits are sufficient to represent the quantized values in the resulting layers, 
-as \( \lceil \log_2(11) \rceil = 4 \), covering all 10 unique values within the range.
+as \( \lceil \log_2(11) \rceil = 4 \), covering all 10 unique values within the range. 
+This can even be further reduced using Huffman coding, 
+considering the concentration of values around 0 in the distributions.
 \\
 \begin{figure}[h!]
   \centering
@@ -169,24 +171,52 @@ that of the baseline with no quantization as depicted in Figure \ref{fig:val-los
   \label{fig:val-losses-over-epochs-dense}
 \end{figure}
   
-ADD THE RESULTS WHERE QUANTIZATION STARTS MID TRAINING TO PROVIDE INFO FOR GRADUAL QUANTIZATION. 
+ADD THE RESULTS WHERE QUANTIZATION STARTS MID TRAINING
+TO PROVIDE INFO FOR GRADUAL QUANTIZATION. TLDR: GUIDELINES FOR LAMBDA FOR GRADUAL 
+QUANTIZATION
 
-\subsection{Quantization Threshold Coefficient}
-\label{subsec:penalty rate}
+\subsection{Convolutional Layers}
+\label{subsec:convolutionallayers}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{pareto-cifar-unique-vals-accuracy.png}
+  \caption{Channelwise (left), rowwise (middle) and columnwise (right) scaling factor applied to kernels of convolutional layers, with a scalar scaling factor — to biases.
+  We observe optimal quantization for \( \lambda = 10\)  in all cases. The values are averaged from the results of 5 training runs with different seeds.}
+  \label{fig:pareto-mnist-unique-vals-accuracy}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{pareto-cifar-range-accuracy.png}
+  \caption{Channelwise (left), rowwise (middle) and columnwise (right) scaling factor applied to kernels of convolutional layers, with a scalar scaling factor — to biases.  The values are averaged from the results of 5 training runs with different seeds.}
+  \label{fig:pareto-mnist-range-accuracy}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=15cm]{quantization_results_1e-5_conv.png}
+  \caption{Channelwise scaling factors are applied to the kernels of convolutional layers, while a scalar scaling factor is applied to the biases. Results are taken from the run with seed number 42.}
+  \label{fig:quantization_results_1e-10_dense}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{val-accs-over-epochs-conv.png}
+  \caption{Channelwise (left), rowwise (middle) and columnwise (right) scaling factor applied to kernels of dense layers, with a scalar scaling factor — to biases. Results are taken from the run with seed number 42.}
+  \label{fig:val-accs-over-epochs-dense}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{val-losses-over-epochs-conv.png}
+  \caption{Channelwise (left), rowwise (middle) and columnwiselar (right) scaling factor applied to kernels of dense layers, with a scalar scaling factor — to biases. Results are taken from the run with seed number 42.}
+  \label{fig:val-losses-over-epochs-dense}
+\end{figure}
 % ------------------------------------------------------------
 % ----------------------- Custom loss terms analysis ----------------------- 
 % ------------------------------------------------------------
 
 \section{Systematic Analysis of Custom Loss Terms}
 \label{sec:dataset}
-
-\subsection{Overall Results}
-\label{subsec:overallresults}
-
-\subsection{Dataset-Specific Insights}
-\label{subsec:cifat10}
-
-\subsection{Further Implications}
-\label{subsec:imagenette}
 

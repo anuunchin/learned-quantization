@@ -23,14 +23,11 @@
 \contentsline {section}{\numberline {4.1}Experimental Setup}{19}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Optimal Thresholds for Nested Quantization Layers}{20}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Fully Connected Layers}{20}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Quantization Threshold Coefficient}{22}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Convolutional Layers}{22}{subsection.4.2.2}%
 \contentsline {section}{\numberline {4.3}Systematic Analysis of Custom Loss Terms}{22}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Overall Results}{22}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Dataset-Specific Insights}{22}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Further Implications}{22}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Related Work}{25}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{27}{chapter.6}%
-\contentsline {chapter}{\nonumberline List of Acronyms}{29}{chapter*.19}%
-\contentsline {chapter}{\nonumberline Bibliography}{31}{chapter*.20}%
-\contentsline {chapter}{\nonumberline Appendix}{37}{chapter*.21}%
+\contentsline {chapter}{\numberline {5}Related Work}{27}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{29}{chapter.6}%
+\contentsline {chapter}{\nonumberline List of Acronyms}{31}{chapter*.24}%
+\contentsline {chapter}{\nonumberline Bibliography}{33}{chapter*.25}%
+\contentsline {chapter}{\nonumberline Appendix}{39}{chapter*.26}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
