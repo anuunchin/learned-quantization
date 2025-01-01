@@ -1,8 +1,8 @@
 \chapter{Learned Quantization\label{cha:chapter3} Schemes}
-This chapter introduces two custom learned quantization schemes — approaches that allow models to learn to quantize themselves
-with adjustable aggressiveness. The first one, a custom quantization layer featuring a threshold for gradient based scale updates,
-will be discussed in the first section. The second scheme, which focuses on custom regularization terms with a configurable penalty rate,
-will be covered second.
+This chapter introduces two custom learned quantization schemes — approaches that allow models to learn to quantize
+with adjustable intensity. The first one, a custom quantization layer featuring a threshold for gradient based scale updates,
+will be discussed in the first section \ref{sec:nestedquantizationlayer}. The second scheme, which focuses on custom regularization terms with a configurable penalty rate,
+will be covered second \ref{sec:customloss}.
 
 % ------------------------------------------------------------
 % ----------------------- learnedquantization Schemes ----------------------- 
@@ -26,7 +26,7 @@ As the name "nested quantization layer" suggests —
 this layer is implemented in a way that it is initialized from within a model layer itself.
 \\
 \\
-To explain, let \( P \) be the parameter of a layer (weights, bias or kernel). This \( P \) is used
+To explain, let \( P \) be the parameters of a layer (weights, bias or kernel). This \( P \) is used
 as the input for the nested quantization layer, where it undergoes quantization based on 
 a scaling factor \( s \). In turn, \( s \) is the only trainable parameter of the nested layer itself.
 \\
@@ -40,20 +40,20 @@ The forward pass of the nested layer performs the following operation:
 \noindent where \( P_{quantized} \) is the quantized integer form of \( P \) and is defined as:
 
 \[
-  P_{quantized} = floor(\frac{P}{s})
+  P_{\text{quantized}} = \left\lfloor \frac{P}{s} \right\rfloor
 \]
 
 \noindent During backpropagation, the nested layer receives the upstream gradient of
 \( P_{reconstructed} \) and passes it downward as is.  This follows the standard STE behaviour
-used with non-differentiable discretizers, such as \( floor(\cdot) \) in our case,
+used with non-differentiable discretizers, such as \(  \) in our case,
 as discussed in Subsection \ref{subsec:commonquantizationapproaches}.
 \\
 \\
 For updating the scale factor \( s \) — its own trainable parameter — 
-the nested layer utilizes the upstream gradient information of \( P_{\text{reconstructed}} \)
-and applies a custom logic, which will be detailed in the next subsection. 
+the nested layer utilizes the upstream gradient of \( P_{\text{reconstructed}} \)
+and applies a custom logic, which will be detailed in the next subsection \ref{subsec:learnedscalefactor}. 
 Essentially, this approach solves two problems with one tool — updating both 
-\( P \) and \( s \) using the same gradient, although with different logic.
+\( P \) and \( s \) using the same gradient, though with different logic.
 \\
 \\
 Conceptually, the resulting structure with one or more nested quantization layers is illustrated in Figure \ref{fig:nested_quantization}
@@ -95,7 +95,7 @@ model's computational graph. Dense and convolutional layers have been implemente
 For the trainable scale factor \( s \), we define a custom gradient formula. 
 The gradient of the loss with respect to \( s \), denoted as \( \nabla_s L \), is computed as:
 \[
-\nabla_s L = g_s \cdot m,
+\nabla_s L = g_s \cdot m
 \]
 Let's consider both multiplication terms separately. \(  g_s  \) is the main "decision maker" on whether to
 increase the scale and, therefore, quantize more. It is based on a hyperparameter threshold  \(  \lambda  \),
@@ -104,19 +104,19 @@ which is compared against the ratio \(  r  \).
 \[
 g_s = 
 \begin{cases} 
-0, & \text{if } r \geq \lambda, \\
-- \tanh(\lambda - r), & \text{if } r < \lambda,
+0, & \text{if } r \geq \lambda \\
+- \tanh(\lambda - r), & \text{if } r < \lambda
 \end{cases}
 \]
 
 \noindent In turn, \(  r  \) is the ratio between the upstream gradient of the layer's reconstructed parameter with respect to the loss
-and its absolute value (for simplicity, we done \( P_{reconstructed}\) as \(P_r\)):
+and its absolute value (for simplicity, we denote \( P_{reconstructed}\) as \(P_r\)):
 
 \[
 r = \frac{\left| \nabla_{P_{r}} L \right|}{\max(\epsilon, \left| P_r \right|)}
 \]
 
-\noindent In essence, it conveys the relative impact of the gradient on the parameter's value.
+\noindent The formula conveys the relative impact of the gradient on the parameter's value.
 A large ratio indicates that the parameter is not ready for aggressive quantization
 because small perturbations can lead to significant changes in its optimization.
 Conversely, parameters with a small \(  r  \) are better candidates
@@ -164,29 +164,100 @@ while being more conservative for smaller ones.
 \\
 To sum this part up, the intuition is that the gradient adjustment for the scale factor
 \( s \) adapts dynamically based on both the sensitivity of the parameter ( \( g_s\) )
-and its range ( \( m \) ). Sensitive parameters are left with a "zero vote,"
+and its range ( \( m \) ). Sensitive parameters are left with a "zero vote",
 while the less sensitive ones have a say on how much quantization they can tolerate.
 \\
 \\
-The final touch is that the scale gradients are initially calculated for each parameter value
+Now, what if all parameters are deemed sensitive with \( r \geq \lambda\) and
+\( g_s =  0 \)? This would mean that scale factor \(s\) does not receive gradient updates.
+Such a situation could result in an unfavorable outcome
+where the parameters themselves increase in magnitude while the scale factor remains unchanged,
+loosening the achieved quantization.
+To address this, we apply a small constant update tied to \( \lambda \) in cases where 
+all parameters have \( r \geq \lambda\). As a result, the initial formula for \( g_s\) becomes:
+
+\[
+g_s = 
+\begin{cases} 
+- \tanh(\lambda), & \text{if } \forall P_r, \, r \geq \lambda \\
+- \tanh(\lambda - r) \cdot \mathbf{1}(r < \lambda), & \text{otherwise}
+\end{cases}
+\]
+
+\noindent The final touch is that the scale gradients are initially calculated for each parameter value
 but are then aggregated along the corresponding granularity axes.
 This reflects the collective behavior of parameters within the same granularity,
 where only those deemed quantizable and with a meaningful "say" contribute to the overall adjustment,
-while sensitive parameters express their resistance with a "zero vote."
+while sensitive parameters express their resistance with a "zero vote".
+Even when all parameters are sensitive and each casts a "zero vote", 
+we still force the "elections" by introducing a constant gradient term
+to avoid stagnation in scale factor updates.
 \\
 \\
 In Chapter \ref{cha:chapter4}, we will present experimental results for different values of 
 \( \lambda \), offering guidance on the optimal values for both dense and convolutional layers.
 
+% ------------------------------------------------------------
+% ----------------------- custom loss functions ----------------------- 
+% ------------------------------------------------------------
 
-\section{Custom Loss Functions}
+\section{Custom Loss Function Terms}
 \label{sec:customloss}
+Building on the nested quantization layers covered in the previous section (\ref{sec:nestedquantizationlayer}),
+we define three custom loss function terms that can be used individually or in combination with the task-specific loss.
+Each custom term encourages quantization in its own way,
+with the last one acting more as a stabilizer for quantization.
+We will first explain how these terms fit into the model's structure and training process,
+then provide the details of their individual formulations.
 
-\subsection{Penalty for Inverse Scale Factor Magnitude} 
-\label{subsec:scaleinverse}
+% --------------------  --------------------
+\subsection{Design and Integration}
+\label{subsec:designandintegration}
+To incorporate custom loss terms into the model's training process,
+we utilize the nested layers described in Subsection \ref{sec:nestedquantizationlayer}, with a slight modification.
+The modification lies in the gradient calculation of the nested layers,
+where we similarly use the STE for parameter updates, but do not provide any gradient updates for the scale factors altogether.
+This is equivalent to setting \( \lambda = 0\), which disables gradient updates for the scale factors.
+\\
+\\
+Instead, to update scale factors, we define a custom loss term \( \mathcal{L}_{custom}\) scaled by a penalty rate \( \gamma \),
+an adjustable hyperparameter. This loss term depends on the model parameters and scale factors
+and is added to the task-specific loss to produce the total loss:
 
-\subsection{Constraint on Bin Count for Quantization}
-\label{subsec:maxbin}
+\[
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}} + \gamma \cdot \mathcal{L}_{\text{custom}}
+\]
 
-\subsection{Deviation between Quantized and Original Values}
-\label{subsec:difference}
+\noindent As visualized in Figure \ref{fig:custom_loss_term_integration}, 
+scale factors receive gradient updates from the custom loss term,
+while the gradients for model parameters are influenced by both the task-specific loss
+and the custom loss term. To illustrate this further,
+if we set \( \gamma = 0 \), the scale factors will not receive any updates,
+and the model will rely on the STE to adapt to the initial values of the scale factors during training.
+\\
+\\
+The custom loss terms are implemented as Python objects
+to which the model's nested quantization layers are passed.
+These objects have access to the latest values of parameters
+and scale factors at any point during training,
+which provides flexibility in how we encourage quantization.
+\\
+\\
+Unlike the ratio-based approach described in Section \ref{sec:nestedquantizationlayer},
+this approach defines a forward pass to calculate the custom loss terms,
+rather than directly manipulating gradient calculations.
+As a result, it may appear more straightforward
+and will be shown to achieve equally good results in the Experiments chapter \ref{cha:chapter4}.
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm]{custom_loss_term_integration.png}
+  \caption{An illustration of how a custom loss term, incorporating layer parameters and scale factors, integrates into the training process.}
+  \label{fig:custom_loss_term_integration}
+\end{figure}
+
+
+% -------------------- Loss component definitiona --------------------
+\subsection{Loss Term Definitions}
+\label{subsec:losstermdefinitions}

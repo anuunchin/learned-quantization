@@ -15,19 +15,16 @@
 \contentsline {section}{\numberline {3.1}Nested Quantization Layer}{15}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Core Logic and Structure}{15}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Learned Scale Factor}{17}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Custom Loss Functions}{18}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Penalty for Inverse Scale Factor Magnitude}{18}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Constraint on Bin Count for Quantization}{18}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Deviation between Quantized and Original Values}{18}{subsection.3.2.3}%
-\contentsline {chapter}{\numberline {4}Experiments}{19}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Experimental Setup}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Optimal Thresholds for Nested Quantization Layers}{20}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Fully Connected Layers}{20}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Convolutional Layers}{22}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Systematic Analysis of Custom Loss Terms}{22}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Related Work}{27}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{29}{chapter.6}%
-\contentsline {chapter}{\nonumberline List of Acronyms}{31}{chapter*.24}%
+\contentsline {section}{\numberline {3.2}Custom Loss Function Terms}{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Design and Integration}{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Loss Term Definitions}{20}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}Experiments}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experimental Setup}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Optimal Thresholds for Nested Quantization Layers}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Fully Connected Layers}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Convolutional Layers}{24}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Systematic Analysis of Custom Loss Terms}{24}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Related Work}{29}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{31}{chapter.6}%
 \contentsline {chapter}{\nonumberline Bibliography}{33}{chapter*.25}%
-\contentsline {chapter}{\nonumberline Appendix}{39}{chapter*.26}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

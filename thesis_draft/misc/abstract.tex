@@ -7,22 +7,24 @@
 
 \vspace*{0.5cm}
 
-\noindent Machine learning (ML) models are notoriously resource-intensive.
-Given their widespread application across every-day edge devices,
-the need to reduce their memory and computing requirements is becoming ever more pressing.
-Despite the said resource-intensiveness of ML models, at the same time 
-they offer the main ingredient for the remedy to the malady - redundancy - 
-which can be exploited to reduce their memory usage.
-While the redundancy exploitation of ML models is already a common 
-technique that comes in different forms, starting from weight pruning  \cite{DBLP:conf/nips/CunDS89} \cite{DBLP:conf/iclr/MolchanovTKAK17}\cite{han2016deepcompression} and
-ending with knowledge distillation \cite{DBLP:journals/corr/HintonVD15} \cite{DBLP:conf/icmlt/OkadoMIKS22}, quantization presents itself as a promising 
+\noindent% State the problem
+Machine learning (ML) models are notoriously resource-intensive.
+Given their widespread application on end-user devices,
+the need to reduce the memory and computing requirements of such models is becoming ever more pressing.
+% Say why it's an interesting problem
+Interestingly, the very redundancy that contributes to the resource-intensive nature of predictive models, 
+offers the remedy to this malady by creating opportunities for exploitation.
+While redundancy exploitation in ML models has been explored in various forms,
+including weight pruning \cite{DBLP:conf/nips/CunDS89} \cite{DBLP:conf/iclr/MolchanovTKAK17}\cite{han2016deepcompression},
+knowledge distillation \cite{DBLP:journals/corr/HintonVD15} \cite{DBLP:conf/icmlt/OkadoMIKS22} and ...,
+quantization presents itself as a promising 
 area especially in the sense of learned quantization - 
-the process of making ML models learn their optimal quantization
-on their own.
-Hence, this work introduces two techniques designed to address the primary challenge of learned quantization:
+where ML models are designed to learn their optimal quantization strategies autonomously.
+% Say what your solution achieves
+Hence, this work introduces two techniques for learned quantization,
 achieving effective model compression without incurring significant accuracy degradation.
-While the first technique involves custom loss functions that directly take into account
-quantization goals, the second, more novel approach incorporates a custom scaling factor gradient calculation that takes into account 
+The first technique involves custom loss functions that directly take into account
+quantization goals, the second novel approach incorporates a custom scaling factor gradient calculation that utilizes 
 the gradient of the parameters that are being quantized.
-As a result, a memory usage reduction of up to \( 8 \times \) is achieved for the parameters of networks
-trained on MNIST, CIFAR-10, and Imagenette. 
+As a result, we achieve a memory usage reduction of up to \( 8 \times \) is achieved for the model weights
+trained on MNIST, CIFAR-10, and Imagenette, a simplified ImageNet dataset. 
