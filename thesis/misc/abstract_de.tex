@@ -1,0 +1,38 @@
+\thispagestyle{empty}
+\vspace*{0.2cm}
+
+\begin{center}
+    \textbf{Zusammenfassung} \label{zusammenfassung}
+\end{center}
+
+\vspace*{0.2cm}
+
+\noindent 
+Machine Learning (ML) Modelle sind dafür bekannt,
+äußerst ressourcenintensiv zu sein.
+Da sie immer häufiger auf Endgeräten zum Einsatz kommen,
+wird die Notwendigkeit, Speicher- und Rechenaufwand zu verringern, zunehmend dringlich.
+Interessanterweise liefert die Redundanz,
+die maßgeblich zur Ineffizienz von Neuronalen Netzen beiträgt,
+zugleich auch den Ansatzpunkt, um genau diese Ineffizienz zu verringern.
+Eine Möglichkeit, die Redundanz von Neuronalen Netzen (NNs) auszunutzen,
+ist die Quantisierung –
+also die Annäherung ihrer Präzisionsdarstellungen an Varianten mit geringerer Bit-Breite. 
+Unter den verschiedenen Ansätzen der Quantisierung erweist sich
+\textit{Learned Quantization}, oder auch erlernte Quantisierung, 
+aufgrund des breiten Spektrums an Möglichkeiten,
+bei denen ML Modelle selbstständig optimale Quantisierungsstrategien erlernen können,
+als ein vielversprechendes Forschungsfeld mit Raum für neue Beiträge.
+In dieser Arbeit werden daher zwei Techniken der Learned Quantization vorgestellt,
+die eine effektive Modellkompression ermöglichen,
+ohne zu wesentlichen Einbußen bei der Genauigkeit zu führen. 
+Die erste Technik verwendet speziell angepasste Regularisierungsterme, 
+die die Ziele der Quantisierung direkt berücksichtigen. 
+Der zweite, neuartige Ansatz integriert eine einzigartige Berechnung des 
+Gradienten für den Skalierungsfaktor, 
+der den Gradienten der zu quantisierenden Parameter nutzt.
+Mit diesen Methoden lässt sich der Speicherbedarf für die Modellparameter
+– trainiert auf MNIST, CIFAR-10 und Imagenette
+(einer vereinfachten Version von ImageNet)
+– um das bis zu Achtfache reduzieren,
+ohne dass die Leistung maßgeblich beeinträchtigt wird.

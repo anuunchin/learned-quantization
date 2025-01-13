@@ -1,0 +1,46 @@
+\chapter{Introduction\label{cha:chapter1}}
+
+\hspace*{1em}Such is the life of a modern human being that not a single day passes 
+without a machine learning model toiling away in the background. 
+From unlocking one's phone with Face ID in the morning 
+to receiving a curated recommendation feed on Netflix in the evening — 
+all is ML — but at what cost?
+
+If we consider GPT-3 as an example \cite{DBLP:journals/corr/abs-2005-14165}, 
+its 175 billion parameters need a whopping 700 GB of storage in total —  
+4 bytes for each parameter represented in single-precision floating-point format (FP32).
+This costliness of modern ML models has increased interest in the research area
+of \textit{quantization of Neural Networks} (NNs) 
+which aims to reduce model size by developing methods 
+that directly or indirectly decrease the amount of memory 
+needed to store parameters numbering in the millions or billions. 
+Going back to the GPT-3 example, 
+by directly converting its FP32 parameters
+to 8-bit integers (INT8), we can reduce its storage requirement 
+from 700 to just 175 GB  — a \( 4 \times\) decrease. 
+
+Quantization, however, comes with its own trade-offs. 
+While it is claimed that quantization may improve a model's generalization abilities
+by introducing noise that acts as regularization \cite{courbariaux2015binaryconnect},
+it is still commonly expected to reduce accuracy. 
+To limit the impact of quantization, 
+a subfield known as \textit{learned quantization} has emerged, 
+focusing on developing schemes that allow models to learn their own quantization parameters
+during training, while preserving accuracy.
+
+Various approaches of learned quantization have already been proposed \cite{DBLP:conf/cvpr/JungSLSHKHC19, DBLP:conf/iclr/EsserMBAM20, DBLP:conf/eccv/ZhangYYH18, shuchang2016dorafenet}, 
+each employing unique quantization schemes, while overcoming the inherent issue of non-differentiability of rounding operations. 
+However, most of these methods rely on a predefined bit width, 
+including but not limited to binary quantization \cite{DBLP:conf/nips/HubaraCSEB16, rastegari2016xnor, courbariaux2015binaryconnect} 
+or an arbitrary user-defined bit width \cite{shuchang2016dorafenet}, 
+thereby lacking the ability to dynamically control the “intensity” of quantization during training.
+
+Therefore, in this thesis, we address this gap by contributing the following:
+\begin{itemize}
+    \item In \cref{subsec:learnedscalefactor}, we introduce a novel method that uses the gradient-to-parameter ratio to determine how much a parameter is adjusted relative to its value. With this ratio and a hyperparameter 
+    \( \lambda \) controlling quantization intensity, the model learns its quantizing scaling factors at various granularities.
+    \item We provide a modular framework in \cref{subsec:corelogicandstructure} that can be easily integrated into a wide range of applications and layers
+    with minimal adjustments, ensuring flexibility and usability.
+    \item We investigate a method for the model to learn its scaling factors through a regularization term that can be tuned via a hyperparameter, enabling further control over the “intensity” of quantization.
+\end{itemize}
+ 

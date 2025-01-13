@@ -1,0 +1,17 @@
+\chapter{Conclusions\label{cha:chapter6}}
+
+Bullet points:
+- not all layers react similarly to quantization. This gives room for experimenting with
+different thresholds for different Layers
+- combined scenarios are not tested 
+- could be tested on standard networks like ALexNet
+- The scale updates will potentially be improved by some kind of normalization/heuristics
+- Most literature argues that having an additional parameter to tune is based
+- The grad calculation may be considered a bit too much
+- In real life, if the model is hard to track, it will be hard to finetune
+
+- but this is, if not the first, then at least one of the first 
+approaches that is based on the gradient of the parameter
+- there's also a theory that the ratio |dy| / |paramter| converges for all parameters,
+so this is very valid
+- the nested logic is cool
