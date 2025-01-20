@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  20 JAN 2025 14:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.20)  20 JAN 2025 14:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1373,18 +1373,18 @@ Package pdftex.def Info: ./figures/custom_loss_term_integration.png  used on inp
 ]
 chapter 4.
 [23]
-<./figures/pareto-mnist-dense.png, id=395, 2770.35pt x 2029.5825pt>
+<./figures/pareto-mnist-dense.png, id=396, 2770.35pt x 2029.5825pt>
 File: ./figures/pareto-mnist-dense.png Graphic file (type png)
 <use ./figures/pareto-mnist-dense.png>
 Package pdftex.def Info: ./figures/pareto-mnist-dense.png  used on input line 118.
 (pdftex.def)             Requested size: 398.33858pt x 291.8199pt.
  [24]
-<./figures/quantization_results_1e-10_dense.png, id=405, 2796.4475pt x 1599.9775pt>
+<./figures/quantization_results_1e-10_dense.png, id=407, 2796.4475pt x 1599.9775pt>
 File: ./figures/quantization_results_1e-10_dense.png Graphic file (type png)
 <use ./figures/quantization_results_1e-10_dense.png>
 Package pdftex.def Info: ./figures/quantization_results_1e-10_dense.png  used on input line 134.
 (pdftex.def)             Requested size: 398.33858pt x 227.9015pt.
-<./figures/dense_nested_val_acc_loss.png, id=407, 2770.35pt x 1856.9375pt>
+<./figures/dense_nested_val_acc_loss.png, id=409, 2770.35pt x 1856.9375pt>
 File: ./figures/dense_nested_val_acc_loss.png Graphic file (type png)
 <use ./figures/dense_nested_val_acc_loss.png>
 Package pdftex.def Info: ./figures/dense_nested_val_acc_loss.png  used on input line 152.
@@ -1394,57 +1394,57 @@ Package pdftex.def Info: ./figures/dense_nested_val_acc_loss.png  used on input 
 LaTeX Warning: Text page 26 contains only floats.
 
 [26 <./figures/quantization_results_1e-10_dense.png> <./figures/dense_nested_val_acc_loss.png>]
-<./figures/dense_nested_val_acc_loss_pt.png, id=425, 2770.35pt x 1856.9375pt>
+<./figures/dense_nested_val_acc_loss_pt.png, id=427, 2770.35pt x 1856.9375pt>
 File: ./figures/dense_nested_val_acc_loss_pt.png Graphic file (type png)
 <use ./figures/dense_nested_val_acc_loss_pt.png>
 Package pdftex.def Info: ./figures/dense_nested_val_acc_loss_pt.png  used on input line 188.
 (pdftex.def)             Requested size: 398.33858pt x 266.99644pt.
-<./figures/pareto-cifar-conv.png, id=428, 2770.35pt x 1653.17625pt>
+<./figures/pareto-cifar-conv.png, id=430, 2770.35pt x 1653.17625pt>
 File: ./figures/pareto-cifar-conv.png Graphic file (type png)
 <use ./figures/pareto-cifar-conv.png>
 Package pdftex.def Info: ./figures/pareto-cifar-conv.png  used on input line 229.
 (pdftex.def)             Requested size: 398.33858pt x 237.69899pt.
-<./figures/quantization_results_1e-11_conv.png, id=430, 2770.35pt x 2048.65375pt>
+<./figures/quantization_results_1e-11_conv.png, id=432, 2770.35pt x 2048.65375pt>
 File: ./figures/quantization_results_1e-11_conv.png Graphic file (type png)
 <use ./figures/quantization_results_1e-11_conv.png>
 Package pdftex.def Info: ./figures/quantization_results_1e-11_conv.png  used on input line 240.
 (pdftex.def)             Requested size: 398.33858pt x 294.56203pt.
-<./figures/conv_nested_val_acc_loss.png, id=431, 2770.35pt x 1529.715pt>
+<./figures/conv_nested_val_acc_loss.png, id=433, 2770.35pt x 1529.715pt>
 File: ./figures/conv_nested_val_acc_loss.png Graphic file (type png)
 <use ./figures/conv_nested_val_acc_loss.png>
 Package pdftex.def Info: ./figures/conv_nested_val_acc_loss.png  used on input line 246.
 (pdftex.def)             Requested size: 398.33858pt x 219.94734pt.
  [27 <./figures/dense_nested_val_acc_loss_pt.png>]
-<./figures/conv_nested_val_acc_loss_pt.png, id=442, 2770.35pt x 1529.715pt>
+<./figures/conv_nested_val_acc_loss_pt.png, id=444, 2770.35pt x 1529.715pt>
 File: ./figures/conv_nested_val_acc_loss_pt.png Graphic file (type png)
 <use ./figures/conv_nested_val_acc_loss_pt.png>
 Package pdftex.def Info: ./figures/conv_nested_val_acc_loss_pt.png  used on input line 276.
 (pdftex.def)             Requested size: 398.33858pt x 219.94734pt.
  [28 <./figures/pareto-cifar-conv.png>] [29 <./figures/quantization_results_1e-11_conv.png>] [30 <./figures/conv_nested_val_acc_loss.png> <./figures/conv_nested_val_acc_loss_pt.png>]
-<./figures/Imagenette_nested.png, id=473, 2770.35pt x 1653.17625pt>
+<./figures/Imagenette_nested.png, id=475, 2770.35pt x 1653.17625pt>
 File: ./figures/Imagenette_nested.png Graphic file (type png)
 <use ./figures/Imagenette_nested.png>
 Package pdftex.def Info: ./figures/Imagenette_nested.png  used on input line 335.
 (pdftex.def)             Requested size: 398.33858pt x 237.69899pt.
  [31 <./figures/Imagenette_nested.png>]
-<./figures/mnist_loss.png, id=480, 2770.35pt x 2881.76625pt>
+<./figures/mnist_loss.png, id=482, 2770.35pt x 2881.76625pt>
 File: ./figures/mnist_loss.png Graphic file (type png)
 <use ./figures/mnist_loss.png>
 Package pdftex.def Info: ./figures/mnist_loss.png  used on input line 361.
 (pdftex.def)             Requested size: 398.33858pt x 414.34962pt.
  [32 <./figures/mnist_loss.png>]
-<./figures/quantization_results_1e-7_dense_loss.png, id=489, 2770.35pt x 1599.9775pt>
+<./figures/quantization_results_1e-7_dense_loss.png, id=491, 2770.35pt x 1599.9775pt>
 File: ./figures/quantization_results_1e-7_dense_loss.png Graphic file (type png)
 <use ./figures/quantization_results_1e-7_dense_loss.png>
 Package pdftex.def Info: ./figures/quantization_results_1e-7_dense_loss.png  used on input line 379.
 (pdftex.def)             Requested size: 398.33858pt x 230.04991pt.
-<./figures/mnist-loss-validation.png, id=490, 2770.35pt x 2943.99875pt>
+<./figures/mnist-loss-validation.png, id=492, 2770.35pt x 2943.99875pt>
 File: ./figures/mnist-loss-validation.png Graphic file (type png)
 <use ./figures/mnist-loss-validation.png>
 Package pdftex.def Info: ./figures/mnist-loss-validation.png  used on input line 386.
 (pdftex.def)             Requested size: 398.33858pt x 423.2976pt.
  [33 <./figures/quantization_results_1e-7_dense_loss.png>]
-<./figures/cifar_loss.png, id=508, 2770.35pt x 2246.3925pt>
+<./figures/cifar_loss.png, id=510, 2770.35pt x 2246.3925pt>
 File: ./figures/cifar_loss.png Graphic file (type png)
 <use ./figures/cifar_loss.png>
 Package pdftex.def Info: ./figures/cifar_loss.png  used on input line 432.
@@ -1453,12 +1453,12 @@ Package pdftex.def Info: ./figures/cifar_loss.png  used on input line 432.
 Underfull \vbox (badness 2384) has occurred while \output is active []
 
  [34 <./figures/mnist-loss-validation.png>]
-<./figures/cifar-loss-validation.png, id=517, 2770.35pt x 2319.66624pt>
+<./figures/cifar-loss-validation.png, id=519, 2770.35pt x 2319.66624pt>
 File: ./figures/cifar-loss-validation.png Graphic file (type png)
 <use ./figures/cifar-loss-validation.png>
 Package pdftex.def Info: ./figures/cifar-loss-validation.png  used on input line 446.
 (pdftex.def)             Requested size: 398.33858pt x 333.52907pt.
-<./figures/imagenette_loss.png, id=519, 2770.35pt x 2246.3925pt>
+<./figures/imagenette_loss.png, id=521, 2770.35pt x 2246.3925pt>
 File: ./figures/imagenette_loss.png Graphic file (type png)
 <use ./figures/imagenette_loss.png>
 Package pdftex.def Info: ./figures/imagenette_loss.png  used on input line 460.
@@ -1475,7 +1475,7 @@ Overfull \hbox (10.4491pt too wide) in paragraph at lines 486--503
 
 ]
 chapter 5.
-<./figures/related_work.png, id=543, 2169.10374pt x 522.95375pt>
+<./figures/related_work.png, id=545, 2169.10374pt x 522.95375pt>
 File: ./figures/related_work.png Graphic file (type png)
 <use ./figures/related_work.png>
 Package pdftex.def Info: ./figures/related_work.png  used on input line 6.
@@ -1535,9 +1535,9 @@ Here is how much of TeX's memory you used:
  1146 hyphenation exceptions out of 8191
  108i,20n,107p,10968b,2463s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\gunde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gunde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (59 pages, 9740289 bytes).
+Output written on thesis.pdf (59 pages, 9741342 bytes).
 PDF statistics:
- 1672 PDF objects out of 1728 (max. 8388607)
+ 1676 PDF objects out of 1728 (max. 8388607)
  171 named destinations out of 1000 (max. 500000)
  399 words of extra memory for PDF output out of 10000 (max. 10000000)
 
