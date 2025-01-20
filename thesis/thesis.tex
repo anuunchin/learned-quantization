@@ -34,6 +34,8 @@
 \usepackage{amsmath} % Ensure amsmath is included
 \usepackage{booktabs}
 \usepackage[capitalise, nameinlink]{cleveref}
+\usepackage{tablefootnote} % Add this in the preamble
+
 \crefname{Subsection}{subsection}{subsections}
 \Crefname{subsection}{Subsection}{Subsections}
 \crefname{figure}{Figure}{Figures}
@@ -56,9 +58,12 @@
     \addcontentsline{toc}{chapter}{Abstract} 
     \thispagestyle{empty}
     \cleardoublepage
+
+
+    
     
     \include{./misc/abstract_de}
-    \addcontentsline{toc}{chapter}{Abstract (German)} 
+    \addcontentsline{toc}{chapter}{Zusammenfassung} 
     \thispagestyle{empty}
     
     

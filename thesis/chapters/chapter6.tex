@@ -1,17 +1,53 @@
-\chapter{Conclusions\label{cha:chapter6}}
+\chapter{Conclusions}
+\label{cha:chapter6}
 
-Bullet points:
-- not all layers react similarly to quantization. This gives room for experimenting with
-different thresholds for different Layers
-- combined scenarios are not tested 
-- could be tested on standard networks like ALexNet
-- The scale updates will potentially be improved by some kind of normalization/heuristics
-- Most literature argues that having an additional parameter to tune is based
-- The grad calculation may be considered a bit too much
-- In real life, if the model is hard to track, it will be hard to finetune
+\hspace*{1em}In this thesis, we propose two methods that revolve around 
+making ML models learn scale factors to achieve quantization of adjustable intensity. \
+In the first approach, 
+we introduce a nested quantization layer — one that updates its scale factors through a threshold-based gradient logic. \
+Only parameters deemed \textit{non-sensitive} contribute to the decision of whether coarser quantization should be pursued. \
+In the second approach, scale factor updates come from custom loss terms —  
+MaxBin, Inverse, and Difference — 
+each employing distinct logic to guide quantization intensity through a penalty rate. \
 
-- but this is, if not the first, then at least one of the first 
-approaches that is based on the gradient of the parameter
-- there's also a theory that the ratio |dy| / |paramter| converges for all parameters,
-so this is very valid
-- the nested logic is cool
+Our experiments demonstrate that the nested quantization layer approach
+achieves compression rates of up to \( 8 \times \) on the MNIST dataset, and around
+\( 6 \times \) on CIFAR-10 and Imagenette, with minimal accuracy degradation.
+The optimal penalty threshold was  \( \lambda = 1e-10 \) 
+for the MNIST model (where dense layers were quantized),
+and \( \lambda = 1e-11 \) 
+for CIFAR-10 and Imagenette (where convolutional layers were quantized).
+Interestingly, for the MNIST dataset, the added noise from quantization appeared to improve model confidence, 
+as evidenced by a lower validation loss relative to the baseline.
+
+
+Regarding the custom loss terms, they yield compression rates of up to \( 10 \times \) or more.
+On MNIST and CIFAR-10, the Difference penalty provided the best results — using row-wise granularity in MNIST and channel-wise granularity in CIFAR-10.
+By contrast, on Imagenette, all custom loss terms behaved similarly due to the learning-rate configuration for that model. 
+Notably, our post-training quantization-aware training  —  as we put it — resulted in a significant accuracy improvement for Imagenette, 
+while yielding performance comparable to the from-scratch quantization scenarios on MNIST and CIFAR-10.
+
+There remains significant room for further exploration, \
+especially in extending experiments 
+to scenarios where both dense and convolutional layers are quantized simultaneously. \
+This could involve employing different penalty thresholds or penalty rates for individual layers. \
+Another valid direction would be testing the proposed methods on established architectures such as AlexNet. \
+While the nested quantization layer takes parameter sensitivity into account, \
+introducing adjustments based on layer-wide sensitivity would be logical — as widely argued in the literature, \
+not all layers respond equally to quantization. \
+For instance, first and last layers are often left in full precision. \
+
+We acknowlegde that the custom methods introduced in this work add complexity, \
+as they require additional computations. 
+Moreover, in real-world scenarios, tracking the progression of quantization is difficult for large models — a disadvantage that cannot be ignored when adjusting the intensity of the penalty threshold or rate. \
+
+Given the limits of the current methods, 
+future work should focus on improving these methods further while focusing on the theoretical aspect, 
+instead of largely relying on experiments. 
+Such a shift in focus means clearly defining the optimization problem and proving it can work in theory
+by providing a rigorous algorithmic solution.
+
+Nevertheless, our proposed methods are, if not the first, then among the earliest to employ a nested logic — \
+a quantization layer that is called within a standard layer. \
+The threshold-based gradient method also presents itself as a rather novel apporach, 
+taking an alternative direction by focusing on gradient manipulation directly.

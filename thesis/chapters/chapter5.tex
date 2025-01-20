@@ -4,7 +4,7 @@
 \begin{figure}[b!]
     \centering
     \includegraphics[width=14cm]{related_work.png}
-    \caption{ Learned quantization in a broader context.}
+    \caption{ Learned quantization in a broad context.}
     \label{fig:related_work}
   \end{figure}
   
@@ -26,12 +26,20 @@ This characteristic makes it inherently data-driven.
 Thus, we regard learned quantization as a distinct subcategory within data-driven quantization approaches.
 
 \textbf{PTQ vs. QAT.}
-PTQ \cite{DBLP:conf/icmcs/ZhuZL18} can fall into either the data-free or data-driven category, depending on the parameters being quantized. 
-If it’s just weights, it’s data-free since weights can be quantized without relying on input data. 
-However, if activations are included, it’s data-driven because activation quantization needs input data for calibration. 
-Since PTQ doesn’t involve training on the full dataset, it’s distinct from learned quantization.
-QAT, on the other hand, does involve full training, where the model adapts to the quantization strategy. 
-This makes it part of learned quantization, which may also involve learning the quantization parameters themselves as part of the process.
+Although PTQ and QAT are often presented as contrasting approaches in the literature, 
+they differ fundamentally in their nature.
+PTQ refers to a collection of techniques applied after a model has been trained to quantize its parameters, 
+whereas QAT is a specific training process 
+where the model is trained while incorporating quantization 
+constraints throughout the training phase.
+Thus, we classify QAT as part of learned quantization, 
+while PTQ is considered a distinct approach, 
+situated between data-free and data-driven quantization methods, 
+as PTQ \cite{DBLP:conf/icmcs/ZhuZL18} can fall into either category depending on the parameters being quantized.
+When only weights are quantized, the process is data-free, 
+as weights can be quantized without relying on input data. 
+When activations are included, the process becomes data-driven,
+since activation quantization requires input data for calibration.
 
 \textbf{Static vs. Dynamic Quantization.} 
 Static quantization is an offline method that quantizes weights and activations before inference, 
@@ -54,26 +62,28 @@ while the second group aims to learn or effectively determine the lowest feasibl
 This distinction is not widely discussed in the literature, 
 but we view it as a recognizable pattern. 
 For example, LQ-Nets \cite{DBLP:conf/eccv/ZhangYYH18} compute binary encodings of model parameters using a predefined bit size, 
-whereas LSQ \cite{DBLP:conf/iclr/EsserMBAM20} learns step sizes in a way that can adaptively reduce bit width requirements.
+whereas LSQ \cite{DBLP:conf/iclr/EsserMBAM20} learns step sizes in a way that can adaptively reduce bit-width requirements.
 
 \textbf{Quantization Target.} NNs offer multiple opportunities for applying quantization.
-While some learned quantization approaches focus exclusively on model weights \cite{polino2018modelcompression} \cite{ott2016rnn} \cite{courbariaux2015binaryconnect} \cite{DBLP:journals/pnas/EsserMACAABMMBN16},
-others extend this to include activations \cite{krishnamoorthi2018quantizing} \cite{hubara2016qnn} \cite{rastegari2016xnor} \cite{Edouard2022SPIQ} \cite{DBLP:conf/eccv/ZhangYYH18}
-and even gradients \cite{DBLP:journals/corr/LinCMB15} \cite{DBLP:conf/icml/Zhang0KALZ17}. As notable examples,
-DoReFa-Net \cite{shuchang2016dorafenet} quantizes all three with arbitraty bitwidths, 
+While some learned quantization approaches focus exclusively on model weights \cite{polino2018modelcompression, ott2016rnn, courbariaux2015binaryconnect, DBLP:journals/pnas/EsserMACAABMMBN16},
+others extend the target to include activations \cite{krishnamoorthi2018quantizing,hubara2016qnn,rastegari2016xnor,Edouard2022SPIQ,DBLP:conf/eccv/ZhangYYH18}
+and even gradients \cite{DBLP:journals/corr/LinCMB15,DBLP:conf/icml/Zhang0KALZ17}. As notable examples,
+DoReFa-Net \cite{shuchang2016dorafenet} quantizes all three with arbitrary bit widths, 
 whereas Quantized Neural Networks \cite{hubara2016qnn} constrain weights and activations to either 
 \( -1 \) or \( +1 \), and quantize gradients to \( 6 \) bits.
 
 \textbf{Quantization Precision.}
 The target lower bit precision, and whether it is adjustable, 
 varies between methods — ranging from rigid constraints to only a few values, 
-to the flexibility of setting the desired bitwidth. 
+to the flexibility of setting the desired bit width. 
 For instance, BinaryNet \cite{DBLP:conf/nips/HubaraCSEB16} and XNOR-Net \cite{rastegari2016xnor} 
 represent extreme cases of quantization, 
 where weights and activations are binarized. 
 Ternary Weight Networks \cite{DBLP:conf/icassp/LiuLWZY23} take a slightly less aggressive approach 
 by quantizing weights to \( -1, 0, 1 \). 
 In contrast, DoReFa-Net \cite{shuchang2016dorafenet} allows the target bit size to be defined.
+We note that this classification represents a subset of fixed-bit quantization methods, 
+where the target precision is predefined and does not adapt during training.
 
 \textbf{Quantization Granularity.} 
 Learned quantization methods differ in how granularly the quantization is applied, 
@@ -89,10 +99,25 @@ For example, Deep Compression \cite{han2016deepcompression} combines quantizatio
 Polino et al. \cite{polino2018modelcompression} and Wei et al. \cite{DBLP:conf/eccv/WeiPQOY18} 
 jointly leverage quantization and knowledge distillation.
 
-To summarize, the landscape of learned quantization is as diverse as it gets.
-While the classifications outlined in this chapter are by no means exhaustive, 
-they represent those we find most apparent and distinguishable.
-Together with \cref{cha:chapter2}, 
-this chapter aims to provide a broader pitcture of learned quantization. 
-Building on this picture,
-we will reflect on the contributions of this thesis and outline potential directions for future research in the conclusion.
+Within the above classifications, our proposed method falls under fixed-bit quantization, 
+unless the resulting integer values are further compressed to lower bit widths based on their range. 
+Our methods address both weight and bias quantization, 
+though bias quantization is relatively uncommon due to the typically small size of bias vectors. 
+Additionally, the methods incorporate varying granularities for applying scaling factors.
+
+While not directly integrated with other techniques, 
+it is worth noting that learned sparsification methods, 
+such as DeepHoyer \cite{DBLP:conf/iclr/YangWL20}, 
+share similarities with our custom loss term approach. 
+Specifically, both employ differentiable loss terms to achieve a structural property —
+sparsification in the case of DeepHoyer and quantization in our work.
+
+Our gradient-based nested quantization layer is distinct in that 
+it uses a controllable hyperparameter and utilizes 
+the gradients of the parameters to be quantized 
+to calculate updates for the scale factors. 
+Conceptually, this approach takes a "look from within" — unlike most methods, 
+which focus on designing or approximating differentiable 
+forward-pass operations for quantization, 
+we shift the focus to modifying the back-propagation, 
+a less common approach to incorporating quantization logic.

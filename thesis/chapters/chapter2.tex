@@ -1,13 +1,13 @@
 \chapter{Background\label{cha:chapter2}}
 
-\hspace*{1em}This chapter addresses the theoretical and contextual background 
+\hspace*{1em}This chapter provides the theoretical and contextual background 
 necessary to understand the key concepts and methodologies 
 that form the foundation of this thesis.
-The first \cref{sec:deeplearning} introduces the fundamentals of deep NNs,
+The first section introduces the fundamentals of deep NNs,
 which serve as a basis for the discussion.
-The next \cref{sec:basicsofquantization} broadens the perspective by exploring
+The next section broadens the perspective by exploring
 the concept of quantization,
-followed by a final \cref{sec:learnedquantization} that explains common techniques of \textit{learned quantization},
+followed by the final section that explains common techniques of \textit{learned quantization},
 as well as the trade-offs and challenges they present.
 
 % ------------------------------------------------------------
@@ -17,18 +17,18 @@ as well as the trade-offs and challenges they present.
 \label{sec:deeplearning}
 \hspace*{1em}This section introduces the fundamental concepts of deep learning, 
 beginning with the most basic NN architecture components in \cref{subsec:denseconvolutional} and progressing to loss functions with regularization in \cref{subsec:lossregularization}. 
-The concepts of the forward pass and backpropagation will be explained in the last \cref{subsec:forwardback}.
+The concepts of the forward-pass and back-propagation will be explained in the last \cref{subsec:forwardback}.
 
 % -------------------- denseconvolutional --------------------
 \subsection{Dense and Convolutional Layers}
 \label{subsec:denseconvolutional}
-\hspace*{1em}NNs can be considered a mathematical abstraction of the human decision-making process. 
-Consider a scenario where, given an image, you need to say aloud what you see. 
-The two eyes can be regarded as input nodes that receive the initial data, 
-the brain can be seen as a set of \textit{hidden layers} that process this data, 
-and your mouth — the output node that provides the final answer.
-
-A hidden layer, which typically consists of many neurons, is where the magic
+\hspace*{1em}
+NNs can be considered a mathematical abstraction 
+inspired by the structure and function of biological neural systems. 
+At their core, they process inputs, transform them through intermediate or \textit{hidden layers} of computation, 
+and produce outputs.
+These hidden layers, which typically consist of interconnected
+neurons, are where the magic
  — or the transformation of data — happens. In its simplest form, 
  within the classic \textit{Multilayer Perceptron} (MLP) model,
  each hidden layer neuron performs a weighted operation:
@@ -49,46 +49,42 @@ Hidden layers where each neuron is connected to every neuron in the previous lay
 and every neuron in the next layer are called \textit{dense layers}.
 The \textit{weight matrix} (\( W\)), which combines the weight vectors of all neurons in a dense layer,
 grows linearly with each added neuron or input node, 
-embodying the interconnectedness of such layers. 
+embodying the interconnectedness of such layers
  
 \begin{figure}[t!]
   \centering
   \includegraphics[width=14cm]{dense_layer}
-  \caption{An example of a NN with two hidden dense layers, showing the connections between neurons in adjacent layers.}
+  \caption{An example of an NN with two hidden dense layers, showing the connections between neurons in adjacent layers.}
   \label{fig:dense_layer}
 \end{figure}
 
-This interconnectedness introduces the inherent redundancy, 
-or the over-parameter\-izedness of NNs \cite{gholami2021survey}. It is particularly true in models with a large number of neurons, 
+This interconnected structure introduces the inherent redundancy, or — in other words — the over-parameterization of NNs \cite{gholami2021survey}.
+It is particularly true in models with a large number of neurons, 
 where \( W \) results in a vast number of parameters, which do not contribute to the model accuracy equally \cite{hubara2016qnn}.
 
-\textit{Convolutional layers} are another type of hidden layers 
-that involve a \textit{convolution} operation on the input. Intuitively, a standard convolution is 
-a process of sliding a small grid, or \textit{kernel}, over an input to find patterns. \cref{fig:convolution}, for example, shows 
-the application of the Sobel kernel that detects edges on the input image.
-
-\begin{figure}[t!]
+\begin{figure}[b!]
   \centering
   \includegraphics[width=14cm]{convolution}
   \caption{A 3×3 kernel sliding over a padded input matrix to compute the output feature map.}
   \label{fig:convolution}
 \end{figure}
 
+\textit{Convolutional layers} are another type of hidden layers 
+that involve a \textit{convolution} operation on the input. Intuitively, a standard convolution is 
+a process of sliding a small grid, or \textit{kernel}, over an input to find patterns. \cref{fig:convolution}, for example, shows 
+the application of the Sobel kernel that detects edges on the input image.
 For multi-channeled inputs, like RGB images, the convolution operation uses a multi-channeled kernel, as shown in \cref{fig:convolution_multiple_channels}, 
 producing a single-channeled feature map that combines weighted contributions from all input channels. 
 A convolutional layer includes multiple such kernels, generating feature maps equal to the number of kernels.
 After the convolution operation generates the feature maps, a bias term is added to each map, 
-and the activation function is applied element-wise — just like in dense layers.
-
-\begin{figure}[h!]
+and the activation function is applied element-wise.
+\begin{figure}[b!]
   \centering
   \includegraphics[width=14cm]{convolution_multiple_channels.png}
-  \caption{A 3×3x3 kernel (filter) sliding over an RGB input matrix to produce a single-channeled output feature map.}
+  \caption{A 3×3×3 kernel (filter) sliding over an RGB input matrix to produce a single-channeled output feature map.}
   \label{fig:convolution_multiple_channels}
 \end{figure}
-
 Mathematically, a convolutional layer can be represented as:
-
 \[
 y_{i,j,k} = f \left( \sum_{m=1}^c \sum_{p=1}^h \sum_{q=1}^w x_{i+p-1, j+q-1, m} \cdot w_{p,q,m,k} + b_k \right)
 \]
@@ -98,7 +94,7 @@ y_{i,j,k} = f \left( \sum_{m=1}^c \sum_{p=1}^h \sum_{q=1}^w x_{i+p-1, j+q-1, m} 
   \item \( c \) is the number of input channels.
   \item \( y_{i,j,k} \) denotes the output at position \((i, j)\) for the \(k\)-th filter.
   \item \( x_{i+p-1, j+q-1, m} \) is the input at position \((i+p-1, j+q-1)\) for the \(m\)-th input channel.
-  \item \( w_{p,q,m,k} \) represents the weight of the filter at position \((p, q)\) for the \(m\)-th input channel and \(k\)-th filter.
+  \item \( w_{p,q,m,k} \) is the weight of the \(k\)-th filter at \((p, q)\) for input channel \(m\).
   \item \( b_k \) is the bias for the \(k\)-th filter.
   \item \( f(\cdot): \mathbb{R} \to \mathbb{R} \) is the activation function.
 \end{itemize}
@@ -111,17 +107,18 @@ and repeats this for all positions \((i, j)\) and filters \((k)\).
 Although convolutional layers often have fewer weight parameters than dense layers in typical architectures, 
 they still contain redundancies \cite{huang2017densely}, presenting an opportunity for quantization. 
 Together, dense and convolutional layers form the building blocks of convolutional neural networks (CNNs), 
-the core of breakthroughs in computer vision \cite{DBLP:journals/nature/LeCunBH15} \cite{DBLP:conf/nips/KrizhevskySH12} \cite{DBLP:conf/cvpr/SzegedyLJSRAEVR15}.
+the core of breakthroughs in computer vision \cite{DBLP:journals/nature/LeCunBH15, DBLP:conf/nips/KrizhevskySH12, DBLP:conf/cvpr/SzegedyLJSRAEVR15}.
 Thus, both dense and convolutional layers will be the focus of this work.
 
 % -------------------- lossregularization --------------------
+
 
 \subsection{Loss Functions and Regularization}
 \label{subsec:lossregularization}
 \hspace*{1em}The weights and biases of NN layers are usually \textit{learnable parameters}
 that the model adjusts during \textit{training}.
 The training process of NNs is similar to how our brains learn from mistakes. 
-Given the ground truth, a NN adjusts its learnable parameters 
+Given the ground truth, an NN adjusts its learnable parameters 
 using a specific function that compares the ground truth with the output generated by the network, 
 essentially measuring the magnitude of the network's errors.
 
@@ -133,18 +130,16 @@ which measures the difference between the predicted class probabilities and the 
 The loss function alone cannot ensure a neural network generalizes well to unseen data, 
 as it focuses solely on minimizing error on the training set,
 which can lead to overfitting or a failure to capture the desired generalization properties.
-To mitigate overfitting and promote generalization,
+To mitigate overfitting,
 a \textit{regularization term} is added to the loss function
 to penalize unwanted behaviors.
 
 A typical regularization term is \( L_2 \), 
 which penalizes large weights by adding the sum of the squared weights to the loss. 
 The modified loss function is then expressed as:
-
 \[
 \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}} + \lambda \sum_{i} w_i^2
 \]
-
 \begin{itemize}
   \item \( \mathcal{L}_{\text{task}} \) is the original task-specific loss function (in our case, the SCCE loss function).
   \item \( \lambda \) is a scalar parameter that controls the strength of the regularization.
@@ -161,32 +156,27 @@ that encourage quantization that we will discuss in detail in \cref{sec:customlo
 \subsection{Forward-Pass and Back-Propagation}
 \label{subsec:forwardback}
 \hspace*{1em} The repetition of the mathematical operations described earlier in \cref{subsec:denseconvolutional} 
-during model training constitutes the \textit{forward pass}. 
-It is the process where input data is passed through the network layer by layer, 
+during model training constitutes the \textit{forward pass}, 
+the process where input data is passed through the network layer by layer, 
 with each layer applying its learned weights and biases to produce a final output. 
 This output is then compared with the ground truth by the loss function that produces an error
 as explained in \cref{subsec:lossregularization}.
-The error is then used to update the learnable parameters in \textit{W} and \textit{b} during a process called \textit{back-propagation}.
-
+The error is then used to update the parameters in \textit{W} and \textit{b} during a process called \textit{back-propagation}.
 In other words, back-propagation is the method by which the network adjusts its parameters to minimize the error. 
-It calculates the gradient of the loss function with respect to each parameter using the chain rule. 
+This method calculates the gradient of the loss function with respect to each parameter using the chain rule. 
 \( W \) and \( b \) are updated as follows:
-
 \[
 W = W - \eta \frac{\partial L}{\partial W}, \quad b = b - \eta \frac{\partial L}{\partial b}
 \]
-
 where \( L \) is the loss function, and \( \eta \) is the learning rate.
 
 For example, consider the weight \( w_{1,1} \) represented as the line between \( x_1 \)
  and the hidden layer node \( {a_1}^{(1)} \) in \cref{fig:dense_layer}. 
 The gradient of this weight with respect to the loss is calculated using the chain rule,
 as shown below:
-
 \[
 \frac{\partial L}{\partial w_{1,1}} = \frac{\partial L}{\partial o_1} \cdot \frac{\partial o_1}{\partial {a_1}^{(1)}} \cdot \frac{\partial {a_1}^{(1)}}{\partial w_{1,1}}
 \]
-
 \begin{itemize}
     \item \( \frac{\partial L}{\partial o_1} \) is the gradient of the loss with respect to \( o_1 \).
     \item \( \frac{\partial o_1}{\partial {a_1}^{(1)}} \) is the gradient of \( o_1 \) with respect to the output of \( {a_1}^{(1)} \).
@@ -202,7 +192,8 @@ This issue, along with its solution, will be detailed in \cref{sec:learnedquanti
 
 \section{Basics of Quantization}
 \label{sec:basicsofquantization}
-\hspace*{1em}This section aims to answer the \textit{why} question with respect to quantization and further provides a broader understanding of the term regarding its types.
+\hspace*{1em}This section aims to motivate the use of quantization  
+and further provides a broader understanding of the term regarding its types.
 
 % -------------------- purpose and definition --------------------
 
@@ -220,13 +211,15 @@ Aside from the environmental considerations, the mere need to reduce
 the computational cost and speed of predictive models
 comes as an apparent business requirement. 
 This requirement is essential when — quite ironically — embedded systems, famous for their compactness, meet 
-ML models, infamous for their complexity. Microcontrollers, for instance, 
+ML models, recognized for their complexity. Microcontrollers, for instance, 
 usually are not able to perform floating-point operations, which must therefore be emulated in software, 
-introducing significant overhead. This is why quantization, the process which reduces the memory footprint of a model,
+introducing significant overhead. 
+For this reason, quantization,
+the process which reduces the memory footprint of a model,
 is also extensively covered in the realm of embedded systems that 
-inherently prefer integer arithmetic, as well as bitwise operations \cite{rastegari2016xnor} \cite{DBLP:conf/eccv/ZhangYYH18} \cite{DBLP:conf/codit/KhalifaM24}\cite{DBLP:journals/corr/abs-2105-13331}.
+inherently prefer integer arithmetic, as well as bitwise operations \cite{rastegari2016xnor, DBLP:conf/eccv/ZhangYYH18, DBLP:conf/codit/KhalifaM24, DBLP:journals/corr/abs-2105-13331}.
 
-Another motivation for quantization — although somewhat controversial — is the fact that reducing the bit-width of
+Another motivation for quantization — although somewhat controversial — is the fact that reducing the bit width of
 ML models makes them robust to adversial attacks in certain cases \cite{DBLP:journals/corr/abs-2404-05639}.
 This holds significant value in fields, such as autonomous driving,
 where model vulnerability may result in fatal outcomes.
@@ -234,12 +227,12 @@ Interestingly enough, the use cases where such robustness is required also deman
 as they rely on real-time predictions. Consider healthcare diagnostics needed for emergency scenarios 
 or military defense mechanisms designed for immediate action.
 
-The list of reasons why quantization is useful may go on for a while, but regardless of the motivation,
+The reasons for employing quantization are numeruous and varied, but regardless of the motivation,
 the essence of the term itself — rooted in the early 20th century — remains unchanged:
 quantization refers to the division of a quantity into a discrete number
 of small parts \cite{gray1998quantization}. With regard to ML models, 
-it describes the process of dividing higher bit-width numbers into a discrete number of lower bit-width representations
-without causing significant degradation in performance \cite{gholami2021survey}.
+quantization describes the process of dividing higher bit-width numbers into a discrete number of lower bit-width representations
+without causing significant degradation in accuracy \cite{gholami2021survey}.
 
 Since ML models are generally considered redundant or over-parameterized,
 there are multiple points where quantization can be applied.
@@ -263,23 +256,22 @@ involves converting already trained parameters from FP32 to a lower bit-width fo
 without using the initial training data. 
 One approach is to apply \textit{uniform quantization} that maps real values to a set number
 of \textit{bins}. The formula can be written as:
-
 \[
 Q(r) = \left\lfloor \frac{r}{S} \right\rfloor
 \]
 
+\newpage
 \begin{itemize}
     \item $Q(\cdot)$ denotes the quantization operation.
     \item $r$ is the real value of a given model parameter in higher bit-width representation.
     \item $S$ is a scaling factor.
 \end{itemize}
-
 As a result, we end up with values that can directly be cast to a lower bit-width representation,
 forming a discrete set of bins instead of an almost continuous range of real numbers,
 as shown in \cref{fig:quantizing_example}.
-\begin{figure}[t!]
+\begin{figure}[b!]
   \centering
-  \includegraphics[width=15cm]{quantizing_example.png}
+  \includegraphics[width=14cm]{quantizing_example.png}
   \caption{Uniform quantization of an arbitrary weight matrix.}
   \label{fig:quantizing_example}
 \end{figure}
@@ -293,7 +285,6 @@ under the given constraints. Finally, the quantized model is fine-tuned using th
 
 A basic example of data-driven quantization is min-max quantization on input data, as shown in Figure \ref{fig:min_max_quantization},
 using the formula for 8-bit quantization:
-
 \[
 Q_{\textit{MinMax}}(x) = \left\lfloor \frac{x - \min(X)}{s} \right\rfloor, \quad
 \text{where} \quad s = \frac{\max(X) - \min(X)}{2^8 - 1}
@@ -304,7 +295,7 @@ default techniques in popular ML frameworks like Tensorflow and PyTorch.
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=15cm]{min_max_quantization.png}
+  \includegraphics[width=14cm]{min_max_quantization.png}
   \caption{ Min-max quantization of input data to 8 bits, followed by matrix multiplication with the quantized weight matrix.}
   \label{fig:min_max_quantization}
 \end{figure}
@@ -334,7 +325,7 @@ while also exploring a few additional applications.
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=15cm]{granularity-conv2d.png}
+  \includegraphics[width=14cm]{granularity-conv2d.png}
   \caption{Various applications of scaling factors, ranging from a single scalar applied to the entire kernel (1) to separate scalars assigned to spatial dimensions (e.g., 1, 2), channels (4), filters (9), and other granular configurations.}
   \label{fig:granularity-conv2d}
 \end{figure}
@@ -356,11 +347,13 @@ including its challenges, trade-offs, and the popular techniques used to overcom
 \subsection{Trade-offs and Challenges}
 \label{subsec:subsection1}
 \hspace*{1em}The inherent — or rather the widely accepted — characteristic of quantization is
-that it negatively influences performance. 
-This is referred to as the trade-off between quantization and generalization, 
-which reflects the question of how much accuracy we are willing to sacrifice to gain a reduction in computational cost, memory usage, or inference time.
-However, the truth is that we usually cannot afford sacrificing anything.  This, coupled with the lack of a guarantee
- that pre-defined quantizers can yield optimal results \cite{DBLP:conf/eccv/ZhangYYH18} \cite{DBLP:conf/iclr/EsserMBAM20}, 
+that it negatively influences accuracy. 
+The trade-off between quantization and generalization 
+refers to the balance of how much accuracy we are willing to sacrifice
+ to gain a reduction in computational cost, memory usage, or inference time.
+However, the truth is that we usually cannot afford sacrificing anything. 
+This challenge, coupled with the lack of a guarantee
+ that predefined quantizers can yield optimal results \cite{DBLP:conf/eccv/ZhangYYH18, DBLP:conf/iclr/EsserMBAM20}, 
  has paved the way for the burgeoning field of learned quantization,
  which aims to \textit{learn} how to quantize the model in a manner that mitigates performance loss.
 
@@ -372,23 +365,19 @@ Thus, it is important to strike a balance between learning optimal quantization 
 
 The main issue in achieving this simplicity is posed by the fact that discretization, in its essence, is non-differentiable
  — meaning it is challenging to integrate any kind of discretizing operations into gradient-based optimization methods, 
- upon which ML models rely. Using the chain rule back-propagation example from \cref{subsec:forwardback}, let's
+ upon which ML models rely. Using the chain rule back-propagation example from \cref{subsec:forwardback}, let us
 consider a simple flooring operation introduced into the process to better understand the problem.
-
-Suppose we want to quantize activations and apply \( \lfloor \cdot \rfloor \) to hidden layer outputs:
-
+Suppose we quantize activations and apply \( \lfloor \cdot \rfloor \) to hidden layer outputs:
 \[
   {a_{1,q}}^{(1)} =  \lfloor {a_1}^{(1)} \rfloor
   \]
-
 As a result, the chain rule becomes:
  \[
   \frac{\partial L}{\partial w_{1,1}} =  \frac{\partial L}{\partial {a_{1,q}}^{(1)}} 
   \cdot \frac{\partial {a_{1,q}}^{(1)}}{\partial {a_1}^{(1)}} 
   \cdot \frac{\partial {a_1}^{(1)}}{\partial w_{1,1}}
   \]
-
-  where \( \frac{\partial {a_{1,q}}^{(1)}}{\partial {a_1}^{(1)}} \) presents a challenge. 
+where \( \frac{\partial {a_{1,q}}^{(1)}}{\partial {a_1}^{(1)}} \) presents a challenge. 
   Since \(  {a_{1,q}}^{(1)} =  \lfloor {a_1}^{(1)} \rfloor \), the derivative is: 
             \[
             \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}} =
@@ -399,7 +388,7 @@ As a result, the chain rule becomes:
             \]
 
 This means that for most values of \( {a_1}^{(1)} \), which are non-integer, the gradient becomes $0$, resulting in 
-  $w_{1,1}$ not receiving any updates. For integer values of \( {a_1}^{(1)} \), the backpropagation process fails altogether.
+  $w_{1,1}$ not receiving any updates. For integer values of \( {a_1}^{(1)} \), the back-propagation process fails altogether.
 
 In essence, circumventing the issue of non-differentiability is the fundamental problem that learned quantization aims to solve,
 all while managing the aforementioned trade-offs to produce a model that is compact, not overly complex to train,
@@ -411,11 +400,11 @@ and highly performant.
 \label{subsec:commonlearnedquantizationmethods}
 
 \hspace*{1em}The most common method to address the issue of non-differentibility is to approximate the gradient of quantization operators
-using the Straight-Through Estimator (STE) \cite{bengio2013estimating} \cite{fan2021training} \cite{DBLP:conf/eccv/ZhangYYH18}. This workaround applies the quantizion operation as is 
+using the Straight-Through Estimator (STE) \cite{bengio2013estimating, fan2021training, DBLP:conf/eccv/ZhangYYH18}. 
+This workaround applies the quantization operation \textit{as is} 
 during the forward-pass, but replaces the gradient of the piece-wise discontinuous function 
 with that of a continuous identity function. Returning to the example from the previous subsection,
 if we apply the STE to the problematic gradient, instead of:
-
 \[
   \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}} =
   \begin{cases} 
@@ -423,14 +412,11 @@ if we apply the STE to the problematic gradient, instead of:
       \text{undefined} & \text{if } a_{1}^{(1)} \in \mathbb{Z}.
   \end{cases}
   \]
-
 we approximate it as: 
-
 \[
   \frac{\partial a_{1,q}^{(1)}}{\partial a_{1}^{(1)}}  \approx 1
   \]
-
-This enables gradient flow, allowing model parameters to receive updates
+This approximation enables gradient flow, allowing model parameters to receive updates
 without being hindered by the non-differentiability of the quantization step.
 
 The STE — and other estimators \cite{DBLP:journals/jstsp/Chen0ZHY20} —  are the cornerstone of quantization-aware training (QAT) \cite{jacob2018quantization},
@@ -447,21 +433,21 @@ with piecewise differentiable operations and relies on STE for gradient updates 
 Similarly, the learned step size quantization (LSQ) approach \cite{DBLP:conf/iclr/EsserMBAM20} 
 defines a single trainable quantization parameter (step size) with an explicit gradient formula and also uses STE for standard parameter updates.
 LQ-Nets \cite{DBLP:conf/eccv/ZhangYYH18} depend on STE too, but  —  unlike the two previous techniques — 
-directly incroporate a quantization error minimazation algorithm to calculate binary encodings and the associated bases of
+directly incorporate a quantization error minimization algorithm to calculate binary encodings and the associated bases of
 model parameters given a predefined bit size. 
 
 Another way to achieve learned quantization is through the use of a regularization term. 
 Such regularization terms are often periodic functions, 
-such as sinusoidal functions \cite{DBLP:journals/corr/abs-1811-09862} \cite{DBLP:journals/corr/abs-1905-01416}, 
+such as sinusoidal functions \cite{DBLP:journals/corr/abs-1811-09862,DBLP:journals/corr/abs-1905-01416}, 
 which pull model parameters toward the nearest step — or quantization bin.
 A notable example is WaveQ \cite{DBLP:journals/corr/abs-2003-00146},
 which combines a sine regularizer with an additional term that encourages lower bit widths
-without predefined bit constraints. A more straightworfward regularizer is
+without predefined bit constraints. A more straight-forward regularizer is
 the Mean Squared Quantization Error \cite{DBLP:journals/access/ChoiEL20}
 that directly minimizes the difference between the high-precision parameters
-and their quantized coutnerparts.
+and their quantized counterparts.
 
-In this thesis, we will utilize the STE but introduce a custom gradient calculation for the scale factor gradients
+In this thesis, we will utilize STE but introduce a custom gradient calculation for the scale factor gradients
 based on a specific type of gradient sensitivity in the model parameters.
 Additionally, we will explore custom loss regularization terms that encourage quantization
 and systematically compare them across different datasets.
