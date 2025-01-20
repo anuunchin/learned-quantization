@@ -156,7 +156,7 @@ that encourage quantization that we will discuss in detail in \cref{sec:customlo
 \subsection{Forward-Pass and Back-Propagation}
 \label{subsec:forwardback}
 \hspace*{1em} The repetition of the mathematical operations described earlier in \cref{subsec:denseconvolutional} 
-during model training constitutes the \textit{forward pass}, 
+during model training constitutes the \textit{forward-pass}, 
 the process where input data is passed through the network layer by layer, 
 with each layer applying its learned weights and biases to produce a final output. 
 This output is then compared with the ground truth by the loss function that produces an error
@@ -183,7 +183,7 @@ as shown below:
     \item \( \frac{\partial {a_1}^{(1)} }{\partial w_{1,1}} \) is the value of  \( x_1 \), since  \( {a_1}^{(1)} \) is a weighted sum of the inputs.
 \end{itemize}
 
-The chain rule, and consequently backpropagation, is a critical bottleneck for quantization. 
+The chain rule, and consequently back-propagation, is a critical bottleneck for quantization. 
 This issue, along with its solution, will be detailed in \cref{sec:learnedquantization}.
 
 % ------------------------------------------------------------
@@ -217,7 +217,7 @@ introducing significant overhead.
 For this reason, quantization,
 the process which reduces the memory footprint of a model,
 is also extensively covered in the realm of embedded systems that 
-inherently prefer integer arithmetic, as well as bitwise operations \cite{rastegari2016xnor, DBLP:conf/eccv/ZhangYYH18, DBLP:conf/codit/KhalifaM24, DBLP:journals/corr/abs-2105-13331}.
+inherently prefer integer arithmetic, as well as bit-wise operations \cite{rastegari2016xnor, DBLP:conf/eccv/ZhangYYH18, DBLP:conf/codit/KhalifaM24, DBLP:journals/corr/abs-2105-13331}.
 
 Another motivation for quantization — although somewhat controversial — is the fact that reducing the bit width of
 ML models makes them robust to adversial attacks in certain cases \cite{DBLP:journals/corr/abs-2404-05639}.
@@ -249,7 +249,7 @@ there is room for quantization.
 \hspace*{1em}There is a multitude of ways to classify NN quantization methods, a broader overview of which will be covered
 in \cref{cha:chapter5}.
 For now, we will focus on a few basic approaches from the general categories of both 
-\textit{data-driven} and \textit{data-free} methods \cite{Edouard2022SPIQ} to provide a basic understanding of the NN quantization process.
+\textit{data-driven} and \textit{data-free} methods \cite{Edouard2022SPIQ} to provide a better understanding of the NN quantization process.
 
 A basic form of data-free quantization, or \textit{post-training quantization} \cite{jiang2021efficient},
 involves converting already trained parameters from FP32 to a lower bit-width format
@@ -429,7 +429,7 @@ More often than not QAT and trainable quantization parameters are combined.
 An example is quantization-interval-learning (QIL) \cite{DBLP:conf/cvpr/JungSLSHKHC19}, 
 which uses three trainable quantization parameters 
 (the center of the interval, the distance to the center, and a parameter that controls the scaling itself) 
-with piecewise differentiable operations and relies on STE for gradient updates of quantized weights and activations. 
+with piece-wise differentiable operations and relies on STE for gradient updates of quantized weights and activations. 
 Similarly, the learned step size quantization (LSQ) approach \cite{DBLP:conf/iclr/EsserMBAM20} 
 defines a single trainable quantization parameter (step size) with an explicit gradient formula and also uses STE for standard parameter updates.
 LQ-Nets \cite{DBLP:conf/eccv/ZhangYYH18} depend on STE too, but  —  unlike the two previous techniques — 

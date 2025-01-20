@@ -34,7 +34,7 @@ for both kernels and biases. For the experimentation with custom loss terms,
 we use equivalent networks without the nested quantization layer logic.
 \begin{table}[b!]
   \centering
-  \caption{Network Settings for Different Datasets}
+  \caption{Network settings for different datasets}
   \label{tab:hyperparameters}
   \begin{tabular}{lccc}
       \toprule
@@ -120,7 +120,7 @@ without significantly degrading the accuracy.
   \label{fig:pareto-mnist-dense}
 \end{figure}
 
-As an example, the actual integer values after quantization for the rowwise scenario is 
+As an example, the actual integer values after quantization for the row-wise scenario is 
 depicted in \cref{fig:quantization_results_1e-10_dense} for all four parameters separately.
 While the total number of unique values is only \( 24 \), the range spans from \( -12 \) to \( 11 \).
 Consequently, \( 5 \) bits are sufficient to represent the quantized values in the resulting layers, 
@@ -251,7 +251,7 @@ If a slightly greater degradation in accuracy is viable,
 \( \lambda \) can be increased to \( \lambda = 1e-10\).
 In the row-wise case, this adjustment results in a reduced range of integers,
 spanning from \( -8 \) to \( 11 \). Further increasing \( \lambda \) could
-reduce the number of unique values to less than ten.
+reduce the number of unique values to less than 10.
 
 \begin{table}[b!]
   \centering
@@ -319,12 +319,12 @@ Similar to the observations on CIFAR-10, we do not see a significant difference 
 To ensure a fair comparison, the Baseline column reflects the size of the original, unquantized FP32 weights and biases, which are compressed using zipping. 
 The PTQ + Compressed column, on the other hand, shows the size after quantization and compression.
 
-Specifically, the quantization and compression process involves flooring the weights and biases to
+Specifically, the quantization and compression process involves casting the quantized weights and biases to
 INT8 format, saving them as \texttt{.npy} files, and subsequently compressing these files using zipping. 
 It is important to note that this compression method is intended solely for demonstration purposes, 
 to highlight the potential reduction gains, and does not necessarily represent an efficient deployment format.
 
-Across the three datasets, we observe up to an eight-fold reduction in file size.
+Across the three datasets, we observe up to \( 8 \times \) reduction in file size.
 We also note that the scaling factors must be saved separately in FP32, 
 since they are used during the forward-pass to rescale the weights and biases. 
 However, these full-precision scale factors are relatively small, so their storage overhead is minimal.
@@ -396,7 +396,7 @@ while the other granularity and custom loss term combinations
 experience a significantly greater increase in loss at the same value of
 \( \gamma \). 
 
-From \cref{fig:mnist-loss-validation},we can make the following additional observations.
+From \cref{fig:mnist-loss-validation}, we can make the following additional observations.
 First, scalar granularity is the most aggressive among the three granularities, 
 resulting in the poorest performance due to its excessive coarseness.
 Second, the Inverse Penalty stands out as the most aggressive custom loss term,
@@ -426,11 +426,11 @@ the conclusion that the scalar granularity combined with the Inverse Penalty app
 However, we observe that the channel-wise granularity is the most suitable configuration in this case, 
 with \( \gamma = 1e-10 \) producing integers ranging from -28 to 34 in the kernels of the convolutional layers.
 These integers form a bell curve closely resembling the experimental results of the nested quantization layer
-with rowwise granularity for \( \lambda = 1e-11\) depicted in \cref{fig:quantization-results-1e-10conv}
+with row-wise granularity for \( \lambda = 1e-11\) depicted in \cref{fig:quantization-results-1e-10conv}
 \begin{figure}[t!]
   \centering
   \includegraphics[width=14cm]{cifar_loss.png}
-  \caption{Accuracy – Quantization Trade-off for Custom Loss Terms on CIFAR-10.}
+  \caption{Accuracy–quantization trade-off for custom Loss terms on CIFAR-10.}
   \label{fig:cifar-loss}
 \end{figure}
 It is worth noting that, 
@@ -458,7 +458,7 @@ align closely with those observed in the learned quantization scenario.
 \begin{figure}[t!]
   \centering
   \includegraphics[width=14cm]{imagenette_loss.png}
-  \caption{Accuracy – Quantization Trade-off for Custom Loss Terms on Imagenette.}
+  \caption{Accuracy–quantization trade-off for custom loss terms on Imagenette.}
   \label{fig:imagenette-loss}
 \end{figure}
 
