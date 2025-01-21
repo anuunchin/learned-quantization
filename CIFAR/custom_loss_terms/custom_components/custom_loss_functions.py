@@ -33,7 +33,7 @@ def setup_logger(new_log_dir, logs):
 class SCCEMaxBin:
     def __init__(self, layers, penalty_rate, log_dir, l2_lambda=0.01):
         self.layers = layers
-        self.penalty_rate = tf.Variable(penalty_rate, trainable=False, dtype=tf.float32)
+        self.penalty_rate = penalty_rate
         self.custom_loss_dir = os.path.join(log_dir, "custom_losses")
 
         setup_logger(
@@ -43,7 +43,7 @@ class SCCEMaxBin:
                 "scce_loss.log",
                 "maxbin_loss.log"]
         )
-
+    
     def compute_total_loss(self, y_true, y_pred):
         """
         Computes a combined loss that includes sparse categorical cross-entropy and 
@@ -82,16 +82,16 @@ class SCCEMaxBin:
         normalizer = 0
 
         for layer in self.layers:
-            W = layer.W
-            W_scale = layer.nested_q_w_layer.scale
+            kernel = layer.kernel
+            kernel_scale = layer.nested_q_k_layer.scale
             b = layer.b
             b_scale = layer.nested_q_b_layer.scale
 
-            W_axes_to_reduce = [i for i in range(len(W_scale.shape)) if W_scale.shape[i] == 1 and len(W_scale.shape) > 1]
-            if W_axes_to_reduce != []:
-                W_maxbin = tf.reduce_max(tf.abs(W) / W_scale, axis=W_axes_to_reduce)
+            kernel_axes_to_reduce = [i for i in range(len(kernel_scale.shape)) if kernel_scale.shape[i] == 1 and len(kernel_scale.shape) > 1]
+            if kernel_axes_to_reduce != []:
+                kernel_maxbin = tf.reduce_max(tf.abs(kernel) / kernel_scale, axis=kernel_axes_to_reduce)
             else:
-                W_maxbin = tf.reduce_max(tf.abs(W) / W_scale)
+                kernel_maxbin = tf.reduce_max(tf.abs(kernel) / kernel_scale)
 
             b_axes_to_reduce = [i for i in range(len(b_scale.shape)) if b_scale.shape[i] == 1 and len(b_scale.shape) > 1]
             if b_axes_to_reduce != []:
@@ -99,19 +99,19 @@ class SCCEMaxBin:
             else:
                 b_maxbin = tf.reduce_max(tf.abs(b) / b_scale)
             
-            W_dim = 1.0
-            for dim in W.shape:
-                W_dim *= dim
+            kernel_dim = 1.0
+            for dim in kernel.shape:
+                kernel_dim *= dim
 
             b_dim = 1.0
             for dim in b.shape:
                 b_dim *= dim
 
-            layer_penalty = tf.reduce_mean(W_maxbin) * W_dim + tf.reduce_mean(b_maxbin) * b_dim
+            layer_penalty = tf.reduce_mean(kernel_maxbin) * kernel_dim + tf.reduce_mean(b_maxbin) * b_dim
 
             total_penalty += layer_penalty
 
-            normalizer += W_dim + b_dim
+            normalizer += kernel_dim + b_dim
 
         return total_penalty / normalizer
 
@@ -119,7 +119,7 @@ class SCCEMaxBin:
 class SCCEDifference:
     def __init__(self, layers, penalty_rate, log_dir, l2_lambda=0.01):
         self.layers = layers
-        self.penalty_rate = tf.Variable(penalty_rate, trainable=False, dtype=tf.float32)
+        self.penalty_rate = penalty_rate
         self.custom_loss_dir = os.path.join(log_dir, "custom_losses")
 
         setup_logger(
@@ -133,7 +133,7 @@ class SCCEDifference:
     def compute_total_loss(self, y_true, y_pred):
         """
         Computes a combined loss that includes sparse categorical cross-entropy and a penalty based on the difference
-        between the original and near quantized-scaled weights and biases.
+        between the original and quantized-scaled weights and biases.
         """
         cross_entropy_loss = tf.keras.losses.sparse_categorical_crossentropy(
             y_true, y_pred
@@ -141,7 +141,7 @@ class SCCEDifference:
 
         difference_penalty = self.compute_difference_penalty()
 
-        total_loss = cross_entropy_loss + self.penalty_rate *  difference_penalty
+        total_loss = cross_entropy_loss + self.penalty_rate * difference_penalty
 
         tf.print(
             tf.reduce_mean(total_loss),
@@ -160,37 +160,37 @@ class SCCEDifference:
 
     def compute_difference_penalty(self):
         """
-        Computes the penalty based on the difference between the original and near quantized-scaled weights and biases.
+        Computes the penalty based on the difference between the original and quantized-scaled weights and biases.
         """
         total_penalty = 0
 
         normalizer = 0
 
         for layer in self.layers:
-            W = layer.W
-            W_scale = layer.nested_q_w_layer.scale
+            kernel = layer.kernel
+            kernel_scale = layer.nested_q_k_layer.scale
             b = layer.b
             b_scale = layer.nested_q_b_layer.scale
 
-            W_quantized = W / W_scale
+            kernel_quantized = kernel / kernel_scale
             b_quantized = b / b_scale
 
-            W_diff_penalty = tf.reduce_mean(tf.abs(W - W_quantized))
+            kernel_diff_penalty = tf.reduce_mean(tf.abs(kernel - kernel_quantized))
             b_diff_penalty = tf.reduce_mean(tf.abs(b - b_quantized))
 
-            W_dim = 1.0
-            for dim in W.shape:
-                W_dim *= dim
+            kernel_dim = 1.0
+            for dim in kernel.shape:
+                kernel_dim *= dim
 
             b_dim = 1.0
             for dim in b.shape:
                 b_dim *= dim
 
-            layer_penalty = W_diff_penalty * W_dim + b_diff_penalty * b_dim
+            layer_penalty = kernel_diff_penalty * kernel_dim + b_diff_penalty * b_dim
 
             total_penalty += layer_penalty
 
-            normalizer += W_dim + b_dim
+            normalizer += kernel_dim + b_dim
 
         return total_penalty / normalizer
 
@@ -198,7 +198,7 @@ class SCCEDifference:
 class SCCEInverse:
     def __init__(self, layers, penalty_rate, log_dir, l2_lambda=0.01):
         self.layers = layers
-        self.penalty_rate = tf.Variable(penalty_rate, trainable=False, dtype=tf.float32)
+        self.penalty_rate = penalty_rate
         self.custom_loss_dir = os.path.join(log_dir, "custom_losses")
 
         setup_logger(
@@ -239,7 +239,7 @@ class SCCEInverse:
 
     def compute_inverse_penalty(self):
         """
-        Computes the inverse of the average of scaling factor .
+        Computes the inverse of the average of scaling factor values multiplied by the penalty rate.
         Effectively punishes small scale factor values.
         """
         total_penalty = 0
@@ -247,29 +247,29 @@ class SCCEInverse:
         normalizer = 0
 
         for layer in self.layers:
-            W = layer.W
-            W_scale = layer.nested_q_w_layer.scale
+            kernel = layer.kernel
+            kernel_scale = layer.nested_q_k_layer.scale
             b = layer.b
             b_scale = layer.nested_q_b_layer.scale
 
-            W_scale_non_zero = tf.where(W_scale == 0.0, eps_float32, W_scale)
+            kernel_scale_non_zero = tf.where(kernel_scale == 0.0, eps_float32, kernel_scale)
             b_scale_non_zero = tf.where(b_scale == 0.0, eps_float32, b_scale)
 
-            W_scale_inverse = tf.reduce_mean(1.0 / W_scale_non_zero)
+            kernel_scale_inverse = tf.reduce_mean(1.0 / kernel_scale_non_zero)
             b_scale_inverse = tf.reduce_mean(1.0 / b_scale_non_zero)
 
-            W_dim = 1.0
-            for dim in W.shape:
-                W_dim *= dim
+            kernel_dim = 1.0
+            for dim in kernel.shape:
+                kernel_dim *= dim
 
             b_dim = 1.0
             for dim in b.shape:
                 b_dim *= dim
 
-            layer_penalty = W_scale_inverse * W_dim + b_scale_inverse * b_dim
+            layer_penalty = kernel_scale_inverse * kernel_dim + b_scale_inverse * b_dim
 
             total_penalty += layer_penalty
 
-            normalizer += W_dim + b_dim
+            normalizer += kernel_dim + b_dim
 
         return total_penalty / normalizer

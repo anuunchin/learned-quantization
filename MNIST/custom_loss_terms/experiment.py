@@ -320,7 +320,6 @@ def main():
     scenario_dir_path = os.path.join("logs", scenario_dir, f"seed_{seed}")
     os.makedirs(scenario_dir_path, exist_ok=True)
 
-    print(scenario_dir_path)
     # Setup logger for plotting
     plotting_log_file_path = os.path.join(scenario_dir_path, "plotting_process.log")
 
@@ -385,6 +384,7 @@ def main():
 
             # Initialize the loss function instance 
             loss_function = initialize_loss_function(model=model, penalty_rate=penalty_rate, log_dir=log_dir, loss_func=custom_loss)
+            
             # Compile the model with the specified learning rate
             compile_model(model=model, learning_rate=learning_rate, loss_function=loss_function)
 
