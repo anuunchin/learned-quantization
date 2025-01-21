@@ -12,7 +12,6 @@ eps_float32 = np.finfo(np.float32).eps
 
 log_dir = ""
 
-
 def setup_logger(new_log_dir, logs):
     """
     Sets up a logger to save logs for specified files in the given directory.
@@ -129,7 +128,7 @@ class CustomQuantizedScaleLayer(tf.keras.layers.Layer):
         super(CustomQuantizedScaleLayer, self).__init__()
         self.initializer = initializer
         self.orientation = orientation
-        self.penalty_threshold_init = penalty_threshold
+        self.penalty_threshold = penalty_threshold
 
         setup_logger(
             "logs/temp",
@@ -142,17 +141,10 @@ class CustomQuantizedScaleLayer(tf.keras.layers.Layer):
                 "neg_grads.log",
                 "pos_grads.log",
                 "zero_grads.log",
-                "penalty_threshold_tracker.log"
             ],
         )
 
     def build(self, input_shape):
-        self.penalty_threshold = self.add_weight(
-            name="penalty_threshold",
-            shape=(),
-            initializer=tf.keras.initializers.Constant(self.penalty_threshold_init),
-            trainable=False,  # We don't want the optimizer to treat it like a trainable parameter
-        )
 
         if self.orientation == "rowwise":
             scaler_shape = tuple(

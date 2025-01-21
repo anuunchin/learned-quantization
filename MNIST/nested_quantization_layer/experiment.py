@@ -2,6 +2,7 @@ import argparse
 import concurrent.futures
 import logging
 import os
+import random
 from datetime import datetime
 from typing import Any, List, Literal, Tuple
 
@@ -254,17 +255,20 @@ def main():
     parser.add_argument(
         "--seed",
         type=int,
+        required=True,
         help="Random seed for reproducibility.",
     )
     parser.add_argument(
         "--orientation",
         type=str,
+        required=True,
         choices=["rowwise", "columnwise", "channelwise", "scalar"],
         help="How the scalers are to be applied to the weight matrix. Options are rowwise, columnwise, channelwise or scalar.",
     )
     parser.add_argument(
         "--training",
         type=str,
+        required=True,
         choices=["post_training", "from_scratch"],
         help="If true weights of a trained model will be used.",
     )
@@ -276,6 +280,9 @@ def main():
     scenario_dir = f"{orientation}_{training}"
 
     tf.random.set_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+
 
     scenario_dir_path = os.path.join("logs", scenario_dir, f"seed_{seed}")
     os.makedirs(scenario_dir_path, exist_ok=True)

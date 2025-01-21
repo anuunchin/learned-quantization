@@ -11,7 +11,7 @@ def log_model_structure(
     model: Model, 
     folder_name: str, 
     filename: Optional[str] = "model_structure.log"
-):
+) -> None:
     """
     Logs the structure of the given model, including each layer's input and output shapes.
     If a layer has scalers, their shapes are also logged.
@@ -58,7 +58,10 @@ def log_model_structure(
         f.write("-" * 80 + "\n")
 
 
-def save_compress_parameters(model: Model, log_dir: str) -> None:
+def save_compress_parameters(
+    model: Model, 
+    log_dir: str
+) -> None:
     """
     Saves model weights, quantizes if applicable, 
     compresses them, and logs file sizes.
