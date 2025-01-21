@@ -22,7 +22,7 @@ import utils.plot_scripts as plot_scripts
 
 eps_float32 = np.finfo(np.float32).eps
 
-baselin_model = "baseline_model.keras"
+baseline_model = "baseline_model.keras"
 
 
 def prepare_model_dir(
@@ -77,7 +77,7 @@ def initialize_model_with_trained_weights(
     This is essentially similar to the next function.
     The only difference is we provide pretrained weights.
     """
-    trained_model = tf.keras.models.load_model(baselin_model)
+    trained_model = tf.keras.models.load_model(baseline_model)
     trained_weights_1 = trained_model.get_layer("dense").get_weights()
     trained_weights_2 = trained_model.get_layer("dense_1").get_weights()
 
@@ -365,7 +365,7 @@ def main():
             log_scripts.save_artefacts(scenario_dir_path, current_script_dir)
 
             # Submit plotting task to executor
-            futures.append(executor.submit(plot_results, log_dir))
+            #futures.append(executor.submit(plot_results, log_dir))
 
             # Generate Pareto plot after each penalty threshold, so we can see it as soon as possible
             plot_pareto(scenario_dir_path)
