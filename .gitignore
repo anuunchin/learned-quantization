@@ -12,3 +12,8 @@ on_train_begin/
 
 plotting_process.log
 
+.DS_Store
+
+logs/
+
+*.keras
