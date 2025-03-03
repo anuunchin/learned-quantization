@@ -68,6 +68,7 @@ def initialize_callbacks(
     """    
     callbacks = []
 
+    # TODO: add the custom dense layer callback
     for i, layer in enumerate(model.layers):
         if "custom_conv2d_layer" in layer.name:
             scale_tracking_callback = custom_callbacks.NestedScaleTrackingCallback(
@@ -567,11 +568,11 @@ def main():
     train_data, validation_data, input_data_shape = prepare_data()
 
     learning_rate = 0.0001
-    epochs = 1
+    epochs = 100
     batch_size = 128
 
     penalty_thresholds = [
-        #0.0,
+        0.0,
         #1e-11,
         #1e-10,
         #1e-9,

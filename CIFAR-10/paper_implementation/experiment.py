@@ -18,9 +18,16 @@ from tensorflow.keras.layers import (
     MaxPooling2D,
     Conv2D
 )
-from tensorflow.keras.callbacks import Callback
+from tensorflow.keras.callbacks import (
+    Callback,
+    ReduceLROnPlateau,
+)
+
 from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import (
+    Adam,
+    SGD,
+)
 
 import custom_components.custom_callbacks as custom_callbacks
 import custom_components.custom_layers as custom_layers
@@ -33,6 +40,7 @@ from resnet import resnet18
 
 from configs import SEED
 
+os.environ["TF_DETERMINISTIC_OPS"] = "1"
 
 def prepare_model_dir(
     scenario_dir: str,
@@ -53,6 +61,20 @@ def prepare_model_dir(
     return log_dir
 
 
+def scheduler(
+    epoch: int, 
+    lr: float
+) -> float:
+    """
+    Used to schedule learning rate decay.
+    """
+    if epoch == 40:
+        return lr * 0.5
+    if epoch == 60:
+        return lr * 0.2
+    return lr
+
+
 def initialize_callbacks(
     model: Model, 
     log_dir: str
@@ -69,6 +91,16 @@ def initialize_callbacks(
                 layer, log_dir
             )
             callbacks.append(scale_tracking_callback)
+
+    lr_callback = ReduceLROnPlateau(
+        monitor="val_accuracy",  
+        factor=0.1,
+        patience=3,
+        threshold=0.001,
+        mode="max",
+        verbose=1
+    )
+    callbacks.append(lr_callback)
 
     accuracy_loss_callback = custom_callbacks.AccuracyLossTrackingCallBack(log_dir)
     callbacks.append(accuracy_loss_callback)
@@ -97,10 +129,13 @@ def initialize_resnet18(
 
 def compile_model(
     model: Model, 
-    learning_rate: float
+    learning_rate: float,
+    momentum: float = 0.9,
+    weight_decay: float = 0.0005,
+    nesterov: bool = True,
 ) -> None:
     model.compile(
-        optimizer=Adam(learning_rate=learning_rate),
+        optimizer=SGD(learning_rate=learning_rate, momentum=momentum, weight_decay=weight_decay, nesterov=nesterov),
         loss="sparse_categorical_crossentropy",
         metrics=["accuracy"],
     )
@@ -213,13 +248,15 @@ def main():
 
     train_data, validation_data, input_data_shape = prepare_data()
 
-    learning_rate = 0.001
-    epochs = 1
+    learning_rate = 0.1
+    epochs = 100
     batch_size = 128
 
     penalty_thresholds = [
         0.0,
     ]
+
+    # for model fine-tuning https://wandb.ai/suvadeep/pytorch/reports/Finetuning-of-ResNet-18-on-CIFAR-10-Dataset--VmlldzoxMDE2NjQ1
 
     # Create a thread pool for concurrent execution so that we can plot the previous
     # training logs, while continuing with the next one
@@ -253,10 +290,8 @@ def main():
             compile_model(model=model, learning_rate=learning_rate)
 
             # Initialize callbacks for training
-            # TODO: the callbacks are currently accessing bias, adjust accordingly
-            #callbacks = initialize_callbacks(model=model, log_dir=log_dir)
-            callbacks = []
-
+            callbacks = initialize_callbacks(model=model, log_dir=log_dir)
+            
             # Train the model and log results
             train_model(
                 model=model,
